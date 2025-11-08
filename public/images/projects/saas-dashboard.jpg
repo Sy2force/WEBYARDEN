@@ -1,0 +1,50 @@
+<!-- Placeholder SVG for SaaS Dashboard -->
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="dashGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e293b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#475569;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#dashGrad)"/>
+  
+  <!-- Dashboard Container -->
+  <rect x="50" y="50" width="700" height="400" rx="15" fill="white"/>
+  
+  <!-- Sidebar -->
+  <rect x="50" y="50" width="150" height="400" fill="#f8fafc" stroke="#e2e8f0"/>
+  <rect x="70" y="80" width="110" height="25" fill="#3b82f6"/>
+  <rect x="70" y="120" width="110" height="20" fill="#e2e8f0"/>
+  <rect x="70" y="150" width="110" height="20" fill="#e2e8f0"/>
+  <rect x="70" y="180" width="110" height="20" fill="#e2e8f0"/>
+  <rect x="70" y="210" width="110" height="20" fill="#e2e8f0"/>
+  
+  <!-- Main Content -->
+  <rect x="220" y="80" width="500" height="50" fill="#f1f5f9"/>
+  <text x="470" y="110" text-anchor="middle" fill="#1e293b" font-family="Arial" font-size="18" font-weight="bold">Analytics Dashboard</text>
+  
+  <!-- Stats Cards -->
+  <rect x="240" y="150" width="100" height="80" fill="#dbeafe" stroke="#3b82f6"/>
+  <text x="290" y="175" text-anchor="middle" fill="#1e40af" font-family="Arial" font-size="12">Users</text>
+  <text x="290" y="210" text-anchor="middle" fill="#1e40af" font-family="Arial" font-size="20" font-weight="bold">1,234</text>
+  
+  <rect x="360" y="150" width="100" height="80" fill="#dcfce7" stroke="#10b981"/>
+  <text x="410" y="175" text-anchor="middle" fill="#047857" font-family="Arial" font-size="12">Revenue</text>
+  <text x="410" y="210" text-anchor="middle" fill="#047857" font-family="Arial" font-size="20" font-weight="bold">$45K</text>
+  
+  <rect x="480" y="150" width="100" height="80" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="530" y="175" text-anchor="middle" fill="#92400e" font-family="Arial" font-size="12">Orders</text>
+  <text x="530" y="210" text-anchor="middle" fill="#92400e" font-family="Arial" font-size="20" font-weight="bold">567</text>
+  
+  <rect x="600" y="150" width="100" height="80" fill="#fce7f3" stroke="#ec4899"/>
+  <text x="650" y="175" text-anchor="middle" fill="#be185d" font-family="Arial" font-size="12">Growth</text>
+  <text x="650" y="210" text-anchor="middle" fill="#be185d" font-family="Arial" font-size="20" font-weight="bold">+23%</text>
+  
+  <!-- Chart Area -->
+  <rect x="240" y="250" width="460" height="150" fill="#f8fafc" stroke="#e2e8f0"/>
+  <polyline points="260,350 300,320 340,300 380,280 420,260 460,240 500,220 540,200 580,180 620,160 660,140" 
+            fill="none" stroke="#3b82f6" stroke-width="3"/>
+  <text x="470" y="280" text-anchor="middle" fill="#64748b" font-family="Arial" font-size="14">Revenue Chart</text>
+  
+  <text x="400" y="480" text-anchor="middle" fill="white" font-family="Arial" font-size="20" font-weight="bold">SaaS Dashboard</text>
+</svg>

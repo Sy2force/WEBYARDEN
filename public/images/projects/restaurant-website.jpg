@@ -1,0 +1,40 @@
+<!-- Placeholder SVG for Restaurant Website -->
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="restGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#dc2626;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ea580c;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#restGrad)"/>
+  
+  <!-- Website Container -->
+  <rect x="50" y="50" width="500" height="300" rx="10" fill="white"/>
+  
+  <!-- Header -->
+  <rect x="50" y="50" width="500" height="60" fill="#1f2937"/>
+  <text x="300" y="85" text-anchor="middle" fill="white" font-family="Arial" font-size="18" font-weight="bold">Bistro Deluxe</text>
+  <rect x="450" y="70" width="80" height="20" fill="#dc2626"/>
+  <text x="490" y="83" text-anchor="middle" fill="white" font-family="Arial" font-size="12">Réserver</text>
+  
+  <!-- Hero Section -->
+  <rect x="50" y="110" width="500" height="120" fill="#f3f4f6"/>
+  <circle cx="300" cy="170" r="30" fill="#dc2626"/>
+  <text x="300" y="177" text-anchor="middle" fill="white" font-family="Arial" font-size="20">🍽️</text>
+  <text x="300" y="210" text-anchor="middle" fill="#1f2937" font-family="Arial" font-size="16" font-weight="bold">Cuisine Authentique</text>
+  
+  <!-- Menu Cards -->
+  <rect x="70" y="250" width="120" height="80" fill="#fef2f2" stroke="#dc2626"/>
+  <text x="130" y="275" text-anchor="middle" fill="#dc2626" font-family="Arial" font-size="14" font-weight="bold">Entrées</text>
+  <text x="130" y="295" text-anchor="middle" fill="#7f1d1d" font-family="Arial" font-size="12">À partir de 12€</text>
+  
+  <rect x="210" y="250" width="120" height="80" fill="#fef2f2" stroke="#dc2626"/>
+  <text x="270" y="275" text-anchor="middle" fill="#dc2626" font-family="Arial" font-size="14" font-weight="bold">Plats</text>
+  <text x="270" y="295" text-anchor="middle" fill="#7f1d1d" font-family="Arial" font-size="12">À partir de 18€</text>
+  
+  <rect x="350" y="250" width="120" height="80" fill="#fef2f2" stroke="#dc2626"/>
+  <text x="410" y="275" text-anchor="middle" fill="#dc2626" font-family="Arial" font-size="14" font-weight="bold">Desserts</text>
+  <text x="410" y="295" text-anchor="middle" fill="#7f1d1d" font-family="Arial" font-size="12">À partir de 8€</text>
+  
+  <text x="300" y="380" text-anchor="middle" fill="white" font-family="Arial" font-size="18" font-weight="bold">Restaurant Website</text>
+</svg>

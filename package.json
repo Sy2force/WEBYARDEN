@@ -1,0 +1,83 @@
+{
+  "name": "web-yarden",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Web Yarden - Agence Digitale Israël | Marketing Digital, Visibilité, Réseaux",
+  "author": "Shay Acoca <webyarden@gmail.com>",
+  "homepage": "https://webyarden.co.il",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shayacoca/web-yarden.git"
+  },
+  "keywords": [
+    "agence digitale",
+    "marketing digital",
+    "israël",
+    "tel aviv",
+    "next.js",
+    "react",
+    "typescript",
+    "tailwindcss"
+  ],
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "type-check": "tsc --noEmit",
+    "test": "echo \"No tests specified\" && exit 0",
+    "export": "next build && next export",
+    "analyze": "ANALYZE=true npm run build",
+    "clean": "rm -rf .next out node_modules/.cache",
+    "deploy:vercel": "vercel --prod",
+    "deploy:preview": "vercel",
+    "deploy:netlify": "npm run build && netlify deploy --prod --dir=out",
+    "deploy:docker": "docker build -t web-yarden . && docker run -p 3000:3000 web-yarden",
+    "postinstall": "npm run type-check"
+  },
+  "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "@headlessui/react": "^1.7.17",
+    "@heroicons/react": "^2.0.18",
+    "@hookform/resolvers": "^3.3.2",
+    "@react-pdf/renderer": "^3.1.14",
+    "@types/file-saver": "^2.0.7",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "autoprefixer": "^10.4.16",
+    "clsx": "^2.1.1",
+    "critters": "^0.0.23",
+    "file-saver": "^2.0.5",
+    "framer-motion": "^10.16.5",
+    "lucide-react": "^0.292.0",
+    "next": "^14.2.33",
+    "postcss": "^8.4.31",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.47.0",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss": "^3.3.5",
+    "typescript": "^5.2.2",
+    "yup": "^1.3.3",
+    "zustand": "^4.4.6"
+  },
+  "devDependencies": {
+    "@next/bundle-analyzer": "^14.2.33",
+    "@types/node": "^24.10.0",
+    "eslint": "^8.53.0",
+    "eslint-config-next": "14.0.3",
+    "netlify-cli": "^17.10.1",
+    "vercel": "^32.5.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "license": "MIT"
+}
