@@ -2,9 +2,12 @@
 
 import React, { useState } from 'react'
 import Link from 'next/link'
+import { useTranslations } from '@/lib/i18n'
+import LanguageSwitcher from './LanguageSwitcher'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { t } = useTranslations()
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -17,7 +20,7 @@ const Header = () => {
           {/* Logo */}
           <div className="flex justify-start lg:w-0 lg:flex-1">
             <Link href="/" className="text-2xl font-bold text-primary-600 hover:text-primary-700 transition-colors">
-              Web Yarden
+              {t('header.title')}
             </Link>
           </div>
 
@@ -44,23 +47,30 @@ const Header = () => {
           {/* Desktop navigation */}
           <nav className="hidden md:flex space-x-10">
             <Link href="/" className="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors">
-              Accueil
+              {t('common.home')}
             </Link>
             <Link href="/services" className="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors">
-              Services
+              {t('common.services')}
+            </Link>
+            <Link href="/projects" className="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors">
+              {t('common.projects')}
+            </Link>
+            <Link href="/about" className="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors">
+              {t('common.about')}
             </Link>
             <Link href="/contact" className="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors">
-              Contact
+              {t('common.contact')}
             </Link>
           </nav>
 
-          {/* CTA Button */}
-          <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+          {/* Language Switcher & CTA Button */}
+          <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0 space-x-4">
+            <LanguageSwitcher />
             <Link
               href="/devis"
-              className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primary-600 hover:bg-primary-700 transition-colors"
+              className="whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primary-600 hover:bg-primary-700 transition-colors"
             >
-              Devis gratuit
+              {t('header.getQuote')}
             </Link>
           </div>
         </div>
@@ -73,7 +83,7 @@ const Header = () => {
             <div className="pt-5 pb-6 px-5">
               <div className="flex items-center justify-between">
                 <div>
-                  <span className="text-2xl font-bold text-primary-600">Web Yarden</span>
+                  <span className="text-2xl font-bold text-primary-600">{t('header.title')}</span>
                 </div>
                 <div className="-mr-2">
                   <button
@@ -101,32 +111,49 @@ const Header = () => {
                     className="text-base font-medium text-gray-900 hover:text-gray-700"
                     onClick={toggleMenu}
                   >
-                    Accueil
+                    {t('common.home')}
                   </Link>
                   <Link
                     href="/services"
                     className="text-base font-medium text-gray-900 hover:text-gray-700"
                     onClick={toggleMenu}
                   >
-                    Services
+                    {t('common.services')}
+                  </Link>
+                  <Link
+                    href="/projects"
+                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    onClick={toggleMenu}
+                  >
+                    {t('common.projects')}
+                  </Link>
+                  <Link
+                    href="/about"
+                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    onClick={toggleMenu}
+                  >
+                    {t('common.about')}
                   </Link>
                   <Link
                     href="/contact"
                     className="text-base font-medium text-gray-900 hover:text-gray-700"
                     onClick={toggleMenu}
                   >
-                    Contact
+                    {t('common.contact')}
                   </Link>
                 </nav>
               </div>
             </div>
             <div className="py-6 px-5 space-y-6">
+              <div className="flex justify-center mb-4">
+                <LanguageSwitcher />
+              </div>
               <Link
                 href="/devis"
                 className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primary-600 hover:bg-primary-700"
                 onClick={toggleMenu}
               >
-                Devis gratuit
+                {t('header.getQuote')}
               </Link>
             </div>
           </div>

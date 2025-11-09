@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import Layout from '@/components/Layout'
+import ChatWidget from '@/components/ChatWidget'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -46,6 +47,7 @@ export default function RootLayout({
     <html lang="fr" className="antialiased">
       <body className={inter.className}>
         <Layout>{children}</Layout>
+        <ChatWidget />
       </body>
     </html>
   )

@@ -1,17 +1,42 @@
-import React from 'react'
+'use client'
+
+import React, { useState } from 'react'
+import { useTranslations } from '@/lib/i18n'
 
 export default function Contact() {
+  const { t } = useTranslations()
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    subject: '',
+    message: ''
+  })
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    console.log('Form submitted:', formData)
+    // Handle form submission here
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-white">
-        <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+      <section className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
+        <div className="max-w-7xl mx-auto py-20 px-4 sm:py-24 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-              <span className="text-indigo-600">Contactez-nous</span>
+            <h1 className="text-4xl font-extrabold sm:text-5xl md:text-6xl">
+              {t('contact.title')}
             </h1>
-            <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-              Prêt à développer votre présence digitale en Israël ? Parlons de votre projet !
+            <p className="mt-6 max-w-3xl mx-auto text-xl text-blue-100">
+              {t('contact.subtitle')}
             </p>
           </div>
         </div>
@@ -107,7 +132,7 @@ export default function Contact() {
             <div className="bg-white rounded-lg shadow-lg p-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-8">Envoyez-nous un message</h2>
               
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                   <div>
                     <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
@@ -117,6 +142,8 @@ export default function Contact() {
                       type="text"
                       name="firstName"
                       id="firstName"
+                      value={formData.firstName}
+                      onChange={handleChange}
                       className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     />
                   </div>
@@ -128,6 +155,8 @@ export default function Contact() {
                       type="text"
                       name="lastName"
                       id="lastName"
+                      value={formData.lastName}
+                      onChange={handleChange}
                       className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     />
                   </div>
@@ -141,6 +170,8 @@ export default function Contact() {
                     type="email"
                     name="email"
                     id="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
                 </div>
@@ -153,6 +184,8 @@ export default function Contact() {
                     type="text"
                     name="subject"
                     id="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
                     className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
                 </div>
@@ -165,6 +198,8 @@ export default function Contact() {
                     name="message"
                     id="message"
                     rows={4}
+                    value={formData.message}
+                    onChange={handleChange}
                     className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
                 </div>

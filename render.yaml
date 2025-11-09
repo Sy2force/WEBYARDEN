@@ -2,5 +2,13 @@ services:
   - type: web
     name: web-yarden
     env: node
-    buildCommand: npm run build
+    region: frankfurt
+    plan: free
+    buildCommand: npm ci && npm run build
     startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_PUBLIC_SITE_URL
+        value: https://web-yarden.onrender.com
