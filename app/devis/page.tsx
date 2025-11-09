@@ -1,52 +1,34 @@
 'use client'
 
 import React, { useState } from 'react'
-import { useTranslations } from '@/lib/i18n'
+import { motion } from 'framer-motion'
+import { useCartStore } from '@/store/cartStore'
+import PdfDownloadButton from '@/components/PdfDownloadButton'
 
 export default function Devis() {
-  const { t } = useTranslations()
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
+  const { items, getTotalPrice, clearCart } = useCartStore()
+  const [clientInfo, setClientInfo] = useState({
+    name: '',
     email: '',
     phone: '',
     company: '',
-    services: [] as string[],
-    budget: '',
-    timeline: '',
+    address: '',
     description: ''
   })
 
-  const services = [
-    { id: 'website', name: 'Site vitrine', price: '₪ 8,000' },
-    { id: 'ecommerce', name: 'Site e-commerce', price: '₪ 15,000' },
-    { id: 'seo', name: 'Référencement SEO', price: '₪ 3,500' },
-    { id: 'webApp', name: 'Application web', price: '₪ 20,000' },
-    { id: 'maintenance', name: 'Maintenance', price: '₪ 800/mois' },
-    { id: 'consulting', name: 'Conseil digital', price: '₪ 5,000' }
-  ]
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setClientInfo({
+      ...clientInfo,
       [e.target.name]: e.target.value
     })
   }
 
-  const handleServiceChange = (serviceId: string) => {
-    const updatedServices = formData.services.includes(serviceId)
-      ? formData.services.filter(id => id !== serviceId)
-      : [...formData.services, serviceId]
-    
-    setFormData({
-      ...formData,
-      services: updatedServices
-    })
-  }
+  const totalPrice = getTotalPrice()
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log('Devis form submitted:', formData)
+    // Here you would typically send the quote to your backend
+    alert('Devis envoyé avec succès! Nous vous contacterons sous 24h.')
   }
 
   return (
@@ -56,195 +38,195 @@ export default function Devis() {
         <div className="max-w-7xl mx-auto py-20 px-4 sm:py-24 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl font-extrabold sm:text-5xl md:text-6xl">
-              Demande de <span className="text-green-200">Devis</span>
+              Finaliser votre <span className="text-green-200">Devis</span>
             </h1>
             <p className="mt-6 max-w-3xl mx-auto text-xl text-blue-100">
-              Obtenez un devis personnalisé pour votre projet digital en Israël
+              Complétez vos informations pour recevoir votre devis personnalisé
             </p>
           </div>
         </div>
       </section>
 
-      {/* Quote Form */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-lg shadow-lg p-8">
-            <form onSubmit={handleSubmit} className="space-y-8">
-              {/* Personal Info */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Client Information Form */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="bg-white rounded-2xl shadow-xl p-8"
+          >
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Vos informations</h2>
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Informations personnelles</h2>
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                  <div>
-                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
-                      Prénom *
-                    </label>
-                    <input
-                      type="text"
-                      name="firstName"
-                      id="firstName"
-                      required
-                      value={formData.firstName}
-                      onChange={handleInputChange}
-                      className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
-                      Nom *
-                    </label>
-                    <input
-                      type="text"
-                      name="lastName"
-                      id="lastName"
-                      required
-                      value={formData.lastName}
-                      onChange={handleInputChange}
-                      className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                      Email *
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      id="email"
-                      required
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
-                      Téléphone
-                    </label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      id="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    />
-                  </div>
-                  <div className="sm:col-span-2">
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-700">
-                      Entreprise
-                    </label>
-                    <input
-                      type="text"
-                      name="company"
-                      id="company"
-                      value={formData.company}
-                      onChange={handleInputChange}
-                      className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    />
-                  </div>
-                </div>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                  Nom complet *
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  value={clientInfo.name}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  placeholder="Votre nom complet"
+                />
               </div>
 
-              {/* Services Selection */}
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Services souhaités</h2>
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                  {services.map((service) => (
-                    <div key={service.id} className="relative flex items-start">
-                      <div className="flex items-center h-5">
-                        <input
-                          id={service.id}
-                          name="services"
-                          type="checkbox"
-                          checked={formData.services.includes(service.id)}
-                          onChange={() => handleServiceChange(service.id)}
-                          className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
-                        />
-                      </div>
-                      <div className="ml-3 text-sm">
-                        <label htmlFor={service.id} className="font-medium text-gray-700">
-                          {service.name}
-                        </label>
-                        <p className="text-gray-500">À partir de {service.price}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                  Email *
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  value={clientInfo.email}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  placeholder="votre@email.com"
+                />
               </div>
 
-              {/* Project Details */}
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Détails du projet</h2>
-                <div className="space-y-6">
-                  <div>
-                    <label htmlFor="budget" className="block text-sm font-medium text-gray-700">
-                      Budget estimé
-                    </label>
-                    <select
-                      id="budget"
-                      name="budget"
-                      value={formData.budget}
-                      onChange={handleInputChange}
-                      className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    >
-                      <option value="">Sélectionnez votre budget</option>
-                      <option value="5000-15000">₪ 5,000 - ₪ 15,000</option>
-                      <option value="15000-30000">₪ 15,000 - ₪ 30,000</option>
-                      <option value="30000-50000">₪ 30,000 - ₪ 50,000</option>
-                      <option value="50000+">Plus de ₪ 50,000</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label htmlFor="timeline" className="block text-sm font-medium text-gray-700">
-                      Délai souhaité
-                    </label>
-                    <select
-                      id="timeline"
-                      name="timeline"
-                      value={formData.timeline}
-                      onChange={handleInputChange}
-                      className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    >
-                      <option value="">Sélectionnez un délai</option>
-                      <option value="urgent">Urgent (moins d'1 mois)</option>
-                      <option value="1-2months">1-2 mois</option>
-                      <option value="2-3months">2-3 mois</option>
-                      <option value="3months+">Plus de 3 mois</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label htmlFor="description" className="block text-sm font-medium text-gray-700">
-                      Description du projet *
-                    </label>
-                    <textarea
-                      name="description"
-                      id="description"
-                      rows={4}
-                      required
-                      value={formData.description}
-                      onChange={handleInputChange}
-                      placeholder="Décrivez votre projet, vos objectifs, votre cible"
-                      className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    />
-                  </div>
-                </div>
+                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                  Téléphone
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={clientInfo.phone}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  placeholder="+972 XX XXX XXXX"
+                />
               </div>
 
-              {/* Submit */}
-              <div className="flex justify-end">
+              <div>
+                <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
+                  Entreprise
+                </label>
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  value={clientInfo.company}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  placeholder="Nom de votre entreprise"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="address" className="block text-sm font-medium text-gray-700 mb-2">
+                  Adresse
+                </label>
+                <input
+                  type="text"
+                  id="address"
+                  name="address"
+                  value={clientInfo.address}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  placeholder="Votre adresse"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-2">
+                  Description du projet
+                </label>
+                <textarea
+                  id="description"
+                  name="description"
+                  rows={4}
+                  value={clientInfo.description}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  placeholder="Décrivez votre projet et vos besoins spécifiques..."
+                />
+              </div>
+
+              <div className="flex gap-4">
                 <button
                   type="submit"
-                  className="inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  className="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 px-6 rounded-lg hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 font-semibold shadow-lg"
                 >
-                  Envoyer la demande de devis
+                  Envoyer le devis
                 </button>
+                <PdfDownloadButton 
+                  clientInfo={clientInfo}
+                  className="bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-lg transition-colors font-semibold shadow-lg"
+                >
+                  📄 Télécharger PDF
+                </PdfDownloadButton>
               </div>
             </form>
-          </div>
+          </motion.div>
+
+          {/* Cart Summary */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="bg-white rounded-2xl shadow-xl p-8"
+          >
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Récapitulatif</h2>
+            
+            {items.length === 0 ? (
+              <div className="text-center py-8">
+                <svg className="h-16 w-16 text-gray-300 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
+                <p className="text-gray-500 mb-4">Votre panier est vide</p>
+                <a
+                  href="/services"
+                  className="inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+                >
+                  Parcourir nos services
+                </a>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {items.map((item) => (
+                  <div key={item.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-gray-900">{item.title}</h3>
+                      <p className="text-sm text-gray-600">{item.category}</p>
+                      <p className="text-sm text-gray-500">Quantité: {item.quantity}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="font-bold text-indigo-600">
+                        ₪ {(item.price * item.quantity).toLocaleString()}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+                
+                <div className="border-t border-gray-200 pt-4">
+                  <div className="flex justify-between items-center text-xl font-bold">
+                    <span>Total:</span>
+                    <span className="text-green-600">₪ {totalPrice.toLocaleString()}</span>
+                  </div>
+                  <p className="text-sm text-gray-500 mt-2">
+                    TVA incluse • Devis valable 30 jours
+                  </p>
+                </div>
+
+                <div className="mt-6 pt-6 border-t border-gray-200">
+                  <button
+                    onClick={clearCart}
+                    className="w-full text-red-600 hover:text-red-800 py-2 text-sm font-medium transition-colors"
+                  >
+                    Vider le panier
+                  </button>
+                </div>
+              </div>
+            )}
+          </motion.div>
         </div>
-      </section>
+      </div>
 
       {/* Why Choose Us */}
       <section className="bg-indigo-700 py-16">

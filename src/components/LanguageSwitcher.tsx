@@ -2,7 +2,7 @@
 
 import { useRouter, usePathname } from 'next/navigation'
 import { useState } from 'react'
-import { useTranslations } from '@/lib/i18n'
+import { useTranslations } from '@/components/LocalizedText'
 
 interface Language {
   code: string

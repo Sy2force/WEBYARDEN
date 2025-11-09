@@ -1,7 +1,13 @@
+'use client'
+
 import React from 'react'
 import Link from 'next/link'
+import TestimonialsCarousel from '@/components/TestimonialsCarousel'
+import { useTranslations } from '@/components/LocalizedText'
 
 export default function Home() {
+  const { t } = useTranslations()
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -10,23 +16,23 @@ export default function Home() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              🚀 Web Yarden - Agence Digitale
+              {t('home.hero.title')}
             </h1>
-            <p className="text-xl md:text-2xl mb-8 opacity-90">
-              Votre partenaire digital en Israël pour booster votre présence en ligne
+            <p className="text-xl md:text-2xl mb-8 text-blue-100">
+              {t('home.hero.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/services"
                 className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg shadow-lg hover:bg-gray-100 transition-all duration-300"
               >
-                Nos Services
+                {t('home.hero.cta')}
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transition-all duration-300"
+                className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transition-all duration-300 transform hover:-translate-y-1"
               >
-                Contact
+                {t('home.hero.ctaSecondary')}
               </Link>
             </div>
           </div>
@@ -38,10 +44,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Nos Services Digitaux
+              {t('home.features.title')}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Solutions complètes pour développer votre business en ligne
+              {t('home.features.subtitle')}
             </p>
           </div>
           
@@ -50,8 +56,8 @@ export default function Home() {
               <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white text-2xl mb-6 mx-auto">
                 💻
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-800">Développement Web</h3>
-              <p className="text-gray-600 mb-6">Sites vitrine, e-commerce et applications web sur mesure avec les dernières technologies</p>
+              <h3 className="text-xl font-semibold mb-4 text-gray-800">{t('home.features.webDev.title')}</h3>
+              <p className="text-gray-600 mb-6">{t('home.features.webDev.description')}</p>
               <div className="text-sm text-blue-600 font-medium">À partir de ₪8,000</div>
             </div>
             
@@ -59,8 +65,8 @@ export default function Home() {
               <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-600 rounded-lg flex items-center justify-center text-white text-2xl mb-6 mx-auto">
                 📱
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-800">Apps Mobiles</h3>
-              <p className="text-gray-600 mb-6">Applications iOS et Android natives et cross-platform avec React Native et Flutter</p>
+              <h3 className="text-xl font-semibold mb-4 text-gray-800">{t('home.features.seo.title')}</h3>
+              <p className="text-gray-600 mb-6">{t('home.features.seo.description')}</p>
               <div className="text-sm text-green-600 font-medium">À partir de ₪15,000</div>
             </div>
             
@@ -68,8 +74,8 @@ export default function Home() {
               <div className="w-16 h-16 bg-gradient-to-r from-pink-500 to-rose-600 rounded-lg flex items-center justify-center text-white text-2xl mb-6 mx-auto">
                 🎨
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-800">Design & UX</h3>
-              <p className="text-gray-600 mb-6">Interfaces modernes et expérience utilisateur optimisée pour maximiser les conversions</p>
+              <h3 className="text-xl font-semibold mb-4 text-gray-800">{t('home.features.design.title')}</h3>
+              <p className="text-gray-600 mb-6">{t('home.features.design.description')}</p>
               <div className="text-sm text-pink-600 font-medium">À partir de ₪5,000</div>
             </div>
           </div>
@@ -235,6 +241,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Testimonials Section */}
+      <TestimonialsCarousel />
     </div>
   )
 }

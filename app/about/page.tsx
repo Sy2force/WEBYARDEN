@@ -3,7 +3,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useTranslations } from '@/lib/i18n'
+import { useTranslations } from '@/components/LocalizedText'
 
 export default function About() {
   const { t } = useTranslations()

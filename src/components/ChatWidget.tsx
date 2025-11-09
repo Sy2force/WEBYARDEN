@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { useTranslations } from '@/lib/i18n'
+import { useTranslations } from '@/components/LocalizedText'
 
 export default function ChatWidget() {
   const { t } = useTranslations()

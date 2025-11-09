@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { useTranslations } from '@/lib/i18n'
+import { useTranslations } from '@/components/LocalizedText'
 
 export default function Contact() {
   const { t } = useTranslations()
@@ -22,8 +22,8 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log('Form submitted:', formData)
     // Handle form submission here
+    alert(t('contact.form.success'))
   }
 
   return (
@@ -48,7 +48,7 @@ export default function Contact() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Info */}
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-8">Informations de contact</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-8">{t('contact.info.title')}</h2>
               
               <div className="space-y-6">
                 <div className="flex items-start">
@@ -61,7 +61,7 @@ export default function Contact() {
                   </div>
                   <div className="ml-4">
                     <h3 className="text-lg font-medium text-gray-900">Email</h3>
-                    <p className="mt-1 text-gray-600">contact@webyarden.co.il</p>
+                    <p className="mt-1 text-gray-600">{t('contact.info.email')}</p>
                   </div>
                 </div>
 
@@ -75,7 +75,7 @@ export default function Contact() {
                   </div>
                   <div className="ml-4">
                     <h3 className="text-lg font-medium text-gray-900">Téléphone</h3>
-                    <p className="mt-1 text-gray-600">+972 12 345 6789</p>
+                    <p className="mt-1 text-gray-600">{t('contact.info.phone')}</p>
                   </div>
                 </div>
 
@@ -90,7 +90,7 @@ export default function Contact() {
                   </div>
                   <div className="ml-4">
                     <h3 className="text-lg font-medium text-gray-900">Localisation</h3>
-                    <p className="mt-1 text-gray-600">Tel Aviv, Israël</p>
+                    <p className="mt-1 text-gray-600">{t('contact.info.address')}</p>
                   </div>
                 </div>
 
@@ -104,7 +104,7 @@ export default function Contact() {
                   </div>
                   <div className="ml-4">
                     <h3 className="text-lg font-medium text-gray-900">Horaires</h3>
-                    <p className="mt-1 text-gray-600">Dimanche - Jeudi : 9h - 18h</p>
+                    <p className="mt-1 text-gray-600">{t('contact.info.hours')}</p>
                   </div>
                 </div>
               </div>
@@ -130,13 +130,13 @@ export default function Contact() {
 
             {/* Contact Form */}
             <div className="bg-white rounded-lg shadow-lg p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-8">Envoyez-nous un message</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-8">{t('contact.form.title')}</h2>
               
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                   <div>
                     <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
-                      Prénom
+                      {t('contact.form.name')}
                     </label>
                     <input
                       type="text"
@@ -149,7 +149,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
-                      Nom
+                      {t('contact.form.name')}
                     </label>
                     <input
                       type="text"
@@ -164,7 +164,7 @@ export default function Contact() {
 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                    Email
+                    {t('contact.form.email')}
                   </label>
                   <input
                     type="email"
@@ -178,7 +178,7 @@ export default function Contact() {
 
                 <div>
                   <label htmlFor="subject" className="block text-sm font-medium text-gray-700">
-                    Sujet
+                    {t('contact.form.subject')}
                   </label>
                   <input
                     type="text"
@@ -192,7 +192,7 @@ export default function Contact() {
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700">
-                    Message
+                    {t('contact.form.message')}
                   </label>
                   <textarea
                     name="message"
@@ -209,7 +209,7 @@ export default function Contact() {
                     type="submit"
                     className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >
-                    Envoyer le message
+                    {t('contact.form.send')}
                   </button>
                 </div>
               </form>

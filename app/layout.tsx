@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import Layout from '@/components/Layout'
+import Layout from '@/components/layout/Layout'
 import ChatWidget from '@/components/ChatWidget'
+import StickySimulator from '@/components/StickySimulator'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -46,8 +47,11 @@ export default function RootLayout({
   return (
     <html lang="fr" className="antialiased">
       <body className={inter.className}>
-        <Layout>{children}</Layout>
+        <Layout>
+          {children}
+        </Layout>
         <ChatWidget />
+        <StickySimulator />
       </body>
     </html>
   )

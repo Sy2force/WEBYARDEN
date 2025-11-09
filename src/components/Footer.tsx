@@ -2,7 +2,7 @@
 
 import React from 'react'
 import Link from 'next/link'
-import { useTranslations } from '@/lib/i18n'
+import { useTranslations } from '@/components/LocalizedText'
 
 export default function Footer() {
   const { t } = useTranslations()
