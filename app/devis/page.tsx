@@ -1,299 +1,239 @@
-'use client';
+import React from 'react'
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-// import { useQuoteStore } from '@/store/quoteStore';
-// import Layout from '@/components/layout/Layout';
-// import PDFGenerator from '@/components/quote/PDFGenerator';
-import { TrashIcon, XMarkIcon } from '@heroicons/react/24/outline';
-import { useForm } from 'react-hook-form';
-import Link from 'next/link';
-
-interface FormData {
-  name: string;
-  email: string;
-  phone: string;
-  company?: string;
-  message?: string;
-}
-
-export default function DevisPage() {
-  // Mock quote store functionality
-  const [items, setItems] = useState<any[]>([]);
-  const removeItem = (id: string) => setItems(items.filter(item => item.id !== id));
-  const clearItems = () => setItems([]);
-  const getTotal = () => items.reduce((sum, item) => sum + (item.totalPrice || 0), 0);
-  const [showPDFForm, setShowPDFForm] = useState(false);
-  
-  const { register, handleSubmit, formState: { errors }, watch } = useForm<FormData>();
-  const formData = watch();
-
-  const totalPrice = getTotal();
-  const totalItems = items.length;
-  const tva = Math.round(totalPrice * 0.17);
-  const totalTTC = totalPrice + tva;
-
-  const onSubmit = (data: FormData) => {
-    setShowPDFForm(true);
-  };
+export default function Devis() {
+  const services = [
+    { id: 'website', name: 'Site vitrine', price: 1500 },
+    { id: 'ecommerce', name: 'Site e-commerce', price: 3000 },
+    { id: 'seo', name: 'Référencement SEO', price: 800 },
+    { id: 'ads', name: 'Publicité Google Ads', price: 1200 },
+    { id: 'social', name: 'Gestion réseaux sociaux', price: 600 },
+    { id: 'maintenance', name: 'Maintenance mensuelle', price: 200 }
+  ]
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="min-h-screen bg-gray-50 py-8">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-8"
-          >
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              Mon <span className="text-gradient">Devis</span>
+      {/* Hero Section */}
+      <section className="bg-white">
+        <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h1 className="text-4xl font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+              Demande de <span className="text-indigo-600">Devis</span>
             </h1>
-            <p className="text-xl text-gray-600">
-              Finalisez votre devis et téléchargez votre PDF personnalisé
+            <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+              Obtenez un devis personnalisé pour votre projet digital en Israël.
             </p>
-          </motion.div>
+          </div>
+        </div>
+      </section>
 
-          {items.length === 0 ? (
-            /* Empty State */
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              className="text-center py-16 bg-white rounded-2xl shadow-lg"
-            >
-              <div className="text-6xl mb-6">📄</div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                Votre devis est vide
-              </h2>
-              <p className="text-gray-600 mb-8 max-w-md mx-auto">
-                Ajoutez des services à votre devis pour commencer à créer votre solution digitale personnalisée
-              </p>
-              <Link href="/services" className="btn-primary">
-                Découvrir nos services
-              </Link>
-            </motion.div>
-          ) : (
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {/* Quote Items */}
-              <div className="lg:col-span-2">
-                <motion.div
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.2, duration: 0.6 }}
-                  className="bg-white rounded-2xl shadow-lg p-6"
-                >
-                  <div className="flex items-center justify-between mb-6">
-                    <h2 className="text-xl font-bold text-gray-900">
-                      Services sélectionnés ({totalItems})
-                    </h2>
-                    <Link
-                      href="/services"
-                      className="text-primary-500 hover:text-primary-600 text-sm font-medium"
-                    >
-                      + Ajouter des services
-                    </Link>
+      {/* Quote Form */}
+      <section className="py-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-lg shadow-lg p-8">
+            <form className="space-y-8">
+              {/* Personal Info */}
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">Informations personnelles</h2>
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                  <div>
+                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
+                      Prénom *
+                    </label>
+                    <input
+                      type="text"
+                      name="firstName"
+                      id="firstName"
+                      required
+                      className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    />
                   </div>
-
-                  <div className="space-y-4">
-                    {items.map((item) => (
-                      <div key={item.service.id} className="border border-gray-200 rounded-xl p-4">
-                        <div className="flex items-start justify-between mb-3">
-                          <div className="flex-1">
-                            <h3 className="font-semibold text-gray-900 mb-1">
-                              {item.service.name}
-                            </h3>
-                            <p className="text-sm text-gray-600 mb-2">
-                              {item.service.description}
-                            </p>
-                            <div className="flex flex-wrap gap-2">
-                              {item.complexity && (
-                                <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">
-                                  {item.complexity}
-                                </span>
-                              )}
-                              {item.delivery && (
-                                <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">
-                                  {item.delivery}
-                                </span>
-                              )}
-                            </div>
-                          </div>
-                          <button
-                            onClick={() => removeItem(item.serviceId || item.service.id)}
-                            className="text-red-500 hover:text-red-700"
-                            aria-label="Supprimer cet élément"
-                          >
-                            <TrashIcon className="w-4 h-4" />
-                          </button>
-                        </div>
-                        
-                        <div className="flex items-center justify-between text-sm">
-                          <span className="text-gray-600">
-                            Quantité: {item.quantity} • Délai: {item.service.duration}
-                          </span>
-                          <span className="font-bold text-primary-500 text-lg">
-                            {item.totalPrice}₪
-                          </span>
-                        </div>
-                      </div>
-                    ))}
+                  <div>
+                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
+                      Nom *
+                    </label>
+                    <input
+                      type="text"
+                      name="lastName"
+                      id="lastName"
+                      required
+                      className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    />
                   </div>
-                </motion.div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                      Email *
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      id="email"
+                      required
+                      className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+                      Téléphone
+                    </label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      id="phone"
+                      className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    />
+                  </div>
+                  <div className="sm:col-span-2">
+                    <label htmlFor="company" className="block text-sm font-medium text-gray-700">
+                      Entreprise
+                    </label>
+                    <input
+                      type="text"
+                      name="company"
+                      id="company"
+                      className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    />
+                  </div>
+                </div>
               </div>
 
-              {/* Summary & Form */}
-              <div className="lg:col-span-1">
-                <motion.div
-                  initial={{ opacity: 0, x: 30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.4, duration: 0.6 }}
-                  className="bg-white rounded-2xl shadow-lg p-6 sticky top-24"
-                >
-                  {/* Price Summary */}
-                  <div className="mb-6">
-                    <h3 className="text-lg font-bold text-gray-900 mb-4">Récapitulatif</h3>
-                    <div className="space-y-2 text-sm">
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">Sous-total HT:</span>
-                        <span className="font-medium">{totalPrice}₪</span>
+              {/* Services Selection */}
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">Services souhaités</h2>
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  {services.map((service) => (
+                    <div key={service.id} className="relative flex items-start">
+                      <div className="flex items-center h-5">
+                        <input
+                          id={service.id}
+                          name="services"
+                          type="checkbox"
+                          className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                        />
                       </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">TVA (17%):</span>
-                        <span className="font-medium">{tva}₪</span>
-                      </div>
-                      <div className="border-t pt-2 flex justify-between text-lg font-bold text-primary-500">
-                        <span>Total TTC:</span>
-                        <span>{totalTTC}₪</span>
+                      <div className="ml-3 text-sm">
+                        <label htmlFor={service.id} className="font-medium text-gray-700">
+                          {service.name}
+                        </label>
+                        <p className="text-gray-500">À partir de {service.price}€</p>
                       </div>
                     </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Project Details */}
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">Détails du projet</h2>
+                <div className="space-y-6">
+                  <div>
+                    <label htmlFor="budget" className="block text-sm font-medium text-gray-700">
+                      Budget estimé
+                    </label>
+                    <select
+                      id="budget"
+                      name="budget"
+                      className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    >
+                      <option value="">Sélectionnez votre budget</option>
+                      <option value="1000-3000">1 000€ - 3 000€</option>
+                      <option value="3000-5000">3 000€ - 5 000€</option>
+                      <option value="5000-10000">5 000€ - 10 000€</option>
+                      <option value="10000+">Plus de 10 000€</option>
+                    </select>
                   </div>
 
-                  {/* Client Form */}
-                  {!showPDFForm ? (
-                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                      <h4 className="font-semibold text-gray-900 mb-3">Vos informations</h4>
-                      
-                      <div>
-                        <input
-                          {...register('name', { required: 'Le nom est requis' })}
-                          type="text"
-                          placeholder="Nom complet *"
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                        />
-                        {errors.name && (
-                          <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>
-                        )}
-                      </div>
+                  <div>
+                    <label htmlFor="timeline" className="block text-sm font-medium text-gray-700">
+                      Délai souhaité
+                    </label>
+                    <select
+                      id="timeline"
+                      name="timeline"
+                      className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    >
+                      <option value="">Sélectionnez un délai</option>
+                      <option value="urgent">Urgent (moins d'1 mois)</option>
+                      <option value="1-2months">1-2 mois</option>
+                      <option value="2-3months">2-3 mois</option>
+                      <option value="3months+">Plus de 3 mois</option>
+                    </select>
+                  </div>
 
-                      <div>
-                        <input
-                          {...register('email', { 
-                            required: 'L\'email est requis',
-                            pattern: {
-                              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                              message: 'Email invalide'
-                            }
-                          })}
-                          type="email"
-                          placeholder="Email *"
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                        />
-                        {errors.email && (
-                          <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>
-                        )}
-                      </div>
+                  <div>
+                    <label htmlFor="description" className="block text-sm font-medium text-gray-700">
+                      Description du projet *
+                    </label>
+                    <textarea
+                      name="description"
+                      id="description"
+                      rows={4}
+                      required
+                      placeholder="Décrivez votre projet, vos objectifs, votre cible"
+                      className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    />
+                  </div>
+                </div>
+              </div>
 
-                      <div>
-                        <input
-                          {...register('phone', { required: 'Le téléphone est requis' })}
-                          type="tel"
-                          placeholder="Téléphone *"
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                        />
-                        {errors.phone && (
-                          <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>
-                        )}
-                      </div>
+              {/* Submit */}
+              <div className="flex justify-end">
+                <button
+                  type="submit"
+                  className="inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  Envoyer la demande de devis
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
 
-                      <div>
-                        <input
-                          {...register('company')}
-                          type="text"
-                          placeholder="Entreprise (optionnel)"
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                        />
-                      </div>
-
-                      <div>
-                        <textarea
-                          {...register('message')}
-                          rows={3}
-                          placeholder="Message ou demandes spéciales..."
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                        />
-                      </div>
-
-                      <button type="submit" className="btn-primary w-full">
-                        Générer mon devis PDF
-                      </button>
-                    </form>
-                  ) : (
-                    /* PDF Generation */
-                    <div className="space-y-4">
-                      <div className="text-center">
-                        <div className="text-4xl mb-2">✅</div>
-                        <h4 className="font-semibold text-gray-900 mb-2">
-                          Informations validées
-                        </h4>
-                        <p className="text-sm text-gray-600 mb-4">
-                          Votre devis PDF est prêt à être téléchargé
-                        </p>
-                      </div>
-
-                      <div className="text-center p-8 bg-white rounded-lg shadow-lg">
-                      <h3 className="text-xl font-bold text-gray-900 mb-4">Génération PDF</h3>
-                      <p className="text-gray-600 mb-4">
-                        Fonctionnalité de génération PDF en cours de développement
-                      </p>
-                      <button 
-                        onClick={() => setShowPDFForm(false)}
-                        className="bg-primary-600 text-white px-6 py-2 rounded-lg hover:bg-primary-700 transition-colors"
-                      >
-                        Retour
-                      </button>
-                    </div>
-
-                      <div className="text-center pt-4 border-t">
-                        <p className="text-sm text-gray-600 mb-3">
-                          Ou contactez-nous directement
-                        </p>
-                        <a
-                          href={`https://wa.me/972501234567?text=Bonjour, je souhaite valider mon devis de ${totalTTC}₪ pour ${totalItems} service(s). Mon nom: ${formData.name}`}
-                          className="btn-secondary w-full text-center"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          💬 WhatsApp
-                        </a>
-                      </div>
-
-                      <button
-                        onClick={() => setShowPDFForm(false)}
-                        className="text-primary-500 hover:text-primary-600 text-sm w-full text-center"
-                      >
-                        ← Modifier mes informations
-                      </button>
-                    </div>
-                  )}
-                </motion.div>
+      {/* Why Choose Us */}
+      <section className="bg-indigo-700 py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
+              Pourquoi choisir Web Yarden ?
+            </h2>
+            <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="text-center">
+                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-white text-indigo-600 mx-auto">
+                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <h3 className="mt-4 text-lg font-medium text-white">Rapidité</h3>
+                <p className="mt-2 text-base text-indigo-200">
+                  Réponse sous 24h et livraison dans les délais convenus.
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-white text-indigo-600 mx-auto">
+                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h3 className="mt-4 text-lg font-medium text-white">Qualité</h3>
+                <p className="mt-2 text-base text-indigo-200">
+                  Solutions sur mesure et code de haute qualité.
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-white text-indigo-600 mx-auto">
+                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 2.25a9.75 9.75 0 109.75 9.75A9.75 9.75 0 0012 2.25z" />
+                  </svg>
+                </div>
+                <h3 className="mt-4 text-lg font-medium text-white">Support</h3>
+                <p className="mt-2 text-base text-indigo-200">
+                  Accompagnement personnalisé et support technique.
+                </p>
               </div>
             </div>
-          )}
+          </div>
         </div>
-      </div>
+      </section>
     </div>
-  );
+  )
 }

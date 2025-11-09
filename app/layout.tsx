@@ -1,40 +1,18 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import Layout from '@/components/Layout'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Web Yarden - Agence Digitale Israël | Marketing Digital, Visibilité, Réseaux',
-  description: 'Web Yarden vous aide à booster votre présence numérique en Israël : explorez nos services, composez votre devis personnalisé et propulsez votre visibilité.',
-  keywords: 'agence digitale israël, marketing digital tel aviv, création site web israël, réseaux sociaux, SEO, publicité facebook instagram',
-  authors: [{ name: 'Web Yarden' }],
-  creator: 'Web Yarden',
-  publisher: 'Web Yarden',
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  metadataBase: new URL('https://webyarden.co.il'),
-  icons: {
-    icon: [
-      { url: '/favicon.ico' },
-      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' }
-    ],
-    apple: [
-      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }
-    ],
-    other: []
-  },
-  alternates: {
-    canonical: '/',
-  },
+  title: 'Web Yarden - Agence Digitale Israël',
+  description: 'Votre partenaire digital en Israël pour booster votre présence en ligne et développer votre business.',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://webyarden.co.il'),
   openGraph: {
-    title: 'Web Yarden - Agence Digitale #1 en Israël',
-    description: 'Accélérez votre visibilité en Israël avec nos solutions digitales créatives et performantes.',
-    url: 'https://webyarden.co.il',
+    title: 'Web Yarden - Agence Digitale Israël',
+    description: 'Votre partenaire digital en Israël pour booster votre présence en ligne et développer votre business.',
+    url: '/',
     siteName: 'Web Yarden',
     images: [
       {
@@ -50,22 +28,12 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Web Yarden - Agence Digitale Israël',
-    description: 'Accélérez votre visibilité en Israël avec nos solutions digitales créatives et performantes.',
+    description: 'Votre partenaire digital en Israël pour booster votre présence en ligne et développer votre business.',
     images: ['/og-image.jpg'],
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
   },
 }
 
@@ -75,14 +43,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr" className="scroll-smooth">
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-        <link rel="manifest" href="/site.webmanifest" />
-        <meta name="msapplication-TileColor" content="#3A86FF" />
-      </head>
+    <html lang="fr" className="antialiased">
       <body className={inter.className}>
-        {children}
+        <Layout>{children}</Layout>
       </body>
     </html>
   )
