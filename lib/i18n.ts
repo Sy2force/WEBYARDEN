@@ -13,6 +13,9 @@ const translations: Record<string, Translations> = {
       about: 'À propos',
       language: 'Langue',
       packs: 'Packs',
+      description: 'Description',
+      progress: 'Progression',
+      close: 'Fermer'
     },
     header: {
       title: 'Web Yarden',
@@ -50,10 +53,30 @@ const translations: Record<string, Translations> = {
     },
     services: {
       title: 'Nos Services',
-      subtitle: 'Solutions digitales complètes pour votre entreprise en Israël',
+      subtitle: 'Des solutions digitales sur mesure pour votre réussite',
+      viewAll: 'Voir tous les services',
+      requestQuote: 'Demander un devis',
+      moreInfo: 'Plus d\'infos',
+      features: 'Fonctionnalités incluses',
+      delivery: 'Livraison',
+      price: 'Prix',
+      popular: 'Populaire',
+      getStarted: 'Commencer',
+      categories: {
+        webDevelopment: 'Développement Web',
+        design: 'Design & UX',
+        marketing: 'Marketing Digital',
+        ecommerce: 'E-commerce',
+        mobile: 'Applications Mobile',
+        consulting: 'Conseil & Stratégie',
+        maintenance: 'Maintenance & Support',
+        seo: 'SEO & Référencement'
+      },
       search: 'Rechercher un service...',
       all: 'Tous',
       noResults: 'Aucun service trouvé pour cette recherche.',
+      startingFrom: 'À partir de',
+      deliveryTime: 'Délai de livraison',
       stats: {
         title: 'Web Yarden en chiffres',
         subtitle: 'Notre expertise au service de votre succès',
@@ -87,69 +110,123 @@ const translations: Record<string, Translations> = {
         address: 'Tel Aviv, Israël',
         phone: '+972 12 345 6789',
         email: 'contact@webyarden.co.il',
-        hours: 'Lun-Ven: 9h-18h'
+        hours: 'Lun-Ven: 9h-18h',
+        phoneLabel: 'Téléphone',
+        locationLabel: 'Localisation',
+        hoursLabel: 'Horaires'
+      },
+      social: {
+        title: 'Suivez-nous'
       }
     },
     about: {
-      title: 'À Propos de Web Yarden',
-      subtitle: 'Votre partenaire digital de confiance en Israël',
+      hero: {
+        title: 'À Propos de Web Yarden',
+        description: 'Votre partenaire digital de confiance en Israël'
+      },
       story: {
         title: 'Notre Histoire',
-        content: 'Web Yarden est née de la passion pour l\'innovation digitale et de la volonté d\'accompagner les entreprises dans leur transformation numérique en Israël.'
+        content: 'Fondée avec la vision de démocratiser l\'accès aux technologies digitales en Israël, Web Yarden s\'est imposée comme un acteur incontournable du développement web et mobile.',
+        expertise: 'Expertise technique approfondie',
+        market: 'Compréhension du marché israélien',
+        solutions: 'Solutions sur mesure',
+        imageAlt: 'Notre équipe au travail'
       },
       mission: {
         title: 'Notre Mission',
-        content: 'Nous aidons les entreprises à développer leur présence en ligne avec des solutions digitales sur mesure, adaptées au marché israélien.'
+        content: 'Accompagner les entreprises israéliennes dans leur transformation digitale en proposant des solutions innovantes, performantes et adaptées aux spécificités du marché local.'
       },
       values: {
         title: 'Nos Valeurs',
-        innovation: 'Innovation',
-        quality: 'Qualité',
-        partnership: 'Partenariat'
+        innovation: {
+          title: 'Innovation',
+          description: 'Nous restons à la pointe des dernières technologies pour offrir des solutions modernes et efficaces.'
+        },
+        quality: {
+          title: 'Qualité',
+          description: 'Chaque projet est réalisé avec le plus grand soin et selon les meilleurs standards de l\'industrie.'
+        },
+        partnership: {
+          title: 'Partenariat',
+          description: 'Nous travaillons en étroite collaboration avec nos clients pour comprendre et répondre à leurs besoins.'
+        },
+        transparency: {
+          title: 'Transparence',
+          description: 'Communication claire et honnête à chaque étape du projet pour une confiance mutuelle.'
+        }
+      },
+      stats: {
+        projects: 'Projets Réalisés',
+        clients: 'Clients Satisfaits',
+        experience: 'Années d\'Expérience',
+        satisfaction: 'Taux de Satisfaction'
+      },
+      cta: {
+        title: 'Prêt à Démarrer Votre Projet ?',
+        subtitle: 'Contactez-nous dès aujourd\'hui pour discuter de vos besoins et découvrir comment nous pouvons vous aider.',
+        button: 'Contactez-nous'
       }
     },
     packs: {
       title: 'Nos Packs',
-      subtitle: 'Choisissez la solution parfaite pour votre entreprise',
-      categories: {
-        all: 'Tous les packs',
-        startup: 'Startup',
-        business: 'Business',
-        enterprise: 'Enterprise'
+      subtitle: 'Des solutions complètes pour tous vos besoins digitaux',
+      popular: 'POPULAIRE',
+      mostPopular: 'Le plus populaire',
+      getStarted: 'Commencer',
+      contactUs: 'Nous contacter',
+      features: 'Fonctionnalités incluses',
+      whatYouGet: 'Ce que vous obtenez',
+      perfect: 'Parfait pour',
+      startingAt: 'À partir de',
+      onQuote: 'Sur devis',
+      otherServices: 'autres services',
+      added: 'Ajouté',
+      choose: 'Choisir',
+      addedToCart: 'Ajouté au panier',
+      choosePack: 'Choisir ce pack',
+      save: 'ÉCONOMISEZ',
+      servicesIncluded: 'Services inclus',
+      consultation: 'Consultation gratuite',
+      delivery: 'Livraison rapide',
+      guarantee: 'Garantie satisfait',
+      pricing: {
+        oneTime: 'Paiement unique'
       },
-      starter: {
-        name: 'Pack Starter',
-        slogan: 'Parfait pour débuter',
-        price: '2,990',
-        currency: '₪',
-        features: ['Site web responsive', 'SEO de base', 'Support 3 mois']
-      },
-      pro: {
-        name: 'Pack Pro',
-        slogan: 'Pour les entreprises en croissance',
-        price: '5,990',
-        currency: '₪',
-        features: ['Site web avancé', 'SEO optimisé', 'E-commerce', 'Support 6 mois']
-      },
-      premium: {
-        name: 'Pack Premium',
-        slogan: 'Solution complète',
-        price: '9,990',
-        currency: '₪',
-        features: ['Site web premium', 'SEO avancé', 'E-commerce pro', 'App mobile', 'Support 12 mois']
-      },
-      ultimate: {
-        name: 'Pack Ultimate',
-        slogan: 'Excellence absolue',
-        price: '19,990',
-        currency: '₪',
-        features: ['Solution sur mesure', 'SEO expert', 'E-commerce enterprise', 'App mobile native', 'Support illimité']
-      },
-      cta: 'Essayer ce pack',
-      added: '✓ Ajouté !',
       comparison: {
         title: 'Comparaison détaillée des packs',
-        button: 'Comparer les packs'
+        button: 'Comparer les packs',
+        features: {
+          title: 'Fonctionnalités',
+          logo: 'Logo professionnel',
+          responsive: 'Site web responsive',
+          seo: 'SEO optimisation',
+          social: 'Réseaux sociaux',
+          ecommerce: 'E-commerce',
+          mobile: 'App mobile',
+          support: 'Support technique',
+          training: 'Formation incluse'
+        }
+      },
+      whyChoose: {
+        title: 'Pourquoi choisir Web Yarden ?',
+        delivery: {
+          title: 'Livraison Express',
+          description: 'Démarrage sous 48h, livraison en 2-4 semaines maximum'
+        },
+        expertise: {
+          title: 'Expertise Locale',
+          description: 'Spécialistes du marché israélien et de la culture locale'
+        },
+        guarantee: {
+          title: 'Garantie Résultats',
+          description: 'Satisfaction garantie ou remboursement intégral'
+        }
+      },
+      cta: {
+        title: 'Pas sûr de votre choix ?',
+        description: 'Discutons de vos besoins pour trouver la solution parfaite',
+        consultation: 'Consultation gratuite',
+        chat: 'Chat en direct'
       }
     },
     dashboard: {
@@ -163,6 +240,88 @@ const translations: Record<string, Translations> = {
       recentProjects: 'Projets Récents',
       notifications: 'Notifications',
       cart: 'Panier Actuel'
+    },
+    simulator: {
+      title: 'Simulateur Express',
+      tooltip: 'Simulateur de devis',
+      openLabel: 'Ouvrir le simulateur de devis',
+      closeLabel: 'Fermer le simulateur',
+      service: 'Service souhaité',
+      selectService: 'Sélectionnez un service',
+      budget: 'Budget estimé',
+      timeline: 'Délai souhaité',
+      urgent: 'Urgent (1-2 semaines)',
+      normal: 'Normal (3-4 semaines)',
+      flexible: 'Flexible (5+ semaines)',
+      estimate: 'Estimation',
+      addToCart: 'Ajouter au panier',
+      successMessage: 'Service ajouté au panier avec succès!'
+    },
+    cart: {
+      title: 'Panier',
+      empty: 'Votre panier est vide',
+      total: 'Total',
+      close: 'Fermer le panier',
+      discoverServices: 'Découvrir nos services',
+      decreaseQuantity: 'Diminuer la quantité',
+      increaseQuantity: 'Augmenter la quantité',
+      removeItem: 'Supprimer cet article',
+      checkout: 'Finaliser le devis',
+      continue: 'Continuer les achats',
+      summary: 'Panier',
+      item: 'article',
+      items: 'articles'
+    },
+    testimonials: {
+      title: 'Ce que disent nos clients',
+      subtitle: 'Plus de 150 entreprises nous font confiance en Israël',
+      trustedBy: 'Ils nous font confiance',
+      goTo: 'Aller au témoignage'
+    },
+    stats: {
+      title: 'Nos Résultats Parlent d\'Eux-Mêmes',
+      subtitle: 'Des chiffres qui témoignent de notre expertise et de notre engagement envers nos clients',
+      goal: 'Objectif : Votre succès digital',
+      projects: 'Projets réalisés',
+      clients: 'Clients satisfaits',
+      experience: 'Années d\'expérience',
+      support: 'Support 24/7'
+    },
+    buttons: {
+      learnMore: 'En savoir plus',
+      getStarted: 'Commencer',
+      viewAll: 'Voir tout',
+      readMore: 'Lire la suite',
+      previous: 'Précédent',
+      next: 'Suivant',
+      cancel: 'Annuler',
+      confirm: 'Confirmer',
+      save: 'Enregistrer',
+      edit: 'Modifier',
+      delete: 'Supprimer',
+      close: 'Fermer',
+      requestQuote: 'Demander un devis',
+      moreInfo: 'Plus d\'informations'
+    },
+    forms: {
+      required: 'Ce champ est obligatoire',
+      invalidEmail: 'Adresse email invalide',
+      invalidPhone: 'Numéro de téléphone invalide',
+      minLength: 'Minimum {count} caractères',
+      maxLength: 'Maximum {count} caractères'
+    },
+    chat: {
+      title: 'Chat Support',
+      welcome: 'Bonjour ! Comment puis-je vous aider ?',
+      placeholder: 'Tapez votre message...',
+      autoResponse: 'Merci pour votre message ! Un conseiller vous répondra bientôt.'
+    },
+    errors: {
+      generic: 'Une erreur est survenue',
+      network: 'Erreur de connexion',
+      notFound: 'Page non trouvée',
+      unauthorized: 'Accès non autorisé',
+      serverError: 'Erreur serveur'
     }
   },
   en: {
@@ -175,6 +334,9 @@ const translations: Record<string, Translations> = {
       about: 'About',
       language: 'Language',
       packs: 'Packs',
+      description: 'Description',
+      progress: 'Progress',
+      close: 'Close'
     },
     header: {
       title: 'Web Yarden',
@@ -212,10 +374,30 @@ const translations: Record<string, Translations> = {
     },
     services: {
       title: 'Our Services',
-      subtitle: 'Complete digital solutions for your business in Israel',
+      subtitle: 'Tailored digital solutions for your success',
+      viewAll: 'View all services',
+      requestQuote: 'Request quote',
+      moreInfo: 'More info',
+      features: 'Features included',
+      delivery: 'Delivery',
+      price: 'Price',
+      popular: 'Popular',
+      getStarted: 'Get started',
+      categories: {
+        webDevelopment: 'Web Development',
+        design: 'Design & UX',
+        marketing: 'Digital Marketing',
+        ecommerce: 'E-commerce',
+        mobile: 'Mobile Applications',
+        consulting: 'Consulting & Strategy',
+        maintenance: 'Maintenance & Support',
+        seo: 'SEO & Referencing'
+      },
       search: 'Search for a service...',
       all: 'All',
       noResults: 'No service found for this search.',
+      startingFrom: 'Starting from',
+      deliveryTime: 'Delivery time',
       stats: {
         title: 'Web Yarden in numbers',
         subtitle: 'Our expertise at your service',
@@ -249,69 +431,110 @@ const translations: Record<string, Translations> = {
         address: 'Tel Aviv, Israel',
         phone: '+972 12 345 6789',
         email: 'contact@webyarden.co.il',
-        hours: 'Mon-Fri: 9am-6pm'
+        hours: 'Mon-Fri: 9am-6pm',
+        phoneLabel: 'Phone',
+        locationLabel: 'Location',
+        hoursLabel: 'Hours'
+      },
+      social: {
+        title: 'Follow us'
       }
     },
     about: {
-      title: 'About Web Yarden',
-      subtitle: 'Your trusted digital partner in Israel',
+      hero: {
+        title: 'About Web Yarden',
+        description: 'Your trusted digital partner in Israel'
+      },
       story: {
         title: 'Our Story',
-        content: 'Web Yarden was born from a passion for digital innovation and the desire to support companies in their digital transformation in Israel.'
+        content: 'Founded with the vision of democratizing access to digital technologies in Israel, Web Yarden has established itself as a key player in web and mobile development.',
+        expertise: 'Deep technical expertise',
+        market: 'Understanding of the Israeli market',
+        solutions: 'Tailor-made solutions',
+        imageAlt: 'Our team at work'
       },
       mission: {
         title: 'Our Mission',
-        content: 'We help businesses develop their online presence with tailor-made digital solutions, adapted to the Israeli market.'
+        content: 'To support Israeli companies in their digital transformation by offering innovative, high-performance solutions adapted to the specificities of the local market.'
       },
       values: {
         title: 'Our Values',
-        innovation: 'Innovation',
-        quality: 'Quality',
-        partnership: 'Partnership'
+        innovation: {
+          title: 'Innovation',
+          description: 'We stay at the forefront of the latest technologies to offer modern and efficient solutions.'
+        },
+        quality: {
+          title: 'Quality',
+          description: 'Every project is carried out with the utmost care and according to the best industry standards.'
+        },
+        partnership: {
+          title: 'Partnership',
+          description: 'We work closely with our clients to understand and meet their needs.'
+        },
+        transparency: {
+          title: 'Transparency',
+          description: 'Clear and honest communication at every stage of the project for mutual trust.'
+        }
+      },
+      stats: {
+        projects: 'Projects Completed',
+        clients: 'Satisfied Clients',
+        experience: 'Years of Experience',
+        satisfaction: 'Satisfaction Rate'
+      },
+      cta: {
+        title: 'Ready to Start Your Project?',
+        subtitle: 'Contact us today to discuss your needs and discover how we can help you.',
+        button: 'Contact Us'
       }
     },
     packs: {
       title: 'Our Packs',
-      subtitle: 'Choose the perfect solution for your business',
-      categories: {
-        all: 'All packs',
-        startup: 'Startup',
-        business: 'Business',
-        enterprise: 'Enterprise'
-      },
-      starter: {
-        name: 'Starter Pack',
-        slogan: 'Perfect to get started',
-        price: '2,990',
-        currency: '₪',
-        features: ['Responsive website', 'Basic SEO', '3 months support']
-      },
-      pro: {
-        name: 'Pro Pack',
-        slogan: 'For growing businesses',
-        price: '5,990',
-        currency: '₪',
-        features: ['Advanced website', 'Optimized SEO', 'E-commerce', '6 months support']
-      },
-      premium: {
-        name: 'Premium Pack',
-        slogan: 'Complete solution',
-        price: '9,990',
-        currency: '₪',
-        features: ['Premium website', 'Advanced SEO', 'Pro e-commerce', 'Mobile app', '12 months support']
-      },
-      ultimate: {
-        name: 'Ultimate Pack',
-        slogan: 'Absolute excellence',
-        price: '19,990',
-        currency: '₪',
-        features: ['Custom solution', 'Expert SEO', 'Enterprise e-commerce', 'Native mobile app', 'Unlimited support']
-      },
-      cta: 'Try this pack',
+      subtitle: 'Complete solutions for all your digital needs',
+      popular: 'Most Popular',
       added: '✓ Added!',
+      consultation: 'Free consultation',
+      delivery: 'Delivery 2-4 weeks',
+      guarantee: 'Satisfaction guarantee',
+      servicesIncluded: 'Services included',
+      pricing: {
+        oneTime: 'One-time payment'
+      },
       comparison: {
-        title: 'Detailed pack comparison',
-        button: 'Compare packs'
+        title: 'Pack Comparison',
+        button: 'Compare packs',
+        features: {
+          title: 'Features',
+          logo: 'Professional Logo',
+          responsive: 'Responsive Website',
+          seo: 'SEO Optimization',
+          social: 'Social Media',
+          ecommerce: 'E-commerce',
+          mobile: 'Mobile App',
+          support: 'Technical Support',
+          training: 'Training Included'
+        }
+      },
+      whyChoose: {
+        title: 'Why Choose Web Yarden?',
+        delivery: {
+          title: 'Express Delivery',
+          description: 'Start within 48h, delivery in 2-4 weeks maximum'
+        },
+        expertise: {
+          title: 'Local Expertise',
+          description: 'Specialists in Israeli market and local culture'
+        },
+        guarantee: {
+          title: 'Results Guarantee',
+          description: 'Satisfaction guaranteed or full refund'
+        }
+      },
+      cta: {
+        title: 'Not sure about your choice?',
+        description: 'Let\'s discuss your needs to find the perfect solution',
+        consultation: 'Free Consultation',
+        chat: 'Live Chat'
       }
     },
     dashboard: {
@@ -325,6 +548,88 @@ const translations: Record<string, Translations> = {
       recentProjects: 'Recent Projects',
       notifications: 'Notifications',
       cart: 'Current Cart'
+    },
+    simulator: {
+      title: 'Express Simulator',
+      tooltip: 'Quote simulator',
+      openLabel: 'Open quote simulator',
+      closeLabel: 'Close simulator',
+      service: 'Desired service',
+      selectService: 'Select a service',
+      budget: 'Estimated budget',
+      timeline: 'Desired timeline',
+      urgent: 'Urgent (1-2 weeks)',
+      normal: 'Normal (3-4 weeks)',
+      flexible: 'Flexible (5+ weeks)',
+      estimate: 'Estimate',
+      addToCart: 'Add to cart',
+      successMessage: 'Service added to cart successfully!'
+    },
+    cart: {
+      title: 'Cart',
+      empty: 'Your cart is empty',
+      total: 'Total',
+      close: 'Close cart',
+      discoverServices: 'Discover our services',
+      decreaseQuantity: 'Decrease quantity',
+      increaseQuantity: 'Increase quantity',
+      removeItem: 'Remove this item',
+      checkout: 'Checkout',
+      continue: 'Continue shopping',
+      summary: 'Cart',
+      item: 'item',
+      items: 'items'
+    },
+    testimonials: {
+      title: 'What our clients say',
+      subtitle: 'Over 150 companies trust us in Israel',
+      trustedBy: 'They trust us',
+      goTo: 'Go to testimonial'
+    },
+    stats: {
+      title: 'Our Results Speak for Themselves',
+      subtitle: 'Numbers that testify to our expertise and commitment to our clients',
+      goal: 'Goal: Your digital success',
+      projects: 'Completed projects',
+      clients: 'Satisfied clients',
+      experience: 'Years of experience',
+      support: '24/7 Support'
+    },
+    buttons: {
+      learnMore: 'Learn more',
+      getStarted: 'Get started',
+      viewAll: 'View all',
+      readMore: 'Read more',
+      previous: 'Previous',
+      next: 'Next',
+      cancel: 'Cancel',
+      confirm: 'Confirm',
+      save: 'Save',
+      edit: 'Edit',
+      delete: 'Delete',
+      close: 'Close',
+      requestQuote: 'Request quote',
+      moreInfo: 'More information'
+    },
+    forms: {
+      required: 'This field is required',
+      invalidEmail: 'Invalid email address',
+      invalidPhone: 'Invalid phone number',
+      minLength: 'Minimum {count} characters',
+      maxLength: 'Maximum {count} characters'
+    },
+    chat: {
+      title: 'Chat Support',
+      welcome: 'Hello! How can I help you?',
+      placeholder: 'Type your message...',
+      autoResponse: 'Thank you for your message! A consultant will respond soon.'
+    },
+    errors: {
+      generic: 'Something went wrong',
+      network: 'Network error',
+      notFound: 'Page not found',
+      unauthorized: 'Unauthorized access',
+      serverError: 'Server error'
     }
   },
   he: {
@@ -337,6 +642,9 @@ const translations: Record<string, Translations> = {
       about: 'אודות',
       language: 'שפה',
       packs: 'חבילות',
+      description: 'תיאור',
+      progress: 'התקדמות',
+      close: 'סגור'
     },
     header: {
       title: 'ווב יארדן',
@@ -374,10 +682,30 @@ const translations: Record<string, Translations> = {
     },
     services: {
       title: 'השירותים שלנו',
-      subtitle: 'פתרונות דיגיטליים מלאים לעסק שלכם בישראל',
+      subtitle: 'פתרונות דיגיטליים מותאמים להצלחתכם',
+      viewAll: 'צפו בכל השירותים',
+      requestQuote: 'בקשו הצעת מחיר',
+      moreInfo: 'מידע נוסף',
+      features: 'תכונות כלולות',
+      delivery: 'אספקה',
+      price: 'מחיר',
+      popular: 'פופולרי',
+      getStarted: 'התחלו',
+      categories: {
+        webDevelopment: 'פיתוח אתרים',
+        design: 'עיצוב וחווית משתמש',
+        marketing: 'שיווק דיגיטלי',
+        ecommerce: 'מסחר אלקטרוני',
+        mobile: 'אפליקציות ניידות',
+        consulting: 'ייעוץ ואסטרטגיה',
+        maintenance: 'תחזוקה ותמיכה',
+        seo: 'קידום אתרים'
+      },
       search: 'חפש שירות...',
       all: 'הכל',
       noResults: 'לא נמצא שירות עבור החיפוש הזה.',
+      startingFrom: 'החל מ-',
+      deliveryTime: 'זמן אספקה',
       stats: {
         title: 'ווב יארדן במספרים',
         subtitle: 'המומחיות שלנו לשירותכם',
@@ -388,7 +716,7 @@ const translations: Record<string, Translations> = {
       },
       cta: {
         title: 'מוכנים לשנות את הנוכחות הדיגיטלית שלכם?',
-        subtitle: 'צרו קשר היום כדי לדון בפרויקט שלכם ולקבל הצעת מחיר מותאמת אישית בחינם.',
+        subtitle: 'צרו איתנו קשר היום כדי לדון בפרויקט שלכם ולקבל הצעת מחיר מותאמת אישית בחינם.',
         contact: 'צור קשר',
         quote: 'קבל הצעת מחיר'
       }
@@ -411,74 +739,128 @@ const translations: Record<string, Translations> = {
         address: 'תל אביב, ישראל',
         phone: '+972 12 345 6789',
         email: 'contact@webyarden.co.il',
-        hours: 'א׳-ה׳: 9:00-18:00'
+        hours: 'א׳-ה׳: 9:00-18:00',
+        phoneLabel: 'טלפון',
+        locationLabel: 'מיקום',
+        hoursLabel: 'שעות פעילות'
+      },
+      social: {
+        title: 'עקבו אחרינו'
       }
     },
     about: {
-      title: 'אודות ווב יארדן',
-      subtitle: 'השותף הדיגיטלי המהימן שלכם בישראל',
+      hero: {
+        title: 'אודות Web Yarden',
+        description: 'השותף הדיגיטלי המהימן שלכם בישראל'
+      },
       story: {
         title: 'הסיפור שלנו',
-        content: 'ווב יארדן נולדה מתוך תשוקה לחדשנות דיגיטלית והרצון לליווי חברות בטרנספורמציה הדיגיטלית שלהן בישראל.'
+        content: 'נוסדה עם החזון להנגיש את הטכנולוגיות הדיגיטליות בישראל, Web Yarden התבססה כשחקן מרכזי בפיתוח אתרים ואפליקציות.',
+        expertise: 'מומחיות טכנית מעמיקה',
+        market: 'הבנת השוק הישראלי',
+        solutions: 'פתרונות מותאמים אישית',
+        imageAlt: 'הצוות שלנו בעבודה'
       },
       mission: {
         title: 'המשימה שלנו',
-        content: 'אנחנו עוזרים לעסקים לפתח את הנוכחות המקוונת שלהם עם פתרונות דיגיטליים מותאמים אישית, המותאמים לשוק הישראלי.'
+        content: 'ללוות חברות ישראליות בטרנספורמציה הדיגיטלית שלהן על ידי הצעת פתרונות חדשניים, ביצועיים ומותאמים לייחודיות השוק המקומי.'
       },
       values: {
         title: 'הערכים שלנו',
-        innovation: 'חדשנות',
-        quality: 'איכות',
-        partnership: 'שותפות'
+        innovation: {
+          title: 'חדשנות',
+          description: 'אנו נשארים בחזית הטכנולוגיות החדישות ביותר כדי להציע פתרונות מודרניים ויעילים.'
+        },
+        quality: {
+          title: 'איכות',
+          description: 'כל פרויקט מבוצע בקפידה הרבה ביותר ובהתאם לסטנדרטים הטובים ביותר בתעשייה.'
+        },
+        partnership: {
+          title: 'שותפות',
+          description: 'אנו עובדים בשיתוף הדוק עם הלקוחות שלנו כדי להבין ולענות על הצרכים שלהם.'
+        },
+        transparency: {
+          title: 'שקיפות',
+          description: 'תקשורת ברורה וכנה בכל שלב של הפרויקט למען אמון הדדי.'
+        }
+      },
+      stats: {
+        projects: 'פרויקטים שהושלמו',
+        clients: 'לקוחות מרוצים',
+        experience: 'שנות ניסיון',
+        satisfaction: 'שיעור שביעות רצון'
+      },
+      cta: {
+        title: 'מוכנים להתחיל את הפרויקט שלכם?',
+        subtitle: 'צרו איתנו קשר היום כדי לדון בצרכים שלכם ולגלות איך אנחנו יכולים לעזור לכם.',
+        button: 'צור קשר'
       }
     },
     packs: {
       title: 'החבילות שלנו',
-      subtitle: 'בחרו את הפתרון המושלם לעסק שלכם',
-      categories: {
-        all: 'כל החבילות',
-        startup: 'סטארט-אפ',
-        business: 'עסקי',
-        enterprise: 'ארגוני'
+      subtitle: 'פתרונות מלאים לכל הצרכים הדיגיטליים שלכם',
+      popular: 'פופולרי',
+      mostPopular: 'הכי פופולרי',
+      getStarted: 'התחל',
+      contactUs: 'צור קשר',
+      features: 'תכונות כלולות',
+      whatYouGet: 'מה אתם מקבלים',
+      perfect: 'מושלם עבור',
+      startingAt: 'החל מ-',
+      onQuote: 'לפי הצעת מחיר',
+      otherServices: 'שירותים נוספים',
+      added: 'נוסף',
+      choose: 'בחר',
+      addedToCart: 'נוסף לעגלה',
+      choosePack: 'בחר חבילה זו',
+      save: 'חסכו',
+      servicesIncluded: 'שירותים כלולים',
+      consultation: 'ייעוץ חינם',
+      delivery: 'אספקה מהירה',
+      guarantee: 'אחריות שביעות רצון',
+      pricing: {
+        oneTime: 'תשלום חד פעמי'
       },
-      starter: {
-        name: 'חבילת התחלה',
-        slogan: 'מושלם להתחלה',
-        price: '2,990',
-        currency: '₪',
-        features: ['אתר רספונסיבי', 'SEO בסיסי', 'תמיכה 3 חודשים']
-      },
-      pro: {
-        name: 'חבילת פרו',
-        slogan: 'לעסקים בצמיחה',
-        price: '5,990',
-        currency: '₪',
-        features: ['אתר מתקדם', 'SEO מותאם', 'מסחר אלקטרוני', 'תמיכה 6 חודשים']
-      },
-      premium: {
-        name: 'חבילת פרמיום',
-        slogan: 'פתרון מלא',
-        price: '9,990',
-        currency: '₪',
-        features: ['אתר פרמיום', 'SEO מתקדם', 'מסחר אלקטרוני פרו', 'אפליקציה', 'תמיכה 12 חודשים']
-      },
-      ultimate: {
-        name: 'חבילת אולטימט',
-        slogan: 'מצוינות מוחלטת',
-        price: '19,990',
-        currency: '₪',
-        features: ['פתרון מותאם אישית', 'SEO מומחה', 'מסחר אלקטרוני ארגוני', 'אפליקציה נייטיב', 'תמיכה בלתי מוגבלת']
-      },
-      cta: 'נסה את החבילה',
-      added: '✓ נוסף!',
       comparison: {
-        title: 'השוואת חבילות מפורטת',
-        button: 'השווה חבילות'
+        title: 'השוואת חבילות',
+        button: 'השווה חבילות',
+        features: {
+          title: 'תכונות',
+          logo: 'לוגו מקצועי',
+          responsive: 'אתר רספונסיבי',
+          seo: 'אופטימיזציה למנועי חיפוש',
+          social: 'רשתות חברתיות',
+          ecommerce: 'מסחר אלקטרוני',
+          mobile: 'אפליקציה ניידת',
+          support: 'תמיכה טכנית',
+          training: 'הדרכה כלולה'
+        }
+      },
+      whyChoose: {
+        title: 'למה לבחור בווב יארדן?',
+        delivery: {
+          title: 'משלוח מהיר',
+          description: 'התחלה תוך 48 שעות, משלוח תוך 2-4 שבועות מקסימום'
+        },
+        expertise: {
+          title: 'מומחיות מקומית',
+          description: 'מומחים בשוק הישראלי ובתרבות המקומית'
+        },
+        guarantee: {
+          title: 'ערבות לתוצאות',
+          description: 'שביעות רצון מובטחת או החזר מלא'
+        }
+      },
+      cta: {
+        title: 'לא בטוח בבחירה שלך?',
+        description: 'בואו נדבר על הצרכים שלכם כדי למצוא את הפתרון המושלם',
+        consultation: 'ייעוץ חינם',
+        chat: 'צ\'אט חי'
       }
     },
     dashboard: {
       title: 'לוח בקרה',
-      welcome: 'ברוכים הבאים للוח הבקרה שלכם',
+      welcome: 'ברוכים הבאים ללוח הבקרה שלכם',
       stats: {
         projects: 'פרויקטים פעילים',
         messages: 'הודעות',
@@ -487,6 +869,85 @@ const translations: Record<string, Translations> = {
       recentProjects: 'פרויקטים אחרונים',
       notifications: 'התראות',
       cart: 'עגלה נוכחית'
+    },
+    simulator: {
+      title: 'סימולטור מהיר',
+      tooltip: 'סימולטור הצעת מחיר',
+      openLabel: 'פתח סימולטור הצעת מחיר',
+      closeLabel: 'סגור סימולטור',
+      service: 'שירות רצוי',
+      selectService: 'בחר שירות',
+      budget: 'תקציב משוער',
+      timeline: 'לוח זמנים רצוי',
+      urgent: 'דחוף (1-2 שבועות)',
+      normal: 'רגיל (3-4 שבועות)',
+      flexible: 'גמיש (5+ שבועות)',
+      estimate: 'הערכה',
+      addToCart: 'הוסף לעגלה',
+      successMessage: 'השירות נוסף לעגלה בהצלחה!'
+    },
+    cart: {
+      title: 'עגלת קניות',
+      empty: 'העגלה שלכם ריקה',
+      total: 'סה"כ',
+      close: 'סגור עגלה',
+      discoverServices: 'גלה את השירותים שלנו',
+      decreaseQuantity: 'הקטן כמות',
+      increaseQuantity: 'הגדל כמות',
+      removeItem: 'הסר פריט זה',
+      checkout: 'קנה',
+      continue: 'המשך קנייה'
+    },
+    testimonials: {
+      title: 'מה הלקוחות שלנו אומרים',
+      subtitle: 'יותר מ-150 חברות סומכות עלינו בישראל',
+      trustedBy: 'הם סומכים עלינו',
+      goTo: 'עבור לעדות'
+    },
+    stats: {
+      title: 'התוצאות שלנו מדברות בעד עצמן',
+      subtitle: 'מספרים המעידים על המומחיות והמחויבות שלנו ללקוחותינו',
+      goal: 'מטרה: ההצלחה הדיגיטלית שלכם',
+      projects: 'פרויקטים שהושלמו',
+      clients: 'לקוחות מרוצים',
+      experience: 'שנות ניסיון',
+      support: 'תמיכה 24/7'
+    },
+    buttons: {
+      learnMore: 'למד עוד',
+      getStarted: 'התחל',
+      viewAll: 'הצג הכל',
+      readMore: 'קרא עוד',
+      previous: 'קודם',
+      next: 'הבא',
+      cancel: 'בטל',
+      confirm: 'אשר',
+      save: 'שמור',
+      edit: 'ערוך',
+      delete: 'מחק',
+      close: 'סגור',
+      requestQuote: 'בקש הצעת מחיר',
+      moreInfo: 'מידע נוסף'
+    },
+    forms: {
+      required: 'שדה זה הוא חובה',
+      invalidEmail: 'כתובת אימייל לא תקינה',
+      invalidPhone: 'מספר טלפון לא תקין',
+      minLength: 'מינימום {count} תווים',
+      maxLength: 'מקסימום {count} תווים'
+    },
+    chat: {
+      title: 'צ׳אט תמיכה',
+      welcome: 'שלום! איך אני יכול לעזור לך?',
+      placeholder: 'הקלד את ההודעה שלך...',
+      autoResponse: 'תודה על ההודעה! יועץ יחזור אליך בקרוב.'
+    },
+    errors: {
+      generic: 'אירעה שגיאה',
+      network: 'שגיאת חיבור',
+      notFound: 'הדף לא נמצא',
+      unauthorized: 'גישה לא מורשית',
+      serverError: 'שגיאת שרת'
     }
   }
 }

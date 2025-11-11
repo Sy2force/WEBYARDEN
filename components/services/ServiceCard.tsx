@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Service } from '@/data/services'
 import { useCartStore } from '@/store/cartStore'
+import { useTranslations } from '@/components/LocalizedText'
 
 interface ServiceCardProps {
   service: Service
@@ -14,6 +15,7 @@ interface ServiceCardProps {
 
 export default function ServiceCard({ service, index = 0 }: ServiceCardProps) {
   const addItem = useCartStore((state) => state.addItem)
+  const { t } = useTranslations()
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault()
@@ -99,13 +101,13 @@ export default function ServiceCard({ service, index = 0 }: ServiceCardProps) {
           <div className="border-t border-gray-100 pt-4">
             <div className="flex justify-between items-center mb-4">
               <div>
-                <p className="text-sm text-gray-500">Prix</p>
+                <p className="text-sm text-gray-500">{t('services.price') || 'Prix'}</p>
                 <p className="text-xl font-bold text-indigo-600">
                   ₪ {service.price.toLocaleString()}
                 </p>
               </div>
               <div>
-                <p className="text-sm text-gray-500">Délai</p>
+                <p className="text-sm text-gray-500">{t('services.delivery') || 'Délai'}</p>
                 <p className="text-lg font-semibold text-gray-900">
                   {service.delivery}
                 </p>
@@ -118,10 +120,10 @@ export default function ServiceCard({ service, index = 0 }: ServiceCardProps) {
                 onClick={handleAddToCart}
                 className="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 px-4 rounded-lg hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-sm"
               >
-                Ajouter au panier
+                {t('simulator.addToCart')}
               </button>
               <button className="px-4 py-3 border border-indigo-200 text-indigo-600 rounded-lg hover:bg-indigo-50 transition-colors font-semibold text-sm">
-                Simuler
+                {t('simulator.simulate') || 'Simuler'}
               </button>
             </div>
           </div>

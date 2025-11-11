@@ -3,11 +3,13 @@
 import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useCartStore } from '@/store/cartStore'
+import { useTranslations } from '@/components/LocalizedText'
 import Image from 'next/image'
 import Link from 'next/link'
 
 export default function CartDrawer() {
   const { items, isOpen, toggleCart, removeItem, updateQuantity, getTotalPrice, getTotalItems } = useCartStore()
+  const { t } = useTranslations()
 
   return (
     <>
@@ -52,13 +54,13 @@ export default function CartDrawer() {
             {/* Header */}
             <div className="flex items-center justify-between p-6 border-b border-gray-200">
               <h2 className="text-xl font-bold text-gray-900">
-                Panier ({getTotalItems()})
+                {t('cart.title')} ({getTotalItems()})
               </h2>
               <button
                 onClick={() => toggleCart()}
                 className="p-2 hover:bg-gray-100 rounded-full transition-colors"
-                title="Fermer le panier"
-                aria-label="Fermer le panier"
+                title={t('cart.close')}
+                aria-label={t('cart.close')}
               >
                 <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -73,12 +75,12 @@ export default function CartDrawer() {
                   <svg className="h-16 w-16 text-gray-300 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01" />
                   </svg>
-                  <p className="text-gray-500 mb-4">Votre panier est vide</p>
+                  <p className="text-gray-500 mb-4">{t('cart.empty')}</p>
                   <a
                     href="/services"
                     className="inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
                   >
-                    Découvrir nos services
+                    {t('cart.discoverServices')}
                   </a>
                 </div>
               ) : (
@@ -122,8 +124,8 @@ export default function CartDrawer() {
                           <button
                             onClick={() => updateQuantity(item.id, item.quantity - 1)}
                             className="w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center transition-colors"
-                            title="Diminuer la quantité"
-                            aria-label={`Diminuer la quantité de ${item.title}`}
+                            title={t('cart.decreaseQuantity')}
+                            aria-label={`${t('cart.decreaseQuantity')} ${item.title}`}
                           >
                             <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
@@ -137,8 +139,8 @@ export default function CartDrawer() {
                           <button
                             onClick={() => updateQuantity(item.id, item.quantity + 1)}
                             className="w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center transition-colors"
-                            title="Augmenter la quantité"
-                            aria-label={`Augmenter la quantité de ${item.title}`}
+                            title={t('cart.increaseQuantity')}
+                            aria-label={`${t('cart.increaseQuantity')} ${item.title}`}
                           >
                             <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
@@ -148,8 +150,8 @@ export default function CartDrawer() {
                           <button
                             onClick={() => removeItem(item.id)}
                             className="w-8 h-8 rounded-full bg-red-50 text-red-600 flex items-center justify-center hover:bg-red-100 transition-colors ml-2"
-                            title="Supprimer cet article"
-                            aria-label={`Supprimer ${item.title} du panier`}
+                            title={t('cart.removeItem')}
+                            aria-label={`${t('cart.removeItem')} ${item.title}`}
                           >
                             <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -167,7 +169,7 @@ export default function CartDrawer() {
             {items.length > 0 && (
               <div className="border-t border-gray-200 p-6 space-y-4">
                 <div className="flex justify-between items-center text-lg font-bold">
-                  <span>Total:</span>
+                  <span>{t('cart.total')}:</span>
                   <span className="text-indigo-600">₪ {getTotalPrice().toLocaleString()}</span>
                 </div>
                 
@@ -177,14 +179,14 @@ export default function CartDrawer() {
                     onClick={toggleCart}
                     className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 px-4 rounded-lg hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 font-semibold text-center block"
                   >
-                    Finaliser le devis
+                    {t('cart.checkout')}
                   </Link>
                   
                   <button
                     onClick={toggleCart}
                     className="w-full border border-gray-300 text-gray-700 py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors font-semibold"
                   >
-                    Continuer les achats
+                    {t('cart.continue')}
                   </button>
                 </div>
               </div>

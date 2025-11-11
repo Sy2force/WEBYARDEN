@@ -65,7 +65,10 @@ export default function PdfDownloadButton({ clientInfo, className = '', children
       // clearCart()
       
     } catch (error) {
-      console.error('Erreur lors de la génération du PDF:', error)
+      // Log error for debugging in development only
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Erreur lors de la génération du PDF:', error)
+      }
       alert('Une erreur est survenue lors de la génération du PDF. Veuillez réessayer.')
     } finally {
       setIsGenerating(false)

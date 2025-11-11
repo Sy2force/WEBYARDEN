@@ -50,6 +50,11 @@ const styles = StyleSheet.create({
     fontSize: 10,
     color: '#6B7280',
   },
+  companySubtitle: {
+    fontSize: 12,
+    color: '#6B7280',
+    marginTop: 5,
+  },
   title: {
     fontSize: 28,
     fontWeight: 700,
@@ -92,6 +97,10 @@ const styles = StyleSheet.create({
     fontSize: 10,
     color: '#6B7280',
     flex: 1,
+  },
+  tableCellDescription: {
+    fontSize: 8,
+    color: '#9CA3AF',
   },
   table: {
     width: 'auto',
@@ -241,7 +250,7 @@ export const QuotePDF: React.FC<QuotePDFProps> = ({ items, clientInfo, quoteNumb
         <View style={styles.header}>
           <View>
             <Text style={styles.logo}>WEB YARDEN</Text>
-            <Text style={{ fontSize: 12, color: '#6B7280', marginTop: 5 }}>
+            <Text style={styles.companySubtitle}>
               Agence Digitale Israël
             </Text>
           </View>
@@ -313,7 +322,7 @@ export const QuotePDF: React.FC<QuotePDFProps> = ({ items, clientInfo, quoteNumb
               <View key={index} style={styles.tableRow}>
                 <View style={styles.tableColWide}>
                   <Text style={styles.tableCell}>{item.title}</Text>
-                  <Text style={[styles.tableCell, { fontSize: 8, color: '#9CA3AF' }]}>
+                  <Text style={[styles.tableCell, styles.tableCellDescription]}>
                     {item.description}
                   </Text>
                 </View>

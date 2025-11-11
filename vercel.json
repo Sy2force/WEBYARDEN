@@ -7,14 +7,18 @@
   "outputDirectory": ".next",
   "functions": {
     "app/api/**/*.ts": {
-      "runtime": "nodejs18.x",
+      "runtime": "nodejs20.x",
       "maxDuration": 10
     }
   },
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
+      "source": "/sitemap.xml",
+      "destination": "/api/sitemap"
+    },
+    {
+      "source": "/robots.txt", 
+      "destination": "/api/robots"
     }
   ],
   "headers": [
@@ -36,11 +40,19 @@
         {
           "key": "Referrer-Policy",
           "value": "origin-when-cross-origin"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=31536000; includeSubDomains"
         }
       ]
     }
   ],
-  "env": {
-    "NEXT_PUBLIC_SITE_URL": "@next_public_site_url"
-  }
+  "redirects": [
+    {
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
+    }
+  ]
 }

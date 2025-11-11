@@ -1,7 +1,9 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useTranslations } from '@/components/LocalizedText'
 
 interface Testimonial {
   id: number
@@ -63,6 +65,7 @@ const clientLogos = [
 
 export default function TestimonialsCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const { t } = useTranslations()
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -86,10 +89,10 @@ export default function TestimonialsCarousel() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Ce que disent nos clients
+            {t('testimonials.title')}
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Plus de 150 entreprises nous font confiance en Israël
+            {t('testimonials.subtitle')}
           </p>
         </div>
 
@@ -121,9 +124,11 @@ export default function TestimonialsCarousel() {
 
                 {/* Author Info */}
                 <div className="flex items-center justify-center space-x-4">
-                  <img
+                  <Image
                     src={testimonials[currentIndex].avatar}
                     alt={testimonials[currentIndex].name}
+                    width={64}
+                    height={64}
                     className="w-16 h-16 rounded-full object-cover"
                   />
                   <div className="text-left">
@@ -143,7 +148,7 @@ export default function TestimonialsCarousel() {
               <button
                 onClick={prevTestimonial}
                 className="p-3 rounded-full bg-indigo-100 dark:bg-indigo-900 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-200 dark:hover:bg-indigo-800 transition-colors"
-                aria-label="Témoignage précédent"
+                aria-label={t('buttons.previous') || 'Précédent'}
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -152,7 +157,7 @@ export default function TestimonialsCarousel() {
               <button
                 onClick={nextTestimonial}
                 className="p-3 rounded-full bg-indigo-100 dark:bg-indigo-900 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-200 dark:hover:bg-indigo-800 transition-colors"
-                aria-label="Témoignage suivant"
+                aria-label={t('buttons.next') || 'Suivant'}
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -171,7 +176,7 @@ export default function TestimonialsCarousel() {
                       ? 'bg-indigo-600 dark:bg-indigo-400'
                       : 'bg-gray-300 dark:bg-gray-600'
                   }`}
-                  aria-label={`Aller au témoignage ${index + 1}`}
+                  aria-label={`${t('testimonials.goTo') || 'Aller au témoignage'} ${index + 1}`}
                 />
               ))}
             </div>
@@ -181,7 +186,7 @@ export default function TestimonialsCarousel() {
         {/* Client Logos */}
         <div className="text-center">
           <h3 className="text-lg font-semibold text-gray-600 dark:text-gray-400 mb-8">
-            Ils nous font confiance
+            {t('testimonials.trustedBy') || 'Ils nous font confiance'}
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center opacity-60 hover:opacity-100 transition-opacity">
             {clientLogos.map((client, index) => (
@@ -192,9 +197,11 @@ export default function TestimonialsCarousel() {
                 transition={{ delay: index * 0.1 }}
                 className="flex items-center justify-center h-12"
               >
-                <img
+                <Image
                   src={client.logo}
                   alt={client.name}
+                  width={120}
+                  height={32}
                   className="max-h-8 w-auto filter grayscale hover:grayscale-0 transition-all duration-300"
                 />
               </motion.div>

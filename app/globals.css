@@ -4,8 +4,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-/* Variables CSS personnalisées */
+/* CSS Custom Properties */
 :root {
+  /* Color System */
   --foreground-rgb: 15, 23, 42;
   --background-start-rgb: 255, 255, 255;
   --background-end-rgb: 248, 250, 252;
@@ -17,7 +18,49 @@
   --error-color: 239, 68, 68;
   --border-color: 226, 232, 240;
   --shadow-color: 0, 0, 0, 0.1;
+  
+  /* Layout & Spacing */
+  --container-max-width: 1200px;
+  --section-padding: 4rem;
+  --card-padding: 1.5rem;
+  --border-radius: 0.5rem;
+  --border-radius-lg: 0.75rem;
+  --border-radius-xl: 1rem;
+  
+  /* Typography */
+  --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.6;
+  --letter-spacing-tight: -0.025em;
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.6s ease;
 }
+
+/* Progress Bar Utilities */
+.progress-0 { width: 0%; }
+.progress-5 { width: 5%; }
+.progress-10 { width: 10%; }
+.progress-15 { width: 15%; }
+.progress-20 { width: 20%; }
+.progress-25 { width: 25%; }
+.progress-30 { width: 30%; }
+.progress-35 { width: 35%; }
+.progress-40 { width: 40%; }
+.progress-45 { width: 45%; }
+.progress-50 { width: 50%; }
+.progress-55 { width: 55%; }
+.progress-60 { width: 60%; }
+.progress-65 { width: 65%; }
+.progress-70 { width: 70%; }
+.progress-75 { width: 75%; }
+.progress-80 { width: 80%; }
+.progress-85 { width: 85%; }
+.progress-90 { width: 90%; }
+.progress-95 { width: 95%; }
+.progress-100 { width: 100%; }
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -42,20 +85,21 @@ html {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-family-primary);
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-start-rgb));
-  line-height: 1.6;
+  line-height: var(--line-height-normal);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
-/* Amélioration de la lisibilité */
+/* Typography Improvements */
 h1, h2, h3, h4, h5, h6 {
-  line-height: 1.2;
+  line-height: var(--line-height-tight);
   font-weight: 600;
-  letter-spacing: -0.025em;
+  letter-spacing: var(--letter-spacing-tight);
+  margin-bottom: 0.5em;
 }
 
 p {
@@ -65,14 +109,20 @@ p {
 a {
   color: rgb(var(--primary-color));
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color var(--transition-fast);
 }
 
 a:hover {
   color: rgb(var(--secondary-color));
 }
 
-/* Focus styles pour l'accessibilité */
+a:focus-visible {
+  outline: 2px solid rgb(var(--primary-color));
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Focus Styles for Accessibility */
 :focus {
   outline: 2px solid rgb(var(--primary-color));
   outline-offset: 2px;
@@ -80,6 +130,23 @@ a:hover {
 
 :focus:not(:focus-visible) {
   outline: none;
+}
+
+/* Skip to main content */
+.skip-to-main {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: rgb(var(--primary-color));
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 1000;
+}
+
+.skip-to-main:focus {
+  top: 6px;
 }
 
 /* Custom scrollbar */
@@ -95,7 +162,7 @@ a:hover {
 ::-webkit-scrollbar-thumb {
   background: rgba(var(--border-color), 0.6);
   border-radius: 4px;
-  transition: background 0.2s ease;
+  transition: background var(--transition-fast);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -110,7 +177,7 @@ a:hover {
   }
 }
 
-/* Animations et transitions */
+/* Keyframe Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -179,17 +246,17 @@ a:hover {
   }
 }
 
-/* Classes d'animation */
+/* Animation Classes */
 .animate-fadeIn {
-  animation: fadeIn 0.6s ease-out;
+  animation: fadeIn var(--transition-slow) ease-out;
 }
 
 .animate-slideInLeft {
-  animation: slideInLeft 0.6s ease-out;
+  animation: slideInLeft var(--transition-slow) ease-out;
 }
 
 .animate-slideInRight {
-  animation: slideInRight 0.6s ease-out;
+  animation: slideInRight var(--transition-slow) ease-out;
 }
 
 .animate-scaleIn {
@@ -204,7 +271,17 @@ a:hover {
   animation: bounce 1s infinite;
 }
 
-/* Utilitaires de texte responsive */
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fadeIn,
+  .animate-slideInLeft,
+  .animate-slideInRight,
+  .animate-scaleIn {
+    animation: none;
+  }
+}
+
+/* Responsive Typography Utilities */
 .text-responsive {
   font-size: clamp(0.875rem, 2.5vw, 1rem);
 }
@@ -233,7 +310,7 @@ a:hover {
   font-size: clamp(3rem, 8vw, 4rem);
 }
 
-/* Gradients personnalisés */
+/* Custom Gradients */
 .gradient-primary {
   background: linear-gradient(135deg, rgb(var(--primary-color)), rgb(var(--secondary-color)));
 }
@@ -249,7 +326,7 @@ a:hover {
   background-clip: text;
 }
 
-/* Ombres personnalisées */
+/* Custom Shadows */
 .shadow-soft {
   box-shadow: 0 4px 6px -1px rgba(var(--shadow-color)), 0 2px 4px -1px rgba(var(--shadow-color));
 }
@@ -266,26 +343,26 @@ a:hover {
   box-shadow: inset 0 2px 4px 0 rgba(var(--shadow-color));
 }
 
-/* Bordures et coins arrondis */
+/* Borders and Border Radius */
 .border-soft {
   border: 1px solid rgb(var(--border-color));
 }
 
 .rounded-soft {
-  border-radius: 0.5rem;
+  border-radius: var(--border-radius);
 }
 
 .rounded-medium {
-  border-radius: 0.75rem;
+  border-radius: var(--border-radius-lg);
 }
 
 .rounded-large {
-  border-radius: 1rem;
+  border-radius: var(--border-radius-xl);
 }
 
-/* États interactifs */
+/* Interactive States */
 .interactive {
-  transition: all 0.2s ease;
+  transition: all var(--transition-fast);
   cursor: pointer;
 }
 
@@ -298,16 +375,24 @@ a:hover {
   transform: translateY(0);
 }
 
-/* Boutons personnalisés */
+.interactive:focus-visible {
+  outline: 2px solid rgb(var(--primary-color));
+  outline-offset: 2px;
+}
+
+/* Custom Buttons */
 .btn-primary {
   background: rgb(var(--primary-color));
   color: white;
   padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
+  border-radius: var(--border-radius);
   font-weight: 600;
-  transition: all 0.2s ease;
+  transition: all var(--transition-fast);
   border: none;
   cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1;
 }
 
 .btn-primary:hover {
@@ -316,15 +401,29 @@ a:hover {
   box-shadow: 0 4px 12px rgba(var(--primary-color), 0.4);
 }
 
+.btn-primary:focus-visible {
+  outline: 2px solid rgb(var(--primary-color));
+  outline-offset: 2px;
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
 .btn-secondary {
   background: transparent;
   color: rgb(var(--primary-color));
   padding: 0.75rem 1.5rem;
   border: 2px solid rgb(var(--primary-color));
-  border-radius: 0.5rem;
+  border-radius: var(--border-radius);
   font-weight: 600;
-  transition: all 0.2s ease;
+  transition: all var(--transition-fast);
   cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1;
 }
 
 .btn-secondary:hover {
@@ -333,13 +432,25 @@ a:hover {
   transform: translateY(-1px);
 }
 
-/* Cartes et conteneurs */
+.btn-secondary:focus-visible {
+  outline: 2px solid rgb(var(--primary-color));
+  outline-offset: 2px;
+}
+
+.btn-secondary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Cards and Containers */
 .card {
   background: white;
-  border-radius: 0.75rem;
-  padding: 1.5rem;
+  border-radius: var(--border-radius-lg);
+  padding: var(--card-padding);
   box-shadow: 0 4px 6px -1px rgba(var(--shadow-color));
-  transition: all 0.3s ease;
+  transition: all var(--transition-normal);
+  border: 1px solid rgba(var(--border-color), 0.1);
 }
 
 .card:hover {
@@ -347,15 +458,22 @@ a:hover {
   box-shadow: 0 20px 25px -5px rgba(var(--shadow-color));
 }
 
-/* Formulaires */
+.card:focus-within {
+  outline: 2px solid rgb(var(--primary-color));
+  outline-offset: 2px;
+}
+
+/* Form Elements */
 .form-input {
   width: 100%;
   padding: 0.75rem 1rem;
   border: 2px solid rgb(var(--border-color));
-  border-radius: 0.5rem;
+  border-radius: var(--border-radius);
   font-size: 1rem;
-  transition: all 0.2s ease;
+  font-family: inherit;
+  transition: all var(--transition-fast);
   background: white;
+  color: rgb(var(--foreground-rgb));
 }
 
 .form-input:focus {
@@ -368,6 +486,12 @@ a:hover {
   border-color: rgb(var(--error-color));
 }
 
+.form-input:disabled {
+  background-color: rgba(var(--border-color), 0.1);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
 .form-label {
   display: block;
   font-weight: 600;
@@ -375,46 +499,82 @@ a:hover {
   color: rgb(var(--foreground-rgb));
 }
 
-/* Utilitaires de mise en page */
+.form-error {
+  color: rgb(var(--error-color));
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.form-success {
+  color: rgb(var(--success-color));
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* Layout Utilities */
 .container-custom {
-  max-width: 1200px;
+  max-width: var(--container-max-width);
   margin: 0 auto;
   padding: 0 1rem;
 }
 
 .section-padding {
-  padding: 4rem 0;
+  padding: var(--section-padding) 0;
 }
 
 .section-padding-lg {
-  padding: 6rem 0;
+  padding: calc(var(--section-padding) * 1.5) 0;
 }
 
-/* Responsive breakpoints helpers */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Responsive Breakpoints */
 @media (max-width: 640px) {
-  .section-padding {
-    padding: 2rem 0;
+  :root {
+    --section-padding: 2rem;
   }
   
-  .section-padding-lg {
-    padding: 3rem 0;
+  .container-custom {
+    padding: 0 0.75rem;
   }
 }
 
-/* Accessibilité */
+/* Accessibility Utilities */
 .sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
 
-/* Préférences utilisateur */
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .card {
+    border: 2px solid rgb(var(--border-color));
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    border-width: 2px;
+  }
+}
+
+/* User Preferences */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -423,6 +583,14 @@ a:hover {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  
+  .interactive:hover {
+    transform: none;
+  }
+  
+  .card:hover {
+    transform: none;
   }
 }
 
@@ -443,4 +611,102 @@ a:hover {
   .no-print {
     display: none !important;
   }
+}
+
+/* Progress Bar System */
+.progress-container {
+  width: 100%;
+  height: 0.5rem;
+  background-color: rgba(var(--border-color), 0.2);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, rgb(var(--primary-color)), rgb(var(--secondary-color)));
+  border-radius: var(--border-radius);
+  transition: width var(--transition-normal) ease-out;
+}
+
+/* Dynamic Progress Classes */
+.progress-0 { width: 0%; }
+.progress-5 { width: 5%; }
+.progress-10 { width: 10%; }
+.progress-15 { width: 15%; }
+.progress-20 { width: 20%; }
+.progress-25 { width: 25%; }
+.progress-30 { width: 30%; }
+.progress-35 { width: 35%; }
+.progress-40 { width: 40%; }
+.progress-45 { width: 45%; }
+.progress-50 { width: 50%; }
+.progress-55 { width: 55%; }
+.progress-60 { width: 60%; }
+.progress-65 { width: 65%; }
+.progress-70 { width: 70%; }
+.progress-75 { width: 75%; }
+.progress-80 { width: 80%; }
+.progress-85 { width: 85%; }
+.progress-90 { width: 90%; }
+.progress-95 { width: 95%; }
+.progress-100 { width: 100%; }
+
+/* Utility Classes */
+.backdrop-blur-custom {
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+}
+
+.backdrop-blur-sm-custom {
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+.backdrop-blur-lg-custom {
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
+.backdrop-blur-xl-custom {
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+}
+
+/* Progressive Enhancement - Text Wrap */
+@supports (text-wrap: balance) {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@supports (text-wrap: pretty) {
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
+
+/* Loading States */
+.loading {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid transparent;
+  border-top: 2px solid rgb(var(--primary-color));
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

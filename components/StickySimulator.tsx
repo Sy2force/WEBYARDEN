@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useCartStore } from '@/store/cartStore'
 import { services } from '@/data/services'
+import { useTranslations } from '@/components/LocalizedText'
 
 export default function StickySimulator() {
   const [isOpen, setIsOpen] = useState(false)
@@ -13,6 +14,7 @@ export default function StickySimulator() {
   const [timeline, setTimeline] = useState('')
   const [estimatedPrice, setEstimatedPrice] = useState(0)
   const { addItem } = useCartStore()
+  const { t } = useTranslations()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -67,7 +69,7 @@ export default function StickySimulator() {
       setIsOpen(false)
       
       // Show success message
-      alert('Service ajouté au panier avec succès!')
+      alert(t('simulator.successMessage'))
     }
   }
 
@@ -86,7 +88,7 @@ export default function StickySimulator() {
           className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-4 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          aria-label="Ouvrir le simulateur de devis"
+          aria-label={t('simulator.openLabel')}
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
@@ -95,7 +97,7 @@ export default function StickySimulator() {
         
         {/* Tooltip */}
         <div className="absolute bottom-full right-0 mb-2 px-3 py-1 bg-gray-900 text-white text-sm rounded-lg opacity-0 hover:opacity-100 transition-opacity whitespace-nowrap">
-          Simulateur de devis
+          {t('simulator.tooltip')}
         </div>
       </motion.div>
 
@@ -119,12 +121,12 @@ export default function StickySimulator() {
               {/* Header */}
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                  Simulateur Express
+                  {t('simulator.title')}
                 </h2>
                 <button
                   onClick={() => setIsOpen(false)}
                   className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors"
-                  aria-label="Fermer le simulateur"
+                  aria-label={t('simulator.closeLabel')}
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -137,7 +139,7 @@ export default function StickySimulator() {
                 {/* Service Selection */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Service souhaité
+                    {t('simulator.service')}
                   </label>
                   <select
                     value={selectedService}
@@ -145,7 +147,7 @@ export default function StickySimulator() {
                     title="Sélectionnez un service"
                     className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
                   >
-                    <option value="">Sélectionnez un service</option>
+                    <option value="">{t('simulator.selectService')}</option>
                     {services.slice(0, 10).map((service) => (
                       <option key={service.id} value={service.id}>
                         {service.title}
@@ -157,7 +159,7 @@ export default function StickySimulator() {
                 {/* Budget */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Budget estimé (₪)
+                    {t('simulator.budget')}
                   </label>
                   <select
                     value={budget}
@@ -165,18 +167,18 @@ export default function StickySimulator() {
                     title="Sélectionnez votre budget"
                     className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
                   >
-                    <option value="">Sélectionnez votre budget</option>
-                    <option value="5000-10000">₪ 5,000 - 10,000</option>
-                    <option value="10000-25000">₪ 10,000 - 25,000</option>
-                    <option value="25000-50000">₪ 25,000 - 50,000</option>
-                    <option value="50000+">₪ 50,000+</option>
+                    <option value="">{t('simulator.selectService')}</option>
+                    <option value="5000-10000">5 000 - 10 000 ₪</option>
+                    <option value="10000-25000">10 000 - 25 000 ₪</option>
+                    <option value="25000-50000">25 000 - 50 000 ₪</option>
+                    <option value="50000+">50 000+ ₪</option>
                   </select>
                 </div>
 
                 {/* Timeline */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Délai souhaité
+                    {t('simulator.timeline')}
                   </label>
                   <select
                     value={timeline}
@@ -184,10 +186,10 @@ export default function StickySimulator() {
                     title="Sélectionnez un délai"
                     className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
                   >
-                    <option value="">Sélectionnez un délai</option>
-                    <option value="urgent">Urgent (2-4 semaines)</option>
-                    <option value="normal">Normal (1-3 mois)</option>
-                    <option value="flexible">Flexible (3+ mois)</option>
+                    <option value="">{t('simulator.timeline')}</option>
+                    <option value="urgent">{t('simulator.urgent')}</option>
+                    <option value="normal">{t('simulator.normal')}</option>
+                    <option value="flexible">{t('simulator.flexible')}</option>
                   </select>
                 </div>
 
@@ -199,9 +201,7 @@ export default function StickySimulator() {
                     className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 p-4 rounded-lg border border-green-200 dark:border-green-700"
                   >
                     <div className="text-center">
-                      <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">
-                        Estimation instantanée
-                      </p>
+                      <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">{t('simulator.estimate')} :</div>
                       <p className="text-2xl font-bold text-green-600 dark:text-green-400">
                         ₪ {estimatedPrice.toLocaleString()}
                       </p>
@@ -218,14 +218,14 @@ export default function StickySimulator() {
                     onClick={() => setIsOpen(false)}
                     className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                   >
-                    Annuler
+                    {t('buttons.cancel')}
                   </button>
                   <button
                     onClick={handleAddToCart}
                     disabled={!selectedService || !budget || !timeline}
-                    className="flex-1 px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg hover:from-indigo-700 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+                    className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                   >
-                    Ajouter au panier
+                    {t('simulator.addToCart')}
                   </button>
                 </div>
               </div>

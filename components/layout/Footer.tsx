@@ -60,10 +60,10 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-4">{t('common.contact')}</h4>
             <ul className="space-y-2 text-gray-400">
-              <li>📧 contact@webyarden.co.il</li>
-              <li>📱 +972 12 345 6789</li>
-              <li>📍 Tel Aviv, Israël</li>
-              <li>🕒 Lun-Ven: 9h-18h</li>
+              <li>📧 {t('contact.info.email')}</li>
+              <li>📱 {t('contact.info.phone')}</li>
+              <li>📍 {t('contact.info.address')}</li>
+              <li>🕒 {t('contact.info.hours')}</li>
             </ul>
           </div>
         </div>
