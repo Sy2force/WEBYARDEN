@@ -1,16 +1,45 @@
 {
   "name": "Web Yarden - Agence Digitale Israël",
   "short_name": "Web Yarden",
-  "description": "Votre partenaire digital en Israël pour booster votre présence en ligne",
+  "description": "Agence digitale spécialisée en développement web, e-commerce, SEO et marketing digital en Israël",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
+  "orientation": "portrait-primary",
   "background_color": "#ffffff",
-  "theme_color": "#2563eb",
+  "theme_color": "#4f46e5",
+  "lang": "fr",
+  "dir": "ltr",
+  "categories": ["business", "productivity", "technology"],
   "icons": [
     {
       "src": "/favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "sizes": "48x48",
       "type": "image/x-icon"
+    },
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/og-image.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "form_factor": "wide"
     }
   ]
 }
