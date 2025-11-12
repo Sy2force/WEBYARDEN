@@ -131,7 +131,7 @@ export default function Projects() {
       </section>
 
       {/* Filter Section */}
-      <section className="py-16 bg-white/80 bg-opacity-80">
+      <section className="py-16 bg-white bg-opacity-80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center mb-12"
