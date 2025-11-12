@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  trailingSlash: false,
   experimental: {
     optimizePackageImports: ['framer-motion', '@react-pdf/renderer'],
   },
@@ -16,6 +17,10 @@ const nextConfig = {
       {
         protocol: 'http',
         hostname: 'localhost',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
       }
     ],
     formats: ['image/webp', 'image/avif'],

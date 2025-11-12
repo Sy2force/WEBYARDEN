@@ -2,7 +2,7 @@ export interface Translations {
   [key: string]: string | string[] | Translations
 }
 
-const translations: Record<string, Translations> = {
+export const translations: Record<string, Translations> = {
   fr: {
     common: {
       home: 'Accueil',
@@ -952,8 +952,6 @@ const translations: Record<string, Translations> = {
   }
 }
 
-export default translations
-
 export const getStaticTranslations = (locale: string) => {
   return translations[locale] || translations.fr
 }
@@ -961,3 +959,5 @@ export const getStaticTranslations = (locale: string) => {
 export const getSupportedLocales = () => {
   return Object.keys(translations)
 }
+
+export default translations

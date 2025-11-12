@@ -1,7 +1,7 @@
 'use client'
 
 import { useParams } from 'next/navigation'
-import translations from '@/lib/i18n'
+import { translations } from '@/lib/i18n'
 
 interface LocalizedTextProps {
   keyName: string

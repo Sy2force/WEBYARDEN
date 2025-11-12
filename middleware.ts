@@ -52,12 +52,7 @@ export function middleware(request: NextRequest) {
   if (!pathnameHasLocale) {
     const locale = getLocale(request)
     
-    // For default locale (French), don't add prefix
-    if (locale === defaultLocale) {
-      return NextResponse.next()
-    }
-    
-    // For other locales, redirect with locale prefix
+    // Always redirect to locale-prefixed URL
     const newUrl = new URL(`/${locale}${pathname}`, request.url)
     return NextResponse.redirect(newUrl)
   }
@@ -69,6 +64,6 @@ export function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     // Skip all internal paths (_next)
-    '/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml).*)',
+    '/((?!api|_next/static|_next/image|_next/webpack-hmr|favicon.ico|robots.txt|sitemap.xml|.*\\..*).*)',
   ],
 }

@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 import { useTranslations } from '@/components/LocalizedText'
 
 export default function Projects() {
@@ -90,53 +91,103 @@ export default function Projects() {
     : projects.filter(project => project.categories.includes(activeFilter))
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-purple-600 to-indigo-700 text-white">
-        <div className="max-w-7xl mx-auto py-20 px-4 sm:py-24 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl font-extrabold sm:text-5xl md:text-6xl">
+      <section className="relative min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-indigo-600 via-purple-600 to-blue-700 text-white overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-blue-400/10 rounded-full blur-3xl animate-bounce-slow"></div>
+        </div>
+
+        <div className="relative max-w-7xl mx-auto py-20 px-4 sm:py-24 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="text-5xl md:text-7xl font-extrabold mb-8 bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent leading-tight">
               {t('projects.title')}
             </h1>
-            <p className="mt-6 max-w-3xl mx-auto text-xl text-purple-100">
+            <p className="text-xl md:text-2xl mb-12 text-blue-100 max-w-4xl mx-auto leading-relaxed">
               {t('projects.subtitle')}
             </p>
-          </div>
+            <motion.div
+              className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl px-8 py-4 border border-white/20">
+                <span className="text-white font-bold text-lg">150+ Projets Réalisés</span>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl px-8 py-4 border border-white/20">
+                <span className="text-white font-bold text-lg">98% Clients Satisfaits</span>
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
       {/* Filter Section */}
-      <section className="py-12 bg-white">
+      <section className="py-16 bg-white/80 bg-opacity-80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Filtrer par Catégorie
+            </h2>
+            <p className="text-xl text-gray-600 mb-8">
+              Découvrez nos réalisations par domaine d'expertise
+            </p>
+          </motion.div>
           <div className="flex flex-wrap justify-center gap-4">
-            {categories.map((category) => (
-              <button
+            {categories.map((category, index) => (
+              <motion.button
                 key={category.key}
                 onClick={() => setActiveFilter(category.key)}
-                className={`px-6 py-3 rounded-full text-sm font-semibold transition-all duration-200 ${
+                className={`px-8 py-4 rounded-2xl text-sm font-bold transition-all duration-300 transform hover:scale-105 ${
                   activeFilter === category.key
-                    ? 'bg-indigo-600 text-white shadow-lg transform scale-105'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-2xl shadow-indigo-500/25'
+                    : 'bg-white/80 text-gray-700 hover:bg-white shadow-lg border border-gray-200 hover:border-indigo-200'
                 }`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.95 }}
               >
                 {category.label}
-              </button>
+              </motion.button>
             ))}
           </div>
         </div>
       </section>
 
       {/* Projects Grid */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProjects.map((project, index) => (
-              <div 
-                key={project.key} 
-                className={`group bg-gradient-to-br from-white/90 to-white/70 backdrop-blur-sm rounded-3xl shadow-xl border border-white/20 overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 hover:scale-105 ${
-                  project.featured ? 'ring-2 ring-yellow-400/50' : ''
-                }`}
+              <motion.div
+                key={project.key}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="group"
               >
+                <div className={`bg-gradient-to-br from-white/90 to-white/70 backdrop-blur-sm rounded-3xl shadow-xl border border-white/20 overflow-hidden hover:shadow-2xl transition-all duration-500 ${
+                  project.featured ? 'ring-2 ring-yellow-400/50' : ''
+                }`}>
                 {/* Project Header with Gradient */}
                 <div className={`relative h-48 bg-gradient-to-br ${project.gradient} p-6 flex flex-col justify-between`}>
                   <div className="flex items-center justify-between">
@@ -147,7 +198,7 @@ export default function Projects() {
                     )}
                     <div className="flex items-center space-x-2">
                       {[...Array(5)].map((_, i) => (
-                        <svg key={i} className={`w-3 h-3 ${i < Math.floor(project.rating) ? 'text-yellow-300' : 'text-white/40'}`} fill="currentColor" viewBox="0 0 20 20">
+                        <svg key={i} className={`w-3 h-3 fill-current ${i < Math.floor(project.rating) ? 'text-yellow-300' : 'text-white/40'}`} viewBox="0 0 20 20">
                           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                         </svg>
                       ))}
@@ -157,7 +208,7 @@ export default function Projects() {
                   
                   <div className="text-white">
                     <div className="flex items-center space-x-3 mb-3">
-                      <div className="w-12 h-12 bg-white/20 rounded-xl backdrop-blur-sm-custom flex items-center justify-center">
+                      <div className="w-12 h-12 bg-white/20 rounded-xl backdrop-blur-sm flex items-center justify-center">
                         <div className="w-8 h-8 bg-white/30 rounded-lg"></div>
                       </div>
                       <div>
@@ -173,13 +224,13 @@ export default function Projects() {
                 </div>
 
                 {/* Crystal Content Card */}
-                <div className="p-6 bg-white/80 backdrop-blur-sm-custom">
+                <div className="p-6 bg-white/80 backdrop-blur-sm">
                   <p className="text-gray-700 mb-4 leading-relaxed text-sm">
                     {String(t(`projects.portfolio.${project.key}.description`))}
                   </p>
 
                   {/* Project Details Table */}
-                  <div className="bg-white/60 backdrop-blur-lg-custom rounded-xl p-4 mb-4 border border-white/30">
+                  <div className="bg-white/60 backdrop-blur-md rounded-xl p-4 mb-4 border border-white/30">
                     <div className="grid grid-cols-2 gap-3 text-sm">
                       <div className="flex justify-between">
                         <span className="text-gray-600">Budget:</span>
@@ -236,7 +287,8 @@ export default function Projects() {
                     </button>
                   </div>
                 </div>
-              </div>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -254,7 +306,7 @@ export default function Projects() {
             </p>
           </div>
           
-          <div className="bg-white/70 backdrop-blur-xl-custom rounded-3xl shadow-2xl border border-white/20 overflow-hidden">
+          <div className="bg-white/70 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
@@ -291,7 +343,7 @@ export default function Projects() {
                       <td className="px-6 py-4">
                         <div className="flex items-center space-x-1">
                           {[...Array(5)].map((_, i) => (
-                            <svg key={i} className={`w-4 h-4 ${i < Math.floor(project.rating) ? 'text-yellow-400' : 'text-gray-300'}`} fill="currentColor" viewBox="0 0 20 20">
+                            <svg key={i} className={`w-4 h-4 fill-current ${i < Math.floor(project.rating) ? 'text-yellow-400' : 'text-gray-300'}`} viewBox="0 0 20 20">
                               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                             </svg>
                           ))}

@@ -84,15 +84,15 @@ export default function ServiceCard({ service, index = 0 }: ServiceCardProps) {
           </p>
 
           {/* Features List */}
-          <ul className="space-y-2 mb-6">
+          <ul className="space-y-3 mb-6">
             {service.features.slice(0, 3).map((feature, featureIndex) => (
-              <li key={featureIndex} className="flex items-center">
-                <div className="flex-shrink-0 w-4 h-4 bg-green-100 rounded-full flex items-center justify-center mr-3">
-                  <svg className="h-2 w-2 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+              <li key={featureIndex} className="flex items-center group/feature">
+                <div className="flex-shrink-0 w-5 h-5 bg-gradient-to-r from-green-100 to-emerald-100 rounded-full flex items-center justify-center mr-3 group-hover/feature:from-green-200 group-hover/feature:to-emerald-200 transition-all duration-200">
+                  <svg className="h-3 w-3 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <span className="text-gray-700 text-sm">{feature}</span>
+                <span className="text-gray-700 text-sm font-medium group-hover/feature:text-gray-900 transition-colors duration-200">{feature}</span>
               </li>
             ))}
           </ul>

@@ -3,25 +3,51 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 import { useTranslations } from '@/components/LocalizedText'
 
 export default function About() {
   const { t } = useTranslations()
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-r from-blue-600 to-purple-700 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            {t('about.hero.title')}
-          </h1>
-          <p className="text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed">
-            {t('about.hero.description')}
-          </p>
+      <section className="relative min-h-[80vh] flex items-center justify-center bg-gradient-to-br from-indigo-600 via-purple-600 to-blue-700 text-white overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-blue-400/10 rounded-full blur-3xl animate-bounce-slow"></div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-gray-50 to-transparent"></div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="text-5xl md:text-7xl font-extrabold mb-8 bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent leading-tight">
+              {t('about.hero.title')}
+            </h1>
+            <p className="text-xl md:text-2xl mb-12 text-blue-100 max-w-4xl mx-auto leading-relaxed">
+              {t('about.hero.description')}
+            </p>
+            <motion.div
+              className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl px-8 py-4 border border-white/20">
+                <span className="text-white font-bold text-lg">🚀 5+ Années d'Excellence</span>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl px-8 py-4 border border-white/20">
+                <span className="text-white font-bold text-lg">🏆 50+ Projets Réussis</span>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-slate-50 to-transparent"></div>
       </section>
 
       {/* Story Section */}
