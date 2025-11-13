@@ -157,7 +157,7 @@ const BaseCard: React.FC<BaseCardProps> = ({
       {/* Header */}
       <div className="flex items-start justify-between mb-3">
         <div className="flex-1">
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors line-clamp-2">
+          <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
             {title}
           </h3>
           {subtitle && (
@@ -181,7 +181,7 @@ const BaseCard: React.FC<BaseCardProps> = ({
       
       {/* Description */}
       {description && (
-        <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed line-clamp-2">
+        <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
           {description}
         </p>
       )}

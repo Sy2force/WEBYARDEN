@@ -74,12 +74,12 @@ export default function ServiceCard({ service, index = 0 }: ServiceCardProps) {
         {/* Service Content */}
         <div className="p-6">
           <div className="flex items-start justify-between mb-3">
-            <h3 className="text-xl font-bold text-gray-900 group-hover:text-indigo-600 transition-colors line-clamp-2">
+            <h3 className="text-xl font-bold text-gray-900 group-hover:text-indigo-600 transition-colors">
               {service.title}
             </h3>
           </div>
           
-          <p className="text-gray-600 mb-4 leading-relaxed line-clamp-2">
+          <p className="text-gray-600 mb-4 leading-relaxed">
             {service.description}
           </p>
 

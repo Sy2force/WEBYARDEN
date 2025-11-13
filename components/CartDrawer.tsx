@@ -1,15 +1,22 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useCartStore } from '@/store/cartStore'
 import { useTranslations } from '@/components/LocalizedText'
 import Image from 'next/image'
 import Link from 'next/link'
+import PaymentModal from './PaymentModal'
 
 export default function CartDrawer() {
   const { items, isOpen, toggleCart, removeItem, updateQuantity, getTotalPrice, getTotalItems } = useCartStore()
   const { t } = useTranslations()
+  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false)
+
+  const handleCheckout = () => {
+    setIsPaymentModalOpen(true)
+    toggleCart()
+  }
 
   return (
     <>
@@ -174,13 +181,12 @@ export default function CartDrawer() {
                 </div>
                 
                 <div className="space-y-3">
-                  <Link
-                    href="/devis"
-                    onClick={toggleCart}
-                    className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 px-4 rounded-lg hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 font-semibold text-center block"
+                  <button
+                    onClick={handleCheckout}
+                    className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 px-4 rounded-lg hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 font-semibold"
                   >
                     {t('cart.checkout')}
-                  </Link>
+                  </button>
                   
                   <button
                     onClick={toggleCart}
@@ -194,6 +200,12 @@ export default function CartDrawer() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Payment Modal */}
+      <PaymentModal 
+        isOpen={isPaymentModalOpen} 
+        onClose={() => setIsPaymentModalOpen(false)} 
+      />
     </>
   )
 }

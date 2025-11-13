@@ -62,7 +62,7 @@ export default function PackCard({ pack, index = 0, isHorizontal = false, isCube
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.4, delay: index * 0.05 }}
-        className={`relative group h-72 sm:h-80 lg:h-84 bg-white dark:bg-gray-800 rounded-2xl shadow-xl border transition-all duration-300 hover:shadow-2xl hover:scale-105 overflow-hidden cursor-pointer ${
+        className={`relative group h-72 sm:h-80 lg:h-96 bg-white dark:bg-gray-800 rounded-2xl shadow-xl border transition-all duration-300 hover:shadow-2xl hover:scale-105 overflow-hidden cursor-pointer ${
           pack.popular 
             ? 'border-2 border-indigo-500 ring-2 ring-indigo-500/30' 
             : 'border border-gray-200 dark:border-gray-700 hover:border-indigo-300'
@@ -98,7 +98,7 @@ export default function PackCard({ pack, index = 0, isHorizontal = false, isCube
           </div>
 
           {/* Title */}
-          <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 text-center line-clamp-2">
+          <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 text-center">
             {pack.name}
           </h3>
 
@@ -120,7 +120,7 @@ export default function PackCard({ pack, index = 0, isHorizontal = false, isCube
               {pack.services && pack.services.slice(0, 3).map((service: string, idx: number) => (
                 <li key={idx} className="flex items-center gap-2">
                   <div className="w-3 h-3 bg-green-500 rounded-full flex-shrink-0"></div>
-                  <span className="line-clamp-1">{service}</span>
+                  <span className="truncate">{service}</span>
                 </li>
               ))}
               {pack.services && pack.services.length > 3 && (
@@ -155,7 +155,7 @@ export default function PackCard({ pack, index = 0, isHorizontal = false, isCube
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: index * 0.1 }}
-        className={`relative group w-80 h-96 bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border transition-all duration-500 hover:shadow-3xl hover:-translate-y-2 overflow-hidden flex-shrink-0 ${
+        className={`relative group w-80 h-96 bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 overflow-hidden flex-shrink-0 ${
           pack.popular 
             ? 'border-2 border-indigo-500 ring-4 ring-indigo-500/20 scale-105' 
             : 'border border-gray-200 dark:border-gray-700 hover:border-indigo-300'
@@ -200,10 +200,10 @@ export default function PackCard({ pack, index = 0, isHorizontal = false, isCube
           </div>
 
           {/* Title & Subtitle */}
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 line-clamp-2">
+          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
             {pack.name}
           </h3>
-          <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
+          <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
             {pack.slogan}
           </p>
 
@@ -225,7 +225,7 @@ export default function PackCard({ pack, index = 0, isHorizontal = false, isCube
               {pack.services && pack.services.slice(0, 4).map((service: string, idx: number) => (
                 <li key={idx} className="flex items-center gap-2">
                   <div className="w-4 h-4 bg-green-500 rounded-full flex-shrink-0"></div>
-                  <span className="line-clamp-1">{service}</span>
+                  <span className="truncate">{service}</span>
                 </li>
               ))}
               {pack.services && pack.services.length > 4 && (
@@ -261,9 +261,9 @@ export default function PackCard({ pack, index = 0, isHorizontal = false, isCube
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className={`relative group h-full bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border transition-all duration-500 hover:shadow-3xl hover:-translate-y-2 overflow-hidden ${
+      className={`relative group h-full bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 overflow-hidden ${
         pack.popular 
-          ? 'border-2 border-gradient-to-r from-indigo-500 to-purple-500 ring-4 ring-indigo-500/20 scale-105' 
+          ? 'border-2 border-indigo-500 ring-4 ring-indigo-500/20 scale-105' 
           : 'border border-gray-200 dark:border-gray-700 hover:border-indigo-300 dark:hover:border-indigo-600'
       }`}
     >
