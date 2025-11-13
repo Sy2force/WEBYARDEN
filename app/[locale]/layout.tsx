@@ -4,6 +4,7 @@ import '../globals.css'
 import Layout from '@/components/layout/Layout'
 import ChatWidget from '@/components/ChatWidget'
 import StickySimulator from '@/components/StickySimulator'
+import CartDrawer from '@/components/CartDrawer'
 import { getSupportedLocales } from '@/lib/i18n'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -109,6 +110,7 @@ export default function LocaleLayout({
         </Layout>
         <ChatWidget />
         <StickySimulator />
+        <CartDrawer />
       </body>
     </html>
   )
