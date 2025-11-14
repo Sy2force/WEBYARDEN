@@ -45,10 +45,10 @@ export default function PackCard({ pack, index = 0, isHorizontal = false, isCube
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.4, delay: index * 0.05 }}
-        className={`relative group h-72 sm:h-80 lg:h-96 bg-white dark:bg-gray-800 rounded-2xl shadow-xl border transition-all duration-300 hover:shadow-2xl hover:scale-105 overflow-hidden cursor-pointer ${
+        className={`relative group card-pack-cube dark:bg-gray-800 overflow-hidden hover:scale-105 ${
           pack.popular 
             ? 'border-2 border-indigo-500 ring-2 ring-indigo-500/30' 
-            : 'border border-gray-200 dark:border-gray-700 hover:border-indigo-300'
+            : 'dark:border-gray-700 hover:border-indigo-300'
         }`}
       >
         {/* Background Gradient */}
@@ -138,10 +138,10 @@ export default function PackCard({ pack, index = 0, isHorizontal = false, isCube
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: index * 0.1 }}
-        className={`relative group w-80 h-96 bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 overflow-hidden flex-shrink-0 ${
+        className={`relative group card-pack-horizontal dark:bg-gray-800 rounded-3xl overflow-hidden hover:-translate-y-2 ${
           pack.popular 
             ? 'border-2 border-indigo-500 ring-4 ring-indigo-500/20 scale-105' 
-            : 'border border-gray-200 dark:border-gray-700 hover:border-indigo-300'
+            : 'dark:border-gray-700 hover:border-indigo-300'
         }`}
       >
         {/* Background Gradient */}
@@ -244,10 +244,10 @@ export default function PackCard({ pack, index = 0, isHorizontal = false, isCube
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className={`relative group h-full bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 overflow-hidden ${
+      className={`relative group card-pack dark:bg-gray-800 rounded-3xl overflow-hidden hover:-translate-y-2 ${
         pack.popular 
           ? 'border-2 border-indigo-500 ring-4 ring-indigo-500/20 scale-105' 
-          : 'border border-gray-200 dark:border-gray-700 hover:border-indigo-300 dark:hover:border-indigo-600'
+          : 'dark:border-gray-700 hover:border-indigo-300 dark:hover:border-indigo-600'
       }`}
     >
       {/* Background Gradient */}

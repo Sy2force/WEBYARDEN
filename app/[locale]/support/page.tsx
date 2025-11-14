@@ -5,14 +5,14 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useTranslations } from '@/components/LocalizedText'
 
-const getSupportCategories = (t: any) => [
+const getSupportCategories = (t: (key: string) => string, tArray: (key: string) => string[]) => [
   {
     id: 'technical',
     title: t('support.categories.technical.title'),
     description: t('support.categories.technical.description'),
     icon: '🔧',
     color: 'from-blue-500 to-cyan-500',
-    articles: t('support.articles.technical').map((title: string, index: number) => ({
+    articles: tArray('support.articles.technical').map((title: string, index: number) => ({
       title,
       views: [1250, 890, 756, 634][index] || 500
     }))
@@ -23,7 +23,7 @@ const getSupportCategories = (t: any) => [
     description: t('support.categories.billing.description'),
     icon: '💳',
     color: 'from-green-500 to-emerald-500',
-    articles: t('support.articles.billing').map((title: string, index: number) => ({
+    articles: tArray('support.articles.billing').map((title: string, index: number) => ({
       title,
       views: [980, 743, 567, 432][index] || 400
     }))
@@ -34,7 +34,7 @@ const getSupportCategories = (t: any) => [
     description: t('support.categories.features.description'),
     icon: '⚡',
     color: 'from-purple-500 to-pink-500',
-    articles: t('support.articles.features').map((title: string, index: number) => ({
+    articles: tArray('support.articles.features').map((title: string, index: number) => ({
       title,
       views: [1456, 823, 712, 598][index] || 600
     }))
@@ -45,14 +45,14 @@ const getSupportCategories = (t: any) => [
     description: t('support.categories.account.description'),
     icon: '👤',
     color: 'from-orange-500 to-red-500',
-    articles: t('support.articles.account').map((title: string, index: number) => ({
+    articles: tArray('support.articles.account').map((title: string, index: number) => ({
       title,
       views: [1123, 687, 543, 321][index] || 450
     }))
   }
 ]
 
-const getQuickActions = (t: any) => [
+const getQuickActions = (t: (key: string) => string) => [
   {
     title: t('support.quickActions.chat.title'),
     description: t('support.quickActions.chat.description'),
@@ -88,11 +88,11 @@ const getQuickActions = (t: any) => [
 ]
 
 export default function SupportPage() {
-  const { t } = useTranslations()
+  const { t, tArray } = useTranslations()
   const [selectedCategory, setSelectedCategory] = useState('technical')
   const [searchQuery, setSearchQuery] = useState('')
 
-  const supportCategories = getSupportCategories(t)
+  const supportCategories = getSupportCategories(t, tArray)
   const quickActions = getQuickActions(t)
 
   const filteredArticles = supportCategories
@@ -224,11 +224,11 @@ export default function SupportPage() {
                     key={category.id}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    className={`bg-gradient-to-br ${category.color} p-8 rounded-2xl text-white shadow-xl`}
+                    className={`bg-gradient-to-br ${category.color} p-6 lg:p-8 rounded-2xl text-white shadow-xl h-fit`}
                   >
                     <div className="text-4xl mb-4">{category.icon}</div>
-                    <h3 className="text-2xl font-bold mb-4">{category.title}</h3>
-                    <p className="text-lg opacity-90 mb-6">{category.description}</p>
+                    <h3 className="text-xl lg:text-2xl font-bold mb-3 lg:mb-4 leading-tight">{category.title}</h3>
+                    <p className="text-sm lg:text-lg opacity-90 mb-4 lg:mb-6 leading-relaxed">{category.description}</p>
                     <button className="bg-white/20 hover:bg-white/30 px-6 py-3 rounded-xl font-semibold transition-colors">
                       {t('support.categories.viewAll')}
                     </button>
@@ -250,11 +250,11 @@ export default function SupportPage() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.05 }}
-                      className="flex items-center justify-between p-4 border border-gray-200 dark:border-gray-600 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer transition-colors"
+                      className="flex items-center justify-between p-3 lg:p-4 border border-gray-200 dark:border-gray-600 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer transition-colors"
                     >
                       <div className="flex items-center space-x-4">
                         <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
-                        <span className="text-gray-900 dark:text-white font-medium">
+                        <span className="text-gray-900 dark:text-white font-medium text-sm lg:text-base line-clamp-2">
                           {article.title}
                         </span>
                       </div>

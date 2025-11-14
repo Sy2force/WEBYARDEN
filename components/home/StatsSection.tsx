@@ -10,7 +10,7 @@ interface Stat {
   icon: string
 }
 
-const getStats = (t: any): Stat[] => [
+const getStats = (t: (key: string) => string): Stat[] => [
   {
     number: '150+',
     label: t('stats.projects'),

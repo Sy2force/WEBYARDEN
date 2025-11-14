@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   trailingSlash: false,
+  productionBrowserSourceMaps: true,
   experimental: {
     optimizePackageImports: ['framer-motion', '@react-pdf/renderer'],
   },

@@ -53,10 +53,10 @@ export default function StickySimulator() {
     if (service && estimatedPrice > 0) {
       addItem({
         id: service.id,
-        title: service.title,
+        title: t(service.titleKey),
         price: estimatedPrice,
         category: service.category,
-        description: service.description,
+        description: t(service.descriptionKey),
         delivery: service.delivery,
         image: service.image
       })
@@ -150,7 +150,7 @@ export default function StickySimulator() {
                     <option value="">{t('simulator.selectService')}</option>
                     {services.slice(0, 10).map((service) => (
                       <option key={service.id} value={service.id}>
-                        {service.title}
+                        {t(service.titleKey)}
                       </option>
                     ))}
                   </select>

@@ -5,9 +5,9 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Web Yarden - Agence Digitale Israël | Développement Web & Marketing Digital',
-  description: 'Agence digitale spécialisée en développement web, e-commerce, SEO et marketing digital en Israël. Solutions sur mesure pour PME et startups. Devis gratuit.',
-  keywords: ['agence digitale israël', 'développement web', 'e-commerce', 'SEO', 'marketing digital', 'site web israël', 'création site internet'],
+  title: 'Web Yarden',
+  description: 'Solutions digitales premium en Israël. Développement web, e-commerce, SEO et marketing digital sur-mesure. Transformez votre vision en succès digital.',
+  keywords: ['web yarden', 'développement web israël', 'e-commerce premium', 'SEO israël', 'marketing digital', 'solutions digitales', 'création site web'],
   authors: [{ name: 'Web Yarden', url: 'https://webyarden.vercel.app' }],
   creator: 'Web Yarden',
   publisher: 'Web Yarden',
@@ -21,8 +21,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Web Yarden - Agence Digitale Israël | Développement Web & Marketing Digital',
-    description: 'Agence digitale spécialisée en développement web, e-commerce, SEO et marketing digital en Israël. Solutions sur mesure pour PME et startups.',
+    title: 'Web Yarden',
+    description: 'Solutions digitales premium en Israël. Développement web, e-commerce, SEO et marketing digital sur-mesure.',
     url: '/',
     siteName: 'Web Yarden',
     images: [
@@ -38,8 +38,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Web Yarden - Agence Digitale Israël',
-    description: 'Agence digitale spécialisée en développement web, e-commerce, SEO et marketing digital en Israël.',
+    title: 'Web Yarden',
+    description: 'Solutions digitales premium en Israël. Développement web, e-commerce, SEO et marketing digital sur-mesure.',
     images: ['/og-image.jpg'],
     creator: '@webyarden',
   },

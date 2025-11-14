@@ -12,19 +12,19 @@ export default function LocalizedText({ keyName, fallback }: LocalizedTextProps)
   const params = useParams()
   const locale = (params?.locale as string) || 'fr'
   
-  const getNestedValue = (obj: any, path: string): string => {
+  const getNestedValue = (obj: Record<string, unknown>, path: string): string => {
     const keys = path.split('.')
-    let value = obj
+    let value: unknown = obj
     
     for (const key of keys) {
-      if (value && typeof value === 'object') {
-        value = value[key]
+      if (value && typeof value === 'object' && value !== null && key in value) {
+        value = (value as Record<string, unknown>)[key]
       } else {
-        return fallback || path
+        return path // Return original path if not found
       }
     }
     
-    return value || fallback || path
+    return typeof value === 'string' ? value : path
   }
   
   const translationObj = translations[locale as keyof typeof translations]
@@ -39,18 +39,38 @@ export function useTranslations() {
 
   const t = (key: string): string => {
     const keys = key.split('.')
-    let value: any = translations[locale as keyof typeof translations]
+    let value: unknown = translations[locale as keyof typeof translations]
     
     for (const k of keys) {
-      if (value && typeof value === 'object') {
-        value = value[k]
+      if (value && typeof value === 'object' && value !== null && k in value) {
+        value = (value as Record<string, unknown>)[k]
       } else {
         return key // Return key if translation not found
       }
     }
     
-    return value || key
+    // Handle arrays by joining with commas
+    if (Array.isArray(value)) {
+      return value.join(',')
+    }
+    
+    return typeof value === 'string' ? value : key
   }
 
-  return { t, locale }
+  const tArray = (key: string): string[] => {
+    const keys = key.split('.')
+    let value: unknown = translations[locale as keyof typeof translations]
+    
+    for (const k of keys) {
+      if (value && typeof value === 'object' && value !== null && k in value) {
+        value = (value as Record<string, unknown>)[k]
+      } else {
+        return []
+      }
+    }
+    
+    return Array.isArray(value) ? value : []
+  }
+
+  return { t, tArray, locale }
 }

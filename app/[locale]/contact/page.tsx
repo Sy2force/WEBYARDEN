@@ -1,7 +1,9 @@
 'use client'
 
 import React, { useState } from 'react'
+import { motion } from 'framer-motion'
 import { useTranslations } from '@/components/LocalizedText'
+import Image from 'next/image'
 
 export default function Contact() {
   const { t } = useTranslations()
@@ -29,15 +31,59 @@ export default function Contact() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
-        <div className="max-w-7xl mx-auto py-20 px-4 sm:py-24 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl font-extrabold sm:text-5xl md:text-6xl">
-              {t('contact.title')}
-            </h1>
-            <p className="mt-6 max-w-3xl mx-auto text-xl text-blue-100">
-              {t('contact.subtitle')}
-            </p>
+      <section className="relative bg-gradient-to-r from-blue-600 via-indigo-700 to-purple-800 text-white overflow-hidden">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="relative max-w-7xl mx-auto py-20 px-4 sm:py-24 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center lg:text-left"
+            >
+              <h1 className="text-4xl font-extrabold sm:text-5xl md:text-6xl">
+                {t('contact.title')}
+              </h1>
+              <p className="mt-6 max-w-3xl mx-auto lg:mx-0 text-xl text-blue-100">
+                {t('contact.subtitle')}
+              </p>
+              <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <button className="px-8 py-3 bg-white text-indigo-700 font-semibold rounded-xl hover:bg-gray-100 transition-colors shadow-lg">
+                  📞 {t('contact.cta.call')}
+                </button>
+                <button className="px-8 py-3 border-2 border-white text-white font-semibold rounded-xl hover:bg-white hover:text-indigo-700 transition-colors">
+                  💬 {t('contact.cta.chat')}
+                </button>
+              </div>
+            </motion.div>
+            
+            {/* Professional Team Photo */}
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative"
+            >
+              <div className="relative w-full h-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/images/team-professional.jpg"
+                  alt="Équipe Web Yarden - Experts en développement web et marketing digital"
+                  fill
+                  className="object-cover"
+                  priority
+                  onError={(e) => {
+                    // Fallback to a placeholder if image doesn't exist
+                    e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9IiNGM0Y0RjYiLz48cGF0aCBkPSJNMjAwIDE1MEM5MyAxNTAgMCA5MyAwIDIwMFM5MyAyNTAgMjAwIDI1MFMzMDAgMjA3IDMwMCAyMDBTMjA3IDUwIDIwMCA1MFoiIGZpbGw9IiNEMUQ1REIiLz48cGF0aCBkPSJNMTQwIDkwQzE0MCA3NS41IDU5LjUgOTUgNzUgOTVTMTA1IDc1LjUgMTA1IDkwUzg5LjUgMTA1IDc1IDEwNVM0NSA4OS41IDQ1IDc1WiIgZmlsbD0iIzlDQTNBRiIvPjwvc3ZnPg=='
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                <div className="absolute bottom-6 left-6">
+                  <div className="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2">
+                    <p className="text-white font-semibold">✨ {t('contact.team.badge')}</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -47,7 +93,11 @@ export default function Contact() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Info */}
-            <div>
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
               <h2 className="text-2xl font-bold text-gray-900 mb-8">{t('contact.info.title')}</h2>
               
               <div className="space-y-6">
@@ -126,10 +176,15 @@ export default function Contact() {
                   </a>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Contact Form */}
-            <div className="bg-white rounded-lg shadow-lg p-8">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100"
+            >
               <h2 className="text-2xl font-bold text-gray-900 mb-8">{t('contact.form.title')}</h2>
               
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -213,7 +268,7 @@ export default function Contact() {
                   </button>
                 </div>
               </form>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>

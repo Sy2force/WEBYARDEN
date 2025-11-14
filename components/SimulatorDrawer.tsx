@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Service } from '@/data/services'
 import { useCartStore } from '@/store/cartStore'
+import { useTranslations } from '@/components/LocalizedText'
 
 interface SimulatorDrawerProps {
   service: Service
@@ -23,6 +24,7 @@ interface SimulatorData {
 
 export default function SimulatorDrawer({ service, isOpen, onClose }: SimulatorDrawerProps) {
   const addItem = useCartStore((state) => state.addItem)
+  const { t } = useTranslations()
   
   const [simulatorData, setSimulatorData] = useState<SimulatorData>({
     name: '',
@@ -88,10 +90,10 @@ export default function SimulatorDrawer({ service, isOpen, onClose }: SimulatorD
     const estimatedPrice = calculateEstimate()
     addItem({
       id: `${service.id}-custom`,
-      title: `${service.title} (Personnalisé)`,
+      title: `${t(service.titleKey)} (Personnalisé)`,
       price: estimatedPrice,
       category: service.category,
-      description: service.description,
+      description: t(service.descriptionKey),
       delivery: service.delivery,
       image: service.image
     })
@@ -123,7 +125,7 @@ export default function SimulatorDrawer({ service, isOpen, onClose }: SimulatorD
             <div className="flex items-center justify-between p-6 border-b border-gray-200">
               <div>
                 <h2 className="text-2xl font-bold text-gray-900">Simulateur de Devis</h2>
-                <p className="text-gray-600">{service.title}</p>
+                <p className="text-gray-600">{t(service.titleKey)}</p>
               </div>
               <button
                 onClick={onClose}
@@ -277,7 +279,7 @@ export default function SimulatorDrawer({ service, isOpen, onClose }: SimulatorD
                         const option = serviceOptions[optionKey as keyof typeof serviceOptions]
                         return option ? (
                           <div key={optionKey} className="flex justify-between items-center p-4 bg-white/60 rounded-xl">
-                            <span className="text-gray-600">{option.name}:</span>
+                            <span className="text-gray-700">{option.name}</span>
                             <span className="font-semibold text-blue-600">+₪ {option.price.toLocaleString()}</span>
                           </div>
                         ) : null
@@ -318,10 +320,10 @@ export default function SimulatorDrawer({ service, isOpen, onClose }: SimulatorD
                   <div className="mt-6">
                     <h4 className="font-semibold text-gray-900 mb-3">✅ Inclus dans ce service:</h4>
                     <div className="space-y-2">
-                      {service.features.slice(0, 4).map((feature, index) => (
+                      {t(service.featuresKey).split(',').slice(0, 3).map((feature: string, index: number) => (
                         <div key={index} className="flex items-center space-x-2 text-sm">
                           <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                          <span>{feature}</span>
+                          <span>{feature.trim()}</span>
                         </div>
                       ))}
                     </div>

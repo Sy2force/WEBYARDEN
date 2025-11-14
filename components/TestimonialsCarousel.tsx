@@ -16,7 +16,7 @@ interface Testimonial {
 }
 
 // Helper function to get testimonials from translations
-const getTestimonials = (t: any): Testimonial[] => [
+const getTestimonials = (t: (key: string) => string): Testimonial[] => [
   {
     id: 1,
     name: t('testimonials.testimonial1.name'),

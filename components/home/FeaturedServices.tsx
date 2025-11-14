@@ -53,10 +53,10 @@ export default function FeaturedServices() {
                 {/* Content */}
                 <div className="text-center">
                   <h3 className="text-xl lg:text-2xl font-bold mb-3 text-gray-800 group-hover:text-indigo-600 transition-colors">
-                    {service.title}
+                    {t(service.titleKey)}
                   </h3>
                   <p className="text-gray-600 mb-6 text-sm lg:text-base leading-relaxed">
-                    {service.description}
+                    {t(service.descriptionKey)}
                   </p>
                   
                   {/* Pricing */}

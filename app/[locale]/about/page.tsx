@@ -39,10 +39,10 @@ export default function About() {
               transition={{ duration: 0.8, delay: 0.3 }}
             >
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl px-8 py-4 border border-white/20">
-                <span className="text-white font-bold text-lg">🚀 5+ Années d'Excellence</span>
+                <span className="text-white font-bold text-lg">{t('about.hero.experience')}</span>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl px-8 py-4 border border-white/20">
-                <span className="text-white font-bold text-lg">🏆 50+ Projets Réussis</span>
+                <span className="text-white font-bold text-lg">{t('about.hero.projects')}</span>
               </div>
             </motion.div>
           </motion.div>

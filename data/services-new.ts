@@ -307,28 +307,4 @@ export const services: Service[] = [
   }
 ];
 
-// Service categories
-export const serviceCategories = [
-  { id: 'web-development', name: 'Développement Web', icon: '🌐' },
-  { id: 'ecommerce', name: 'E-commerce', icon: '🛒' },
-  { id: 'marketing', name: 'Marketing Digital', icon: '📈' },
-  { id: 'mobile', name: 'Applications Mobiles', icon: '📱' },
-  { id: 'consulting', name: 'Conseil', icon: '💡' },
-  { id: 'maintenance', name: 'Maintenance', icon: '🔧' },
-  { id: 'specialized', name: 'Spécialisé', icon: '⭐' }
-];
-
-// Helper functions
-export function getServiceBySlug(slug: string): Service | undefined {
-  return services.find(service => service.slug === slug);
-}
-
-export function getFeaturedServices(): Service[] {
-  return services.filter(service => service.popular === true);
-}
-
-export function getServicesByCategory(category: string): Service[] {
-  return services.filter(service => service.category === category);
-}
-
 export default services;

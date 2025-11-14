@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { useTranslations } from '@/components/LocalizedText'
 import { getServiceBySlug, getServicesByCategory, serviceCategories } from '@/data/services'
 import { useCartStore } from '@/store/cartStore'
 import SimulatorDrawer from '@/components/SimulatorDrawer'
@@ -20,6 +21,7 @@ export default function ServicePage({ params }: ServicePageProps) {
   const service = getServiceBySlug(params.slug)
   const [isSimulatorOpen, setIsSimulatorOpen] = useState(false)
   const addItem = useCartStore((state) => state.addItem)
+  const { t } = useTranslations()
 
   if (!service) {
     notFound()
@@ -33,10 +35,10 @@ export default function ServicePage({ params }: ServicePageProps) {
   const handleAddToCart = () => {
     addItem({
       id: service.id,
-      title: service.title,
+      title: t(service.titleKey),
       price: service.price,
       category: service.category,
-      description: service.description,
+      description: t(service.descriptionKey),
       delivery: service.delivery,
       image: service.image
     })
@@ -70,7 +72,7 @@ export default function ServicePage({ params }: ServicePageProps) {
                 </svg>
               </li>
               <li>
-                <span className="text-gray-900 font-medium">{service.title}</span>
+                <span className="text-gray-900 font-medium">{t(service.titleKey)}</span>
               </li>
             </ol>
           </nav>
@@ -88,21 +90,21 @@ export default function ServicePage({ params }: ServicePageProps) {
             >
               <div className="flex items-center mb-4">
                 <span className="text-indigo-200 text-sm font-medium">
-                  {category?.icon} {category?.name}
+                  {category?.name}
                 </span>
-                {service.badge && (
+                {service.badgeKey && (
                   <span className="ml-3 bg-yellow-400 text-yellow-900 px-3 py-1 rounded-full text-sm font-semibold">
-                    {service.badge}
+                    {t(service.badgeKey)}
                   </span>
                 )}
               </div>
               
               <h1 className="text-4xl lg:text-5xl font-bold mb-6">
-                {service.title}
+                {t(service.titleKey)}
               </h1>
               
               <p className="text-xl text-indigo-100 mb-8 leading-relaxed">
-                {service.description}
+                {t(service.descriptionKey)}
               </p>
               
               <div className="flex flex-wrap gap-4">
@@ -130,7 +132,7 @@ export default function ServicePage({ params }: ServicePageProps) {
               <div className="relative h-96 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl overflow-hidden shadow-2xl">
                 <Image
                   src={service.image}
-                  alt={service.title}
+                  alt={t(service.titleKey)}
                   width={600}
                   height={400}
                   className="w-full h-full object-cover"
@@ -161,7 +163,7 @@ export default function ServicePage({ params }: ServicePageProps) {
                   Ce qui est inclus
                 </h2>
                 <div className="grid md:grid-cols-2 gap-6">
-                  {service.features.map((feature, index) => (
+                  {t(service.featuresKey).split(',').map((feature: string, index: number) => (
                     <div key={index} className="flex items-start">
                       <div className="flex-shrink-0 w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-4 mt-1">
                         <svg className="h-4 w-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -169,7 +171,7 @@ export default function ServicePage({ params }: ServicePageProps) {
                         </svg>
                       </div>
                       <div>
-                        <p className="text-gray-900 font-medium">{feature}</p>
+                        <p className="text-gray-900 font-medium">{feature.trim()}</p>
                       </div>
                     </div>
                   ))}

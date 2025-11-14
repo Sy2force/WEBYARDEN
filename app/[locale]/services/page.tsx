@@ -10,11 +10,13 @@ export default function Services() {
   const { t } = useTranslations()
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [searchTerm, setSearchTerm] = useState('')
-
+  
   const filteredServices = services.filter(service => {
     const matchesCategory = selectedCategory === 'all' || service.category === selectedCategory
-    const matchesSearch = service.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         service.description.toLowerCase().includes(searchTerm.toLowerCase())
+    const serviceTitle = t(service.titleKey).toLowerCase()
+    const serviceDescription = t(service.descriptionKey).toLowerCase()
+    const searchLower = searchTerm.toLowerCase()
+    const matchesSearch = serviceTitle.includes(searchLower) || serviceDescription.includes(searchLower)
     return matchesCategory && matchesSearch
   })
 
