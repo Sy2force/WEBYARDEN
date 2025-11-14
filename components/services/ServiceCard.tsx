@@ -101,13 +101,13 @@ export default function ServiceCard({ service, index = 0 }: ServiceCardProps) {
           <div className="border-t border-gray-100 pt-4">
             <div className="flex justify-between items-center mb-4">
               <div>
-                <p className="text-sm text-gray-500">{t('services.price') || 'Prix'}</p>
+                <p className="text-sm text-gray-500">{t('services.price')}</p>
                 <p className="text-xl font-bold text-indigo-600">
                   ₪ {service.price.toLocaleString()}
                 </p>
               </div>
               <div>
-                <p className="text-sm text-gray-500">{t('services.delivery') || 'Délai'}</p>
+                <p className="text-sm text-gray-500">{t('services.delivery')}</p>
                 <p className="text-lg font-semibold text-gray-900">
                   {service.delivery}
                 </p>
@@ -123,7 +123,7 @@ export default function ServiceCard({ service, index = 0 }: ServiceCardProps) {
                 {t('simulator.addToCart')}
               </button>
               <button className="px-4 py-3 border border-indigo-200 text-indigo-600 rounded-lg hover:bg-indigo-50 transition-colors font-semibold text-sm">
-                {t('simulator.simulate') || 'Simuler'}
+                {t('simulator.simulate')}
               </button>
             </div>
           </div>

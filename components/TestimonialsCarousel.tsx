@@ -15,40 +15,41 @@ interface Testimonial {
   rating: number
 }
 
-const testimonials: Testimonial[] = [
+// Helper function to get testimonials from translations
+const getTestimonials = (t: any): Testimonial[] => [
   {
     id: 1,
-    name: "Sarah Cohen",
-    company: "TechStart IL",
-    role: "CEO",
-    content: "Web Yarden a transformé notre présence digitale. Leur expertise technique et leur compréhension du marché israélien sont exceptionnelles.",
+    name: t('testimonials.testimonial1.name'),
+    company: t('testimonials.testimonial1.company'),
+    role: t('testimonials.testimonial1.role'),
+    content: t('testimonials.testimonial1.content'),
     avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
     rating: 5
   },
   {
     id: 2,
-    name: "David Levi",
-    company: "E-Commerce Plus",
-    role: "Fondateur",
-    content: "Grâce à Web Yarden, nos ventes en ligne ont augmenté de 300% en 6 mois. Une équipe professionnelle et réactive.",
+    name: t('testimonials.testimonial2.name'),
+    company: t('testimonials.testimonial2.company'),
+    role: t('testimonials.testimonial2.role'),
+    content: t('testimonials.testimonial2.content'),
     avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
     rating: 5
   },
   {
     id: 3,
-    name: "Rachel Goldberg",
-    company: "Startup Nation",
-    role: "Marketing Director",
-    content: "L'approche multilingue de Web Yarden nous a permis de toucher efficacement nos clients francophones, anglophones et hébraïques.",
+    name: t('testimonials.testimonial3.name'),
+    company: t('testimonials.testimonial3.company'),
+    role: t('testimonials.testimonial3.role'),
+    content: t('testimonials.testimonial3.content'),
     avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
     rating: 5
   },
   {
     id: 4,
-    name: "Michael Rosenberg",
-    company: "Digital Solutions",
-    role: "CTO",
-    content: "Code de qualité, délais respectés, support excellent. Web Yarden dépasse nos attentes à chaque projet.",
+    name: t('testimonials.testimonial4.name'),
+    company: t('testimonials.testimonial4.company'),
+    role: t('testimonials.testimonial4.role'),
+    content: t('testimonials.testimonial4.content'),
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
     rating: 5
   }
@@ -66,6 +67,9 @@ const clientLogos = [
 export default function TestimonialsCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const { t } = useTranslations()
+  
+  // Get testimonials from translations
+  const testimonials = getTestimonials(t)
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -73,7 +77,7 @@ export default function TestimonialsCarousel() {
     }, 5000)
 
     return () => clearInterval(timer)
-  }, [])
+  }, [testimonials.length])
 
   const nextTestimonial = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length)
@@ -148,7 +152,7 @@ export default function TestimonialsCarousel() {
               <button
                 onClick={prevTestimonial}
                 className="p-3 rounded-full bg-indigo-100 dark:bg-indigo-900 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-200 dark:hover:bg-indigo-800 transition-colors"
-                aria-label={t('buttons.previous') || 'Précédent'}
+                aria-label={t('buttons.previous')}
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -157,7 +161,7 @@ export default function TestimonialsCarousel() {
               <button
                 onClick={nextTestimonial}
                 className="p-3 rounded-full bg-indigo-100 dark:bg-indigo-900 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-200 dark:hover:bg-indigo-800 transition-colors"
-                aria-label={t('buttons.next') || 'Suivant'}
+                aria-label={t('buttons.next')}
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -167,7 +171,7 @@ export default function TestimonialsCarousel() {
 
             {/* Dots Indicator */}
             <div className="flex justify-center space-x-2 mt-6">
-              {testimonials.map((_, index) => (
+              {testimonials.map((_: Testimonial, index: number) => (
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
@@ -176,7 +180,7 @@ export default function TestimonialsCarousel() {
                       ? 'bg-indigo-600 dark:bg-indigo-400'
                       : 'bg-gray-300 dark:bg-gray-600'
                   }`}
-                  aria-label={`${t('testimonials.goTo') || 'Aller au témoignage'} ${index + 1}`}
+                  aria-label={`${t('testimonials.goTo')} ${index + 1}`}
                 />
               ))}
             </div>
@@ -186,7 +190,7 @@ export default function TestimonialsCarousel() {
         {/* Client Logos */}
         <div className="text-center">
           <h3 className="text-lg font-semibold text-gray-600 dark:text-gray-400 mb-8">
-            {t('testimonials.trustedBy') || 'Ils nous font confiance'}
+            {t('testimonials.trustedBy')}
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center opacity-60 hover:opacity-100 transition-opacity">
             {clientLogos.map((client, index) => (

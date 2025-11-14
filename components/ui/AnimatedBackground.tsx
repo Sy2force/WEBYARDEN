@@ -97,8 +97,8 @@ const AnimatedBackground = memo(({
           key={particle.id}
           className={`absolute rounded-full bg-${colors.primary}-400/30`}
           style={{
-            width: particle.size,
-            height: particle.size,
+            width: `${particle.size}px`,
+            height: `${particle.size}px`,
             left: `${particle.x}%`,
             top: `${particle.y}%`,
           }}
@@ -125,8 +125,8 @@ const AnimatedBackground = memo(({
           key={shape.id}
           className={`absolute border border-${colors.primary}-300/20 rounded-xl`}
           style={{
-            width: shape.size,
-            height: shape.size,
+            width: `${shape.size}px`,
+            height: `${shape.size}px`,
             left: `${shape.x}%`,
             top: `${shape.y}%`,
           }}

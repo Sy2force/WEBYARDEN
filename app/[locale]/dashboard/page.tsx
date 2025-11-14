@@ -375,12 +375,12 @@ export default function Dashboard() {
               {activeTab === 'analytics' && '📈'}
             </div>
             <h3 className="text-3xl font-bold text-gray-900 mb-6">
-              {activeTab === 'projects' && 'Gestion des Projets'}
-              {activeTab === 'clients' && 'Gestion des Clients'}
-              {activeTab === 'analytics' && 'Analytics Avancées'}
+              {activeTab === 'projects' && t('dashboard.tabs.projects')}
+              {activeTab === 'clients' && t('dashboard.tabs.clients')}
+              {activeTab === 'analytics' && t('dashboard.tabs.analytics')}
             </h3>
             <p className="text-xl text-gray-600 mb-8">
-              Cette section sera implémentée dans une prochaine version.
+              {t('dashboard.comingSoon')}
             </p>
             <div className="bg-gradient-to-r from-indigo-100 to-purple-100 rounded-xl p-6 border border-indigo-200/50">
               <p className="text-indigo-700 font-semibold">

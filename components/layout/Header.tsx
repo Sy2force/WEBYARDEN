@@ -141,7 +141,7 @@ export default function Header() {
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden p-2 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
-              aria-label={t('header.mobileMenu') || 'Menu mobile'}
+              aria-label={t('header.mobileMenu')}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {isMenuOpen ? (

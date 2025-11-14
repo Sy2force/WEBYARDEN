@@ -67,11 +67,13 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
       await new Promise(resolve => setTimeout(resolve, 2000))
       
       // Here you would integrate with actual payment provider
-      console.log('Payment processed:', {
-        items,
-        totalPrice: getTotalPrice(),
-        paymentData
-      })
+      if (process.env.NODE_ENV === 'development') {
+        console.log('Payment processed:', {
+          items,
+          totalPrice: getTotalPrice(),
+          paymentData
+        })
+      }
       
       setStep('confirmation')
       setTimeout(() => {
@@ -81,7 +83,9 @@ export default function PaymentModal({ isOpen, onClose }: PaymentModalProps) {
       }, 3000)
       
     } catch (error) {
-      console.error('Payment failed:', error)
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Payment failed:', error)
+      }
     } finally {
       setIsProcessing(false)
     }

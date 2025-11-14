@@ -79,11 +79,11 @@ export default function Projects() {
   ]
 
   const categories = [
-    { key: 'all', label: 'Tous' },
-    { key: 'web', label: 'Sites Web' },
-    { key: 'ecommerce', label: 'E-commerce' },
-    { key: 'mobile', label: 'Applications' },
-    { key: 'platform', label: 'Plateformes' }
+    { key: 'all', label: t('projects.categories.all') },
+    { key: 'web', label: t('projects.categories.web') },
+    { key: 'ecommerce', label: t('projects.categories.ecommerce') },
+    { key: 'mobile', label: t('projects.categories.mobile') },
+    { key: 'platform', label: t('projects.categories.platform') }
   ]
 
   const filteredProjects = activeFilter === 'all' 
@@ -120,10 +120,10 @@ export default function Projects() {
               transition={{ duration: 0.8, delay: 0.3 }}
             >
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl px-8 py-4 border border-white/20">
-                <span className="text-white font-bold text-lg">150+ Projets Réalisés</span>
+                <span className="text-white font-bold text-lg">150+ {t('projects.impact.projectsDelivered')}</span>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl px-8 py-4 border border-white/20">
-                <span className="text-white font-bold text-lg">98% Clients Satisfaits</span>
+                <span className="text-white font-bold text-lg">98% {t('projects.impact.clientsSatisfied')}</span>
               </div>
             </motion.div>
           </motion.div>
@@ -141,10 +141,10 @@ export default function Projects() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Filtrer par Catégorie
+              {t('projects.filterTitle')}
             </h2>
             <p className="text-xl text-gray-600 mb-8">
-              Découvrez nos réalisations par domaine d'expertise
+              {t('projects.filterSubtitle')}
             </p>
           </motion.div>
           <div className="flex flex-wrap justify-center gap-4">
@@ -193,7 +193,7 @@ export default function Projects() {
                   <div className="flex items-center justify-between">
                     {project.featured && (
                       <div className="bg-yellow-400 text-yellow-900 px-3 py-1 rounded-full text-xs font-bold shadow-lg">
-                        ⭐ Projet Phare
+                        {t('projects.featuredProject')}
                       </div>
                     )}
                     <div className="flex items-center space-x-2">
@@ -233,19 +233,19 @@ export default function Projects() {
                   <div className="bg-white/60 backdrop-blur-md rounded-xl p-4 mb-4 border border-white/30">
                     <div className="grid grid-cols-2 gap-3 text-sm">
                       <div className="flex justify-between">
-                        <span className="text-gray-600">Budget:</span>
+                        <span className="text-gray-600">{t('projects.budget')}:</span>
                         <span className="font-semibold text-green-600">{project.budget}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-600">Durée:</span>
+                        <span className="text-gray-600">{t('projects.duration')}:</span>
                         <span className="font-semibold">{project.duration}</span>
                       </div>
                       <div className="flex justify-between col-span-2">
-                        <span className="text-gray-600">Équipe:</span>
+                        <span className="text-gray-600">{t('projects.team')}:</span>
                         <span className="font-semibold">{project.team}</span>
                       </div>
                       <div className="flex justify-between col-span-2">
-                        <span className="text-gray-600">Année:</span>
+                        <span className="text-gray-600">{t('projects.year')}:</span>
                         <span className="font-semibold">{String(t(`projects.portfolio.${project.key}.year`))}</span>
                       </div>
                     </div>
@@ -277,13 +277,13 @@ export default function Projects() {
                   {/* Results & Action */}
                   <div className="border-t border-gray-200/50 pt-4 flex items-center justify-between">
                     <div>
-                      <p className="text-xs text-gray-500 mb-1">Résultats</p>
+                      <p className="text-xs text-gray-500 mb-1">{t('projects.results')}</p>
                       <p className="text-sm font-semibold text-green-600">
                         {String(t(`projects.portfolio.${project.key}.results`))}
                       </p>
                     </div>
                     <button className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-2 rounded-xl hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 text-sm font-semibold shadow-lg hover:shadow-xl transform hover:scale-105">
-                      Voir le projet
+                      {t('projects.viewProject')}
                     </button>
                   </div>
                 </div>
@@ -299,10 +299,10 @@ export default function Projects() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-extrabold text-gray-900 mb-4">
-              Tableau de Performance des Projets
+              {t('projects.performanceTable.title')}
             </h2>
             <p className="text-xl text-gray-600">
-              Analyse détaillée de nos réalisations
+              {t('projects.performanceTable.subtitle')}
             </p>
           </div>
           
@@ -311,12 +311,12 @@ export default function Projects() {
               <table className="w-full">
                 <thead className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
                   <tr>
-                    <th className="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider">Projet</th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider">Budget</th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider">Durée</th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider">Équipe</th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider">Satisfaction</th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider">Statut</th>
+                    <th className="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider">{t('projects.title')}</th>
+                    <th className="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider">{t('projects.budget')}</th>
+                    <th className="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider">{t('projects.duration')}</th>
+                    <th className="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider">{t('projects.team')}</th>
+                    <th className="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider">{t('projects.satisfaction')}</th>
+                    <th className="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider">{t('projects.status')}</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200/50">
@@ -352,7 +352,7 @@ export default function Projects() {
                       </td>
                       <td className="px-6 py-4">
                         <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                          ✅ Livré
+                          {t('projects.delivered')}
                         </span>
                       </td>
                     </tr>
@@ -369,28 +369,28 @@ export default function Projects() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-extrabold mb-4">
-              Notre impact en chiffres
+              {t('projects.impact.title')}
             </h2>
             <p className="text-xl text-indigo-200">
-              Des résultats concrets pour nos clients
+              {t('projects.impact.subtitle')}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
             <div>
               <div className="text-4xl font-bold text-yellow-400 mb-2">150+</div>
-              <div className="text-indigo-200">Projets livrés</div>
+              <div className="text-indigo-200">{t('projects.impact.projectsDelivered')}</div>
             </div>
             <div>
               <div className="text-4xl font-bold text-yellow-400 mb-2">98%</div>
-              <div className="text-indigo-200">Clients satisfaits</div>
+              <div className="text-indigo-200">{t('projects.impact.clientsSatisfied')}</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-yellow-400 mb-2">5 ans</div>
-              <div className="text-indigo-200">D'expérience</div>
+              <div className="text-4xl font-bold text-yellow-400 mb-2">5 {t('projects.impact.yearsExperience')}</div>
+              <div className="text-indigo-200"></div>
             </div>
             <div>
               <div className="text-4xl font-bold text-yellow-400 mb-2">24/7</div>
-              <div className="text-indigo-200">Support disponible</div>
+              <div className="text-indigo-200">{t('projects.impact.supportAvailable')}</div>
             </div>
           </div>
         </div>
@@ -401,10 +401,10 @@ export default function Projects() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-extrabold text-gray-900 mb-4">
-              Technologies & Outils
+              {t('projects.technologies.title')}
             </h2>
             <p className="text-xl text-gray-600">
-              Nous utilisons les meilleures technologies pour vos projets
+              {t('projects.technologies.subtitle')}
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
@@ -427,23 +427,23 @@ export default function Projects() {
       <section className="bg-gradient-to-r from-indigo-700 to-purple-800">
         <div className="max-w-4xl mx-auto text-center py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-extrabold text-white sm:text-4xl mb-6">
-            Votre prochain projet commence ici
+            {t('projects.cta.title')}
           </h2>
           <p className="text-xl leading-6 text-indigo-200 mb-10">
-            Rejoignez nos clients satisfaits et donnez vie à vos idées digitales.
+            {t('projects.cta.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="/contact"
               className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-lg text-indigo-600 bg-white hover:bg-indigo-50 transition-colors duration-200"
             >
-              Discuter de mon projet
+              {t('projects.cta.discuss')}
             </a>
             <a
               href="/services"
               className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-base font-medium rounded-lg text-white hover:bg-white hover:text-indigo-600 transition-colors duration-200"
             >
-              Découvrir nos services
+              {t('projects.cta.discover')}
             </a>
           </div>
         </div>

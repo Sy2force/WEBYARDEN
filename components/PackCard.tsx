@@ -5,24 +5,7 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { useCartStore } from '@/store/cartStore'
 import { useTranslations } from '@/components/LocalizedText'
-
-interface Pack {
-  id: string
-  name: string
-  slogan: string
-  price: number
-  originalPrice?: number
-  currency: string
-  services: string[]
-  icon: string
-  badge?: string
-  badgeColor?: string
-  popular?: boolean
-  color: string
-  category: 'starter' | 'pro' | 'premium' | 'enterprise'
-  delivery: string
-  guarantee: string
-}
+import { type Pack } from '@/lib/packs'
 
 interface PackCardProps {
   pack: Pack
@@ -401,7 +384,7 @@ export default function PackCard({ pack, index = 0, isHorizontal = false, isCube
               </span>
             ) : (
               <span className="flex items-center justify-center gap-2">
-                🚀 {t('packs.cta')}
+                🚀 {t('packs.addToPack')}
               </span>
             )}
           </motion.button>

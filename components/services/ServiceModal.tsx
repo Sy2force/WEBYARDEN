@@ -31,7 +31,7 @@ export default function ServiceModal({ service, isOpen, onClose }: ServiceModalP
             <button
               onClick={onClose}
               className="text-gray-400 hover:text-gray-600 transition-colors"
-              aria-label={t('common.close') || 'Fermer la modal'}
+              aria-label={t('common.close')}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -47,7 +47,7 @@ export default function ServiceModal({ service, isOpen, onClose }: ServiceModalP
           {/* Content */}
           <div className="space-y-6">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">{t('common.description') || 'Description'}</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">{t('common.description')}</h3>
               <p className="text-gray-600">{service.description}</p>
             </div>
 
@@ -57,13 +57,13 @@ export default function ServiceModal({ service, isOpen, onClose }: ServiceModalP
                 <p className="text-2xl font-bold text-blue-600">₪{service.price.toLocaleString()}</p>
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{t('services.deliveryTime') || 'Délai de livraison'}</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">{t('services.deliveryTime')}</h3>
                 <p className="text-gray-600">{service.delivery}</p>
               </div>
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">{t('services.features') || 'Fonctionnalités incluses'}</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">{t('services.features')}</h3>
               <ul className="space-y-2">
                 {service.features.map((feature, index) => (
                   <li key={index} className="flex items-center text-gray-600">
@@ -83,13 +83,13 @@ export default function ServiceModal({ service, isOpen, onClose }: ServiceModalP
               onClick={onClose}
               className="flex-1 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:shadow-lg transition-all duration-300"
             >
-              {t('buttons.requestQuote') || 'Demander un devis'}
+              {t('buttons.requestQuote')}
             </button>
             <button
               onClick={onClose}
               className="flex-1 px-6 py-3 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition-colors"
             >
-              {t('buttons.moreInfo') || 'Plus d\'informations'}
+              {t('buttons.moreInfo')}
             </button>
           </div>
         </div>

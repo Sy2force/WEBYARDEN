@@ -65,7 +65,7 @@ export default function FeaturedServices() {
                       ₪{service.price.toLocaleString()}
                     </div>
                     <div className="text-xs text-gray-500">
-                      {t('services.startingFrom') || 'À partir de'}
+                      {t('services.startingFrom')}
                     </div>
                   </div>
 

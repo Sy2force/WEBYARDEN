@@ -5,89 +5,81 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useTranslations } from '@/components/LocalizedText'
 
-const supportCategories = [
+const getSupportCategories = (t: any) => [
   {
     id: 'technical',
-    title: 'Support Technique',
-    description: 'Problèmes techniques, bugs, maintenance',
+    title: t('support.categories.technical.title'),
+    description: t('support.categories.technical.description'),
     icon: '🔧',
     color: 'from-blue-500 to-cyan-500',
-    articles: [
-      { title: 'Comment mettre à jour mon site web ?', views: 1250 },
-      { title: 'Résoudre les problèmes de connexion', views: 890 },
-      { title: 'Optimiser les performances de mon site', views: 756 },
-      { title: 'Configurer les emails professionnels', views: 634 }
-    ]
+    articles: t('support.articles.technical').map((title: string, index: number) => ({
+      title,
+      views: [1250, 890, 756, 634][index] || 500
+    }))
   },
   {
     id: 'billing',
-    title: 'Facturation & Paiements',
-    description: 'Questions sur les factures, paiements, abonnements',
+    title: t('support.categories.billing.title'),
+    description: t('support.categories.billing.description'),
     icon: '💳',
     color: 'from-green-500 to-emerald-500',
-    articles: [
-      { title: 'Comprendre ma facture mensuelle', views: 980 },
-      { title: 'Modifier mes informations de paiement', views: 743 },
-      { title: 'Annuler ou suspendre mon abonnement', views: 567 },
-      { title: 'Demander un remboursement', views: 432 }
-    ]
+    articles: t('support.articles.billing').map((title: string, index: number) => ({
+      title,
+      views: [980, 743, 567, 432][index] || 400
+    }))
   },
   {
     id: 'features',
-    title: 'Fonctionnalités',
-    description: 'Comment utiliser les fonctionnalités de votre site',
+    title: t('support.categories.features.title'),
+    description: t('support.categories.features.description'),
     icon: '⚡',
     color: 'from-purple-500 to-pink-500',
-    articles: [
-      { title: 'Ajouter du contenu à mon site', views: 1456 },
-      { title: 'Configurer Google Analytics', views: 823 },
-      { title: 'Optimiser mon SEO', views: 712 },
-      { title: 'Intégrer les réseaux sociaux', views: 598 }
-    ]
+    articles: t('support.articles.features').map((title: string, index: number) => ({
+      title,
+      views: [1456, 823, 712, 598][index] || 600
+    }))
   },
   {
     id: 'account',
-    title: 'Gestion de Compte',
-    description: 'Paramètres de compte, sécurité, accès',
+    title: t('support.categories.account.title'),
+    description: t('support.categories.account.description'),
     icon: '👤',
     color: 'from-orange-500 to-red-500',
-    articles: [
-      { title: 'Changer mon mot de passe', views: 1123 },
-      { title: 'Ajouter des utilisateurs à mon compte', views: 687 },
-      { title: 'Configurer l\'authentification à deux facteurs', views: 543 },
-      { title: 'Exporter mes données', views: 321 }
-    ]
+    articles: t('support.articles.account').map((title: string, index: number) => ({
+      title,
+      views: [1123, 687, 543, 321][index] || 450
+    }))
   }
 ]
 
-const quickActions = [
+const getQuickActions = (t: any) => [
   {
-    title: 'Chat en Direct',
-    description: 'Parlez à notre équipe maintenant',
+    title: t('support.quickActions.chat.title'),
+    description: t('support.quickActions.chat.description'),
     icon: '💬',
     action: 'chat',
     available: true,
     color: 'bg-gradient-to-r from-blue-600 to-purple-600'
   },
   {
-    title: 'Appel Téléphonique',
-    description: 'Lun-Ven 9h-18h (GMT+2)',
+    title: t('support.quickActions.call.title'),
+    description: t('support.quickActions.call.description'),
     icon: '📞',
     action: 'call',
     available: true,
     color: 'bg-gradient-to-r from-green-600 to-teal-600'
   },
   {
-    title: 'Email Support',
-    description: 'Réponse sous 24h maximum',
+    title: t('support.quickActions.email.title'),
+    description: t('support.quickActions.email.description'),
     icon: '📧',
     action: 'email',
     available: true,
     color: 'bg-gradient-to-r from-indigo-600 to-blue-600'
   },
   {
-    title: 'Support Urgent',
-    description: 'Pour les problèmes critiques',
+    title: t('support.quickActions.urgent.title'),
+    description: t('support.quickActions.urgent.description'),
     icon: '🚨',
     action: 'urgent',
     available: true,
@@ -100,9 +92,12 @@ export default function SupportPage() {
   const [selectedCategory, setSelectedCategory] = useState('technical')
   const [searchQuery, setSearchQuery] = useState('')
 
+  const supportCategories = getSupportCategories(t)
+  const quickActions = getQuickActions(t)
+
   const filteredArticles = supportCategories
     .find(cat => cat.id === selectedCategory)?.articles
-    .filter(article => 
+    .filter((article: {title: string, views: number}) => 
       article.title.toLowerCase().includes(searchQuery.toLowerCase())
     ) || []
 
@@ -118,10 +113,10 @@ export default function SupportPage() {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-              Centre d'Aide Web Yarden
+              {t('support.title')}
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
-              Trouvez rapidement les réponses à vos questions ou contactez notre équipe d'experts
+              {t('support.subtitle')}
             </p>
             
             {/* Search Bar */}
@@ -129,7 +124,7 @@ export default function SupportPage() {
               <div className="relative">
                 <input
                   type="text"
-                  placeholder="Rechercher dans l'aide..."
+                  placeholder={t('support.searchPlaceholder')}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full px-6 py-4 pl-12 text-lg border border-gray-300 rounded-2xl focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white shadow-lg"
@@ -146,19 +141,19 @@ export default function SupportPage() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-8 max-w-4xl mx-auto">
               <div className="text-center">
                 <div className="text-2xl lg:text-3xl font-bold text-indigo-600 dark:text-indigo-400">24/7</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Support disponible</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">{t('support.stats.support247')}</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl lg:text-3xl font-bold text-purple-600 dark:text-purple-400">&lt; 2h</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Temps de réponse</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">{t('support.stats.responseTime')}</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl lg:text-3xl font-bold text-pink-600 dark:text-pink-400">98%</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Satisfaction client</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">{t('support.stats.satisfaction')}</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl lg:text-3xl font-bold text-green-600 dark:text-green-400">500+</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Articles d'aide</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">{t('support.stats.articles')}</div>
               </div>
             </div>
           </motion.div>
@@ -169,7 +164,7 @@ export default function SupportPage() {
         {/* Quick Actions */}
         <section className="mb-16">
           <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-            Contactez-nous directement
+            {t('support.quickActions.title')}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
             {quickActions.map((action, index) => (
@@ -186,7 +181,7 @@ export default function SupportPage() {
                 {action.available && (
                   <div className="mt-4">
                     <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white/20">
-                      🟢 Disponible
+                      🟢 {t('support.quickActions.available')}
                     </span>
                   </div>
                 )}
@@ -198,7 +193,7 @@ export default function SupportPage() {
         {/* Support Categories */}
         <section className="mb-16">
           <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-            Catégories d'aide
+            {t('support.categories.title')}
           </h2>
           
           {/* Category Tabs */}
@@ -235,7 +230,7 @@ export default function SupportPage() {
                     <h3 className="text-2xl font-bold mb-4">{category.title}</h3>
                     <p className="text-lg opacity-90 mb-6">{category.description}</p>
                     <button className="bg-white/20 hover:bg-white/30 px-6 py-3 rounded-xl font-semibold transition-colors">
-                      Voir tous les articles
+                      {t('support.categories.viewAll')}
                     </button>
                   </motion.div>
                 )
@@ -246,10 +241,10 @@ export default function SupportPage() {
             <div className="lg:col-span-2">
               <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 lg:p-8">
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6">
-                  Articles populaires
+                  {t('support.categories.popularArticles')}
                 </h3>
                 <div className="space-y-4">
-                  {filteredArticles.map((article, index) => (
+                  {filteredArticles.map((article: {title: string, views: number}, index: number) => (
                     <motion.div
                       key={index}
                       initial={{ opacity: 0, y: 10 }}
@@ -287,17 +282,17 @@ export default function SupportPage() {
         >
           <div className="text-4xl mb-4">🚨</div>
           <h2 className="text-2xl lg:text-3xl font-bold mb-4">
-            Problème urgent ?
+            {t('support.emergency.title')}
           </h2>
           <p className="text-lg mb-6 opacity-90">
-            Pour les problèmes critiques affectant votre site en production
+            {t('support.emergency.description')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="bg-white text-red-600 px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition-colors">
-              📞 Appel d'urgence
+              📞 {t('support.emergency.emergencyCall')}
             </button>
             <button className="border-2 border-white text-white px-8 py-4 rounded-xl font-bold hover:bg-white/10 transition-colors">
-              💬 Chat prioritaire
+              💬 {t('support.emergency.priorityChat')}
             </button>
           </div>
         </motion.section>

@@ -55,10 +55,10 @@ export default function StatsSection() {
           viewport={{ once: true }}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
-            {t('stats.title') || 'Nos Résultats Parlent d\'Eux-Mêmes'}
+            {t('stats.title')}
           </h2>
           <p className="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed">
-            {t('stats.subtitle') || 'Des chiffres qui témoignent de notre expertise et de notre engagement envers nos clients'}
+            {t('stats.subtitle')}
           </p>
         </motion.div>
         
@@ -95,7 +95,7 @@ export default function StatsSection() {
         >
           <div className="inline-flex items-center bg-white/10 backdrop-blur-md rounded-2xl px-8 py-6 border border-white/20 hover:bg-white/20 transition-all duration-300 group">
             <span className="text-white font-bold text-lg group-hover:scale-105 transition-transform duration-300">
-              🎯 {t('stats.goal') || 'Objectif : Votre succès digital'}
+              🎯 {t('stats.goal')}
             </span>
           </div>
         </motion.div>

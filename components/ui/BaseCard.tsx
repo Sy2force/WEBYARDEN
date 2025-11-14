@@ -238,7 +238,7 @@ const BaseCard: React.FC<BaseCardProps> = ({
       {typeof progress === 'number' && (
         <div className="mb-4">
           <div className="flex items-center justify-between text-sm mb-1">
-            <span className="text-gray-600 dark:text-gray-400">{t('common.progress') || 'Progression'}</span>
+            <span className="text-gray-600 dark:text-gray-400">{t('common.progress')}</span>
             <span className="font-medium">{progress}%</span>
           </div>
           <div className="bg-gray-200 dark:bg-gray-600 rounded-full h-2">
@@ -303,7 +303,7 @@ const BaseCard: React.FC<BaseCardProps> = ({
                   }}
                   className="px-4 py-3 border border-indigo-200 dark:border-indigo-600 text-indigo-600 dark:text-indigo-400 rounded-lg hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-colors font-semibold text-sm"
                 >
-                  {t('simulator.simulate') || 'Simuler'}
+                  {t('simulator.simulate')}
                 </button>
               )}
             </div>

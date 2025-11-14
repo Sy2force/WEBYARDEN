@@ -81,7 +81,8 @@
 
 html {
   scroll-behavior: smooth;
-  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  /* Compatibility fix for Edge - more conservative font-feature-settings */
+  font-feature-settings: 'kern' 1;
 }
 
 body {
@@ -652,28 +653,33 @@ a:focus-visible {
 .progress-95 { width: 95%; }
 .progress-100 { width: 100%; }
 
-/* Utility Classes */
+/* Utility Classes - Enhanced Edge Compatibility */
 .backdrop-blur-custom {
+  /* Edge compatibility: Add filter fallback */
+  filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
 }
 
 .backdrop-blur-sm-custom {
+  filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
 }
 
 .backdrop-blur-lg-custom {
+  filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
 }
 
 .backdrop-blur-xl-custom {
+  filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   backdrop-filter: blur(24px);
 }
 
-/* Progressive Enhancement - Text Wrap */
+/* Progressive Enhancement - Text Wrap with Edge Fallbacks */
 @supports (text-wrap: balance) {
   .text-balance {
     text-wrap: balance;
@@ -684,6 +690,20 @@ a:focus-visible {
   .text-pretty {
     text-wrap: pretty;
   }
+}
+
+/* Edge fallback for text balancing */
+.text-balance {
+  /* Fallback: Use max-width for better text distribution */
+  max-width: 65ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.text-pretty {
+  /* Fallback: Optimize line-height for readability */
+  line-height: 1.6;
+  word-spacing: 0.05em;
 }
 
 /* Loading States */
