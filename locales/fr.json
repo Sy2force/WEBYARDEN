@@ -1,0 +1,580 @@
+{
+  "common": {
+    "home": "Accueil",
+    "services": "Services",
+    "projects": "Projets", 
+    "packs": "Packs",
+    "about": "À propos",
+    "contact": "Contact",
+    "quote": "Devis",
+    "language": "Langue",
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue",
+    "success": "Succès",
+    "close": "Fermer",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "all": "Tous",
+    "more": "Plus",
+    "less": "Moins",
+    "readMore": "Lire la suite",
+    "getQuote": "Obtenir un devis",
+    "learnMore": "En savoir plus",
+    "viewProject": "Voir le projet",
+    "contactUs": "Nous contacter",
+    "startProject": "Démarrer un projet"
+  },
+  "navigation": {
+    "home": "Accueil",
+    "services": "Services", 
+    "packs": "Nos Packs",
+    "projects": "Projets",
+    "about": "À propos",
+    "contact": "Contact",
+    "getQuote": "Devis Gratuit",
+    "tagline": "Agence Digitale #1 en Israël",
+    "darkMode": "Mode sombre",
+    "lightMode": "Mode clair",
+    "menu": "Menu"
+  },
+  "nav": {
+    "home": "Accueil",
+    "services": "Services", 
+    "packs": "Nos Packs",
+    "projects": "Projets",
+    "about": "À propos",
+    "contact": "Contact",
+    "quote": "Devis Gratuit",
+    "darkMode": "Mode sombre",
+    "lightMode": "Mode clair",
+    "menu": "Menu"
+  },
+  "home": {
+    "hero": {
+      "badge": "Agence Digitale #1 en Israël",
+      "title": "Créons ensemble votre succès digital",
+      "subtitle": "Solutions web sur-mesure, applications mobiles et stratégies digitales pour propulser votre entreprise vers l'excellence.",
+      "cta": {
+        "primary": "Découvrir nos Packs",
+        "secondary": "Consultation Gratuite"
+      },
+      "trustBadge": "Plus de 500 entreprises nous font confiance"
+    },
+    "simulator": {
+      "title": "Simulateur de Projet",
+      "subtitle": "Obtenez une estimation instantanée",
+      "service": {
+        "label": "Type de service",
+        "placeholder": "Sélectionnez un service",
+        "website": "Site Web",
+        "ecommerce": "E-commerce",
+        "mobile": "App Mobile",
+        "marketing": "Marketing Digital"
+      },
+      "budget": {
+        "label": "Budget estimé",
+        "placeholder": "Votre budget"
+      },
+      "timeline": {
+        "label": "Délai souhaité",
+        "placeholder": "Quand lancer ?",
+        "urgent": "Urgent (2-4 sem.)",
+        "normal": "Normal (1-3 mois)",
+        "flexible": "Flexible (3+ mois)"
+      },
+      "simulate": "Simuler mon projet",
+      "results": {
+        "title": "Estimation de votre projet",
+        "duration": "Durée estimée",
+        "price": "Budget recommandé",
+        "features": "Fonctionnalités incluses"
+      }
+    },
+    "services": {
+      "title": "Nos Services Phares",
+      "subtitle": "Des solutions digitales complètes pour tous vos besoins",
+      "viewAll": "Découvrir tous nos services"
+    },
+    "stats": {
+      "title": "Des Résultats Qui Parlent",
+      "subtitle": "Notre expertise au service de votre croissance digitale"
+    },
+    "testimonials": {
+      "title": "Ce Que Disent Nos Clients",
+      "subtitle": "La satisfaction client au cœur de notre mission"
+    },
+    "cta": {
+      "title": "Prêt à Transformer Votre Présence Digitale ?",
+      "subtitle": "Lancez-vous dès aujourd'hui",
+      "description": "Rejoignez les 150+ entreprises qui nous font confiance pour leur croissance digitale. Solutions sur-mesure, support 24/7, résultats garantis.",
+      "primary": "Découvrir nos Packs",
+      "secondary": "Consultation Gratuite"
+    },
+    "packs": {
+      "title": "Packs Tout Inclus",
+      "subtitle": "Des offres complètes pour démarrer rapidement"
+    }
+  },
+  "services": {
+    "title": "Nos Services",
+    "subtitle": "Solutions digitales complètes pour votre réussite",
+    "searchPlaceholder": "Rechercher un service...",
+    "hero": {
+      "badge": "🚀 Services Numériques Premium",
+      "title": "Solutions Digitales",
+      "titleAccent": "Sur Mesure",
+      "description": "Des services web innovants qui transforment votre présence digitale et boostent votre croissance",
+      "cta": {
+        "discover": "Découvrir nos Services",
+        "quote": "Obtenir un Devis"
+      }
+    },
+    "categories": {
+      "all": "Tous les services",
+      "web": "Développement Web",
+      "design": "Design & UX",
+      "marketing": "Marketing Digital",
+      "ecommerce": "E-commerce",
+      "mobile": "Applications Mobiles",
+      "consulting": "Consulting",
+      "maintenance": "Maintenance",
+      "seo": "SEO & Référencement"
+    },
+    "search": {
+      "placeholder": "Rechercher un service...",
+      "results": {
+        "singular": "service trouvé",
+        "plural": "services trouvés"
+      },
+      "noResults": {
+        "title": "Aucun service trouvé",
+        "description": "Essayez de modifier vos critères de recherche ou de filtrage",
+        "reset": "Réinitialiser les filtres"
+      }
+    },
+    "stats": {
+      "title": "Des Résultats Qui Parlent",
+      "subtitle": "Notre expertise au service de votre croissance digitale"
+    },
+    "cta": {
+      "title": "Prêt à transformer votre projet digital ?",
+      "subtitle": "Expertise • Innovation • Résultats",
+      "description": "Rejoignez plus de 150 entreprises qui nous font confiance pour leur transformation numérique.",
+      "primary": "Démarrer mon projet",
+      "secondary": "Voir nos réalisations"
+    },
+    "results": {
+      "found": "service(s) trouvé(s)",
+      "noResults": "Aucun service ne correspond à vos critères"
+    },
+    "card": {
+      "from": "À partir de",
+      "popular": "Populaire",
+      "delivery": "Livraison",
+      "features": "Fonctionnalités clés",
+      "getQuote": "Obtenir un devis"
+    }
+  },
+  "packs": {
+    "title": "Nos Packs",
+    "subtitle": "Des solutions complètes clés en main",
+    "hero": {
+      "title": "Nos Packs Web Professionnels",
+      "subtitle": "Des solutions complètes et optimisées pour lancer votre présence digitale avec succès",
+      "badge": "Offres Tout Inclus"
+    },
+    "stats": {
+      "offerings": "Offres Disponibles",
+      "offeringsDesc": "Packs complets pour tous budgets",
+      "satisfaction": "Satisfaction Client",
+      "satisfactionDesc": "Clients satisfaits de nos packs",
+      "delivery": "Jours de Livraison",
+      "deliveryDesc": "Délai de réalisation moyen",
+      "support": "Support Client",
+      "supportDesc": "Assistance technique continue"
+    },
+    "categories": {
+      "all": "Tous les packs",
+      "website": "Sites Web",
+      "ecommerce": "E-commerce",
+      "business": "Business",
+      "premium": "Premium",
+      "enterprise": "Enterprise",
+      "marketing": "Marketing"
+    },
+    "badges": {
+      "popular": "Populaire",
+      "bestValue": "Meilleur rapport",
+      "recommended": "Recommandé"
+    },
+    "popular": "Populaire",
+    "mostPopular": "Le plus populaire",
+    "mostChosen": "Le plus choisi",
+    "moreFeatures": "fonctionnalités supplémentaires",
+    "otherServices": "autres services",
+    "addedToCart": "Ajouté au panier",
+    "addToCart": "Ajouter au panier",
+    "choosePack": "Choisir ce pack",
+    "choose": "Choisir",
+    "included": "Inclus",
+    "priceUnit": "TTC",
+    "save": "Économisez",
+    "pricing": {
+      "oneTime": "Paiement unique"
+    },
+    "servicesIncluded": "Services Inclus",
+    "added": "Ajouté",
+    "addToPack": "Ajouter au pack",
+    "consultation": "Consultation gratuite",
+    "delivery": "Livraison rapide",
+    "guarantee": "Garantie qualité",
+    "features": "Fonctionnalités incluses",
+    "includes": "Ce pack inclut",
+    "support": "Support",
+    "orderNow": "Commander maintenant",
+    "compare": "Comparer les packs",
+    "comparison": {
+      "title": "Comparaison des Packs",
+      "toggle": "Voir la comparaison",
+      "featuresLabel": "Fonctionnalités",
+      "starter": "Starter",
+      "business": "Business", 
+      "premium": "Premium",
+      "features": {
+        "responsive": "Design Responsive",
+        "seo": "Optimisation SEO",
+        "support": "Support 24/7",
+        "ecommerce": "E-commerce Intégré",
+        "mobile": "Application Mobile",
+        "analytics": "Analytics Avancées"
+      }
+    },
+    "empty": {
+      "title": "Aucun pack trouvé",
+      "description": "Aucun pack ne correspond à vos critères de recherche",
+      "viewAll": "Voir tous les packs"
+    },
+    "cta": {
+      "title": "Prêt à Choisir Votre Pack ?",
+      "subtitle": "Contactez-nous pour personnaliser votre solution ou découvrez nos services individuels",
+      "primary": "Obtenir une consultation",
+      "secondary": "Voir nos services"
+    }
+  },
+  "projects": {
+    "title": "Nos Projets",
+    "subtitle": "Découvrez nos réalisations et succès clients",
+    "categories": {
+      "all": "Tous les projets",
+      "saas": "SaaS",
+      "ecommerce": "E-commerce",
+      "mobile": "Mobile",
+      "fintech": "FinTech",
+      "education": "Éducation",
+      "logistics": "Logistique"
+    },
+    "sectors": {
+      "all": "Tous les secteurs",
+      "technology": "Technologie",
+      "retail": "Commerce",
+      "healthcare": "Santé",
+      "finance": "Finance",
+      "education": "Éducation",
+      "transport": "Transport"
+    },
+    "card": {
+      "featured": "Projet phare",
+      "client": "Client",
+      "year": "Année",
+      "technologies": "Technologies",
+      "results": "Résultats",
+      "visitSite": "Visiter le site"
+    },
+    "results": {
+      "found": "projet(s) trouvé(s)",
+      "noResults": "Aucun projet ne correspond à vos critères"
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "À Propos de Web Yarden",
+      "subtitle": "Votre partenaire digital de confiance depuis 2019",
+      "description": "Découvrez l'histoire et les valeurs qui font de Web Yarden votre partenaire digital de référence en Israël",
+      "experience": "5+ Années d'Expérience",
+      "projects": "150+ Projets Réalisés"
+    },
+    "story": {
+      "title": "Notre Histoire",
+      "content": "Fondée en 2019, Web Yarden est née de la passion de créer des expériences digitales exceptionnelles. Notre mission : accompagner les entreprises israéliennes dans leur transformation digitale avec des solutions innovantes et performantes.",
+      "imageAlt": "Équipe Web Yarden au travail",
+      "expertise": "Expertise approfondie dans les technologies web modernes",
+      "market": "Connaissance parfaite du marché israélien",
+      "solutions": "Solutions sur-mesure adaptées à vos besoins"
+    },
+    "values": {
+      "title": "Nos Valeurs",
+      "innovation": {
+        "title": "Innovation",
+        "description": "Nous adoptons les dernières technologies pour créer des solutions avant-gardistes."
+      },
+      "quality": {
+        "title": "Qualité",
+        "description": "Chaque projet est livré avec le plus haut niveau de finition et de performance."
+      },
+      "partnership": {
+        "title": "Partenariat",
+        "description": "Nous construisons des relations durables basées sur la confiance mutuelle."
+      },
+      "transparency": {
+        "title": "Transparence",
+        "description": "Communication claire et honnête à chaque étape de votre projet."
+      }
+    },
+    "timeline": {
+      "title": "Notre Parcours",
+      "subtitle": "De startup à leader du marché"
+    },
+    "stats": {
+      "title": "Web Yarden en Chiffres",
+      "subtitle": "Des résultats qui parlent d'eux-mêmes",
+      "projects": "Projets réalisés",
+      "clients": "Clients satisfaits",
+      "experience": "Années d'expérience",
+      "satisfaction": "Taux de satisfaction"
+    },
+    "mission": {
+      "title": "Notre Mission",
+      "content": "Transformer les idées de nos clients en réalités digitales performantes, en alliant créativité, innovation technologique et expertise métier pour créer des solutions qui génèrent une valeur ajoutée mesurable."
+    },
+    "team": {
+      "title": "Notre Équipe",
+      "subtitle": "Des experts passionnés dédiés à votre succès digital",
+      "members": {
+        "founder": {
+          "name": "Shaya Coca",
+          "role": "Fondateur & Directeur Technique",
+          "bio": "Expert en développement web avec plus de 5 ans d'expérience",
+          "skills": "React, Next.js, Node.js, TypeScript, UI/UX"
+        },
+        "developer": {
+          "name": "David Cohen",
+          "role": "Développeur Full-Stack",
+          "bio": "Spécialiste des architectures modernes et de l'optimisation",
+          "skills": "Vue.js, Python, Docker, AWS, Performance"
+        },
+        "designer": {
+          "name": "Sarah Levy",
+          "role": "Designer UI/UX",
+          "bio": "Créatrice d'expériences utilisateur exceptionnelles",
+          "skills": "Figma, Adobe XD, Design System, Accessibilité"
+        }
+      }
+    },
+    "cta": {
+      "title": "Prêt à Démarrer Votre Projet ?",
+      "subtitle": "Contactez-nous dès aujourd'hui pour une consultation gratuite",
+      "button": "Obtenir un Devis Gratuit"
+    }
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "subtitle": "Discutons ensemble de votre projet digital",
+    "info": {
+      "title": "Nos Coordonnées",
+      "address": "Tel Aviv, Israël",
+      "email": "contact@web-yarden.com",
+      "phone": "+972 54-321-0987",
+      "hours": "Lun-Ven 9h-18h (GMT+2)"
+    },
+    "form": {
+      "title": "Envoyez-nous un message",
+      "subtitle": "Nous vous répondons sous 2h en moyenne",
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "email": "Email",
+      "phone": "Téléphone",
+      "company": "Entreprise",
+      "subject": "Sujet",
+      "message": "Message",
+      "budget": "Budget estimé",
+      "timeline": "Délai souhaité",
+      "send": "Envoyer le message",
+      "sending": "Envoi en cours...",
+      "success": "Message envoyé avec succès !",
+      "error": "Erreur lors de l'envoi"
+    },
+    "cta": {
+      "whatsapp": "Discuter sur WhatsApp",
+      "call": "Nous appeler",
+      "email": "Nous écrire"
+    }
+  },
+  "quote": {
+    "title": "Demande de Devis",
+    "subtitle": "Obtenez une estimation personnalisée pour votre projet",
+    "step1": {
+      "title": "Type de projet",
+      "description": "Sélectionnez le type de service qui vous intéresse"
+    },
+    "step2": {
+      "title": "Détails du projet",
+      "description": "Donnez-nous plus d'informations sur vos besoins"
+    },
+    "step3": {
+      "title": "Vos coordonnées",
+      "description": "Comment pouvons-nous vous contacter ?"
+    },
+    "step4": {
+      "title": "Récapitulatif",
+      "description": "Vérifiez vos informations avant envoi"
+    }
+  },
+  "footer": {
+    "company": {
+      "title": "Web Yarden",
+      "description": "Agence digitale leader en Israël. Solutions web, mobile et marketing digital sur-mesure."
+    },
+    "links": {
+      "services": "Services",
+      "packs": "Nos Packs", 
+      "projects": "Projets",
+      "about": "À propos",
+      "contact": "Contact",
+      "legal": "Mentions légales",
+      "privacy": "Politique de confidentialité"
+    },
+    "legal": {
+      "title": "Mentions Légales",
+      "subtitle": "Informations légales et conditions d'utilisation de notre site web",
+      "company": {
+        "title": "Informations sur l'entreprise",
+        "name": "Nom de l'entreprise",
+        "companyName": "Web Yarden - Agence Digitale",
+        "form": "Forme juridique",
+        "companyForm": "Entreprise individuelle",
+        "address": "Adresse",
+        "companyAddress": "Tel Aviv, Israël",
+        "email": "Email",
+        "companyEmail": "contact@webyarden.com",
+        "phone": "Téléphone",
+        "companyPhone": "+972 50 123 4567",
+        "director": "Directeur de la publication"
+      },
+      "hosting": {
+        "title": "Hébergement",
+        "description": "Ce site est hébergé par :",
+        "provider": "Vercel Inc.",
+        "providerAddress": "340 S Lemon Ave #4133\nWalnut, CA 91789\nÉtats-Unis"
+      },
+      "intellectual": {
+        "title": "Propriété intellectuelle",
+        "content1": "L'ensemble du contenu de ce site web, incluant mais ne se limitant pas aux textes, images, graphiques, logos, icônes, sons, logiciels, est la propriété exclusive de Web Yarden ou de ses partenaires et est protégé par les lois françaises et internationales relatives à la propriété intellectuelle.",
+        "content2": "Toute reproduction, représentation, modification, publication, adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite, sauf autorisation écrite préalable de Web Yarden."
+      },
+      "privacy": {
+        "title": "Protection des données personnelles",
+        "collection": {
+          "title": "Collecte des données",
+          "description": "Nous collectons les données personnelles suivantes :",
+          "items": ["Nom et prénom", "Adresse email", "Numéro de téléphone", "Informations sur votre projet", "Données de navigation (cookies)"]
+        },
+        "purpose": {
+          "title": "Finalité du traitement",
+          "description": "Vos données sont utilisées pour :",
+          "items": ["Répondre à vos demandes de contact", "Vous envoyer des devis personnalisés", "Améliorer nos services", "Respecter nos obligations légales"]
+        },
+        "rights": {
+          "title": "Vos droits",
+          "description": "Conformément au RGPD, vous disposez des droits suivants :",
+          "items": ["Droit d'accès à vos données", "Droit de rectification", "Droit à l'effacement", "Droit à la portabilité", "Droit d'opposition"]
+        },
+        "contact": "Pour exercer ces droits, contactez-nous à contact@webyarden.com"
+      },
+      "cookies": {
+        "title": "Cookies",
+        "description": "Ce site utilise des cookies pour améliorer votre expérience de navigation :",
+        "types": {
+          "technical": "Cookies techniques : nécessaires au fonctionnement du site",
+          "analytics": "Cookies d'analyse : pour mesurer l'audience du site",
+          "preferences": "Cookies de préférences : pour mémoriser vos choix"
+        },
+        "notice": "Vous pouvez configurer votre navigateur pour refuser les cookies, mais cela peut affecter le fonctionnement du site."
+      },
+      "liability": {
+        "title": "Responsabilité",
+        "content1": "Web Yarden s'efforce de fournir des informations précises et à jour sur ce site, mais ne peut garantir l'exactitude, la complétude ou la pertinence de ces informations.",
+        "content2": "L'utilisation des informations de ce site se fait sous votre entière responsabilité. Web Yarden ne saurait être tenu responsable de tout dommage direct ou indirect résultant de l'utilisation de ce site."
+      },
+      "jurisdiction": {
+        "title": "Droit applicable",
+        "content": "Les présentes mentions légales sont régies par le droit français. Tout litige relatif à l'utilisation de ce site sera soumis aux tribunaux compétents de Paris."
+      },
+      "contact": {
+        "title": "Contact",
+        "description": "Pour toute question concernant ces mentions légales, vous pouvez nous contacter :"
+      },
+      "lastUpdate": "Dernière mise à jour"
+    },
+    "contact": {
+      "title": "Contact",
+      "address": "Tel Aviv, Israël",
+      "email": "contact@web-yarden.com",
+      "phone": "+972 54-321-0987"
+    },
+    "social": {
+      "title": "Suivez-nous",
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter",
+      "instagram": "Instagram",
+      "facebook": "Facebook"
+    },
+    "copyright": "© 2024 Web Yarden. Tous droits réservés."
+  },
+  "simulator": {
+    "title": "Simulateur de Devis",
+    "open": "Ouvrir le simulateur",
+    "step1": {
+      "title": "Quel est votre budget ?"
+    },
+    "step2": {
+      "title": "Quel est votre délai ?"
+    },
+    "step3": {
+      "title": "Quels services souhaitez-vous ?"
+    },
+    "timeline": {
+      "urgent": "1-2 mois (Urgent)",
+      "normal": "3-6 mois (Normal)",
+      "extended": "6-12 mois (Étendu)"
+    },
+    "services": {
+      "website": "Site Web Professionnel",
+      "ecommerce": "Boutique E-commerce",
+      "mobile": "Application Mobile",
+      "seo": "Référencement SEO",
+      "marketing": "Marketing Digital"
+    },
+    "total": "Total estimé",
+    "generate": "Générer le devis"
+  },
+  "cart": {
+    "title": "Panier",
+    "empty": {
+      "title": "Votre panier est vide",
+      "description": "Ajoutez des services pour commencer votre projet",
+      "continue": "Continuer les achats"
+    },
+    "total": "Total",
+    "checkout": "Obtenir un devis",
+    "continueShopping": "Continuer les achats",
+    "clearAll": "Vider le panier",
+    "decreaseQuantity": "Diminuer la quantité",
+    "increaseQuantity": "Augmenter la quantité",
+    "removeItem": "Supprimer l'article",
+    "item": "article",
+    "items": "articles"
+  }
+}

@@ -3,8 +3,9 @@
 import React from 'react'
 import Link from 'next/link'
 import { useTranslations } from '@/components/LocalizedText'
+import { motion } from 'framer-motion'
 
-export default function Footer() {
+const Footer: React.FC = () => {
   const { t } = useTranslations()
 
   return (
@@ -21,8 +22,8 @@ export default function Footer() {
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold text-xl">WY</span>
+              <div className="w-12 h-12 bg-gradient-to-br from-primary-400 to-secondary-400 rounded-xl flex items-center justify-center shadow-lg">
+                <span className="text-white font-bold text-xl">W</span>
               </div>
               <div>
                 <h3 className="text-2xl font-bold bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">Web Yarden</h3>
@@ -30,7 +31,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-gray-300 mb-6 max-w-md leading-relaxed text-lg">
-              {t('footer.description')}
+              {t('description')}
             </p>
             <div className="flex space-x-4">
               <a href="#" className="group p-3 bg-white/5 rounded-xl text-gray-400 hover:text-white hover:bg-indigo-600/20 transition-all duration-300 backdrop-blur-sm border border-white/10" title="Twitter">
@@ -53,15 +54,15 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-xl font-bold mb-6 bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">{t('footer.quickLinks')}</h4>
+            <h4 className="text-xl font-bold mb-6 bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">{t('quickLinks')}</h4>
             <ul className="space-y-3">
               <li><Link href="/" className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-300 flex items-center group">
-                <span className="w-1 h-1 bg-indigo-400 rounded-full mr-3 group-hover:w-2 transition-all duration-300"></span>
-                {t('common.home')}
+                <span className="w-1 h-1 bg-primary-400 rounded-full mr-3 group-hover:w-2 transition-all duration-300"></span>
+                {t('navigation.home')}
               </Link></li>
               <li><Link href="/services" className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-300 flex items-center group">
-                <span className="w-1 h-1 bg-indigo-400 rounded-full mr-3 group-hover:w-2 transition-all duration-300"></span>
-                {t('common.services')}
+                <span className="w-1 h-1 bg-primary-400 rounded-full mr-3 group-hover:w-2 transition-all duration-300"></span>
+                {t('navigation.services')}
               </Link></li>
               <li><Link href="/packs" className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-300 flex items-center group">
                 <span className="w-1 h-1 bg-indigo-400 rounded-full mr-3 group-hover:w-2 transition-all duration-300"></span>
@@ -105,7 +106,7 @@ export default function Footer() {
         <div className="border-t border-gray-700/50 mt-12 pt-8 text-center">
           <div className="bg-white/5 backdrop-blur-sm rounded-2xl px-6 py-4 inline-block border border-white/10">
             <p className="text-gray-300 font-medium">
-              &copy; 2024 <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent font-bold">Web Yarden</span>. {t('footer.rights')}.
+              &copy; 2024 <span className="bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent font-bold">Web Yarden</span>. {t('rights')}.
             </p>
           </div>
         </div>
@@ -113,3 +114,5 @@ export default function Footer() {
     </footer>
   )
 }
+
+export default Footer

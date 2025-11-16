@@ -4,6 +4,7 @@ import React from 'react'
 import Link from 'next/link'
 import { useTranslations } from '@/components/LocalizedText'
 import { getFeaturedServices } from '@/data/services'
+import Button from '@/components/ui/Button'
 
 export default function FeaturedServices() {
   const { t } = useTranslations()
@@ -69,27 +70,43 @@ export default function FeaturedServices() {
                     </div>
                   </div>
 
-                  {/* CTA */}
-                  <Link 
-                    href={`/services/${service.slug}`}
-                    className="inline-flex items-center justify-center w-full px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-xl hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-                  >
-                    <span className="mr-2">🚀</span>
-                    {t('buttons.learnMore')}
-                  </Link>
+                  {/* CTA optimisé */}
+                  <div className="text-center">
+                    <Link
+                      href={`/services/${service.slug}`}
+                      className="group block bg-white hover:bg-primary-50 border-2 border-transparent hover:border-primary-200 rounded-xl p-4 transition-all duration-200"
+                      data-testid={`featured-service-link-${service.id}`}
+                    >
+                      <span className="text-primary-600 group-hover:text-primary-700 font-semibold">
+                        {t('home.features.serviceDetails')}
+                      </span>
+                    </Link>
+                  </div>
                 </div>
               </div>
             )
           })}
         </div>
         
-        <div className="text-center mt-12">
-          <Link
-            href="/services"
-            className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-          >
-            {t('buttons.viewAll')} {t('common.services')}
-          </Link>
+        {/* CTA Section finale optimisée */}
+        <div className="text-center mt-16">
+          <div className="bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-2xl p-8 max-w-4xl mx-auto">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              {t('home.features.ctaTitle')}
+            </h3>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center px-8 py-4 border-2 border-indigo-300 text-indigo-700 dark:text-indigo-300 dark:border-indigo-600 font-bold rounded-xl hover:bg-indigo-100 dark:hover:bg-indigo-900/30 transition-all duration-300"
+              data-testid="featured-services-contact-cta"
+            >
+              <span className="mr-2">💬</span>
+              {t('home.features.freeConsultation')}
+            </Link>
+            
+            <div className="mt-4 text-sm text-gray-500 dark:text-gray-400">
+              {t('home.features.responseTime')}
+            </div>
+          </div>
         </div>
       </div>
     </section>

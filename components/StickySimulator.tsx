@@ -1,79 +1,74 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useCartStore } from '@/store/cartStore'
-import { services } from '@/data/services'
 import { useTranslations } from '@/components/LocalizedText'
+import { useCartStore } from '@/store/cartStore'
+import { Calculator, X, Plus, Minus } from 'lucide-react'
+import Button from '@/components/ui/Button'
 
 export default function StickySimulator() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [isVisible, setIsVisible] = useState(false)
-  const [selectedService, setSelectedService] = useState('')
-  const [budget, setBudget] = useState('')
-  const [timeline, setTimeline] = useState('')
-  const [estimatedPrice, setEstimatedPrice] = useState(0)
-  const { addItem } = useCartStore()
   const { t } = useTranslations()
+  const [isOpen, setIsOpen] = useState(false)
+  const [step, setStep] = useState(1)
+  const [budget, setBudget] = useState(5000)
+  const [timeline, setTimeline] = useState('3-6')
+  const [services, setServices] = useState<string[]>([])
+  const { addItem } = useCartStore()
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY
-      setIsVisible(scrollY > 300) // Show after scrolling 300px
-    }
+  const budgetRanges = [
+    { value: 2500, label: '€2,500 - €5,000', color: 'bg-blue-100 text-blue-800' },
+    { value: 5000, label: '€5,000 - €10,000', color: 'bg-green-100 text-green-800' },
+    { value: 10000, label: '€10,000 - €25,000', color: 'bg-yellow-100 text-yellow-800' },
+    { value: 25000, label: '€25,000+', color: 'bg-purple-100 text-purple-800' }
+  ]
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  const timelineOptions = [
+    { value: '1-2', label: t('simulator.timeline.urgent') },
+    { value: '3-6', label: t('simulator.timeline.normal') },
+    { value: '6-12', label: t('simulator.timeline.extended') }
+  ]
 
-  useEffect(() => {
-    if (selectedService && budget && timeline) {
-      const service = services.find(s => s.id === selectedService)
-      if (service) {
-        const budgetMultiplier = {
-          '5000-10000': 0.8,
-          '10000-25000': 1.0,
-          '25000-50000': 1.3,
-          '50000+': 1.6
-        }[budget] || 1.0
+  const serviceOptions = [
+    { id: 'website', label: t('simulator.services.website'), price: 2500 },
+    { id: 'ecommerce', label: t('simulator.services.ecommerce'), price: 5000 },
+    { id: 'mobile', label: t('simulator.services.mobile'), price: 7500 },
+    { id: 'seo', label: t('simulator.services.seo'), price: 1500 },
+    { id: 'marketing', label: t('simulator.services.marketing'), price: 2000 }
+  ]
 
-        const timelineMultiplier = {
-          'urgent': 1.4,
-          'normal': 1.0,
-          'flexible': 0.9
-        }[timeline] || 1.0
-
-        setEstimatedPrice(Math.round(service.price * budgetMultiplier * timelineMultiplier))
-      }
-    }
-  }, [selectedService, budget, timeline])
-
-  const handleAddToCart = () => {
-    const service = services.find(s => s.id === selectedService)
-    if (service && estimatedPrice > 0) {
-      addItem({
-        id: service.id,
-        title: t(service.titleKey),
-        price: estimatedPrice,
-        category: service.category,
-        description: t(service.descriptionKey),
-        delivery: service.delivery,
-        image: service.image
-      })
-      
-      // Reset form
-      setSelectedService('')
-      setBudget('')
-      setTimeline('')
-      setEstimatedPrice(0)
-      setIsOpen(false)
-      
-      // Show success message
-      alert(t('simulator.successMessage'))
-    }
+  const toggleService = (serviceId: string) => {
+    setServices(prev => 
+      prev.includes(serviceId)
+        ? prev.filter(s => s !== serviceId)
+        : [...prev, serviceId]
+    )
   }
 
-  if (!isVisible) return null
+  const calculateTotal = () => {
+    return services.reduce((total, serviceId) => {
+      const service = serviceOptions.find(s => s.id === serviceId)
+      return total + (service?.price || 0)
+    }, 0)
+  }
+
+  const handleGenerate = () => {
+    const selectedServices = serviceOptions.filter(s => services.includes(s.id))
+    selectedServices.forEach(service => {
+      addItem({
+        id: service.id,
+        title: service.label,
+        price: service.price,
+        category: 'simulation',
+        description: `Service simulé avec budget ${budget}€ et délai ${timeline} mois`,
+        delivery: `${timeline} mois`,
+        image: '/images/services/default.jpg'
+      })
+    })
+    setIsOpen(false)
+    setStep(1)
+    setServices([])
+  }
 
   return (
     <>
@@ -81,27 +76,21 @@ export default function StickySimulator() {
       <motion.div
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 2, duration: 0.5 }}
         className="fixed bottom-6 right-6 z-50"
       >
-        <motion.button
+        <Button
           onClick={() => setIsOpen(true)}
-          className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-4 rounded-full shadow-2xl hover:shadow-2xl transition-all duration-300"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          aria-label={t('simulator.openLabel')}
+          size="lg"
+          className="rounded-full shadow-booking hover:shadow-xl p-4"
+          aria-label={t('simulator.open')}
         >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-          </svg>
-        </motion.button>
-        
-        {/* Tooltip */}
-        <div className="absolute bottom-full right-0 mb-2 px-3 py-1 bg-gray-900 text-white text-sm rounded-lg opacity-0 hover:opacity-100 transition-opacity whitespace-nowrap">
-          {t('simulator.tooltip')}
-        </div>
+          <Calculator className="w-6 h-6 mr-2" />
+          {t('simulator.title')}
+        </Button>
       </motion.div>
 
-      {/* Modal Overlay */}
+      {/* Modal */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -115,119 +104,155 @@ export default function StickySimulator() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl w-full max-w-md p-6"
+              className="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
-              <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center justify-between p-6 border-b border-gray-100 dark:border-gray-700">
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
                   {t('simulator.title')}
                 </h2>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors"
-                  aria-label={t('simulator.closeLabel')}
+                  className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+                  title={t('common.close')}
+                  aria-label={t('common.close')}
                 >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
+                  <X className="w-5 h-5" />
                 </button>
               </div>
 
-              {/* Form */}
-              <div className="space-y-4">
-                {/* Service Selection */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    {t('simulator.service')}
-                  </label>
-                  <select
-                    value={selectedService}
-                    onChange={(e) => setSelectedService(e.target.value)}
-                    title="Sélectionnez un service"
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
-                  >
-                    <option value="">{t('simulator.selectService')}</option>
-                    {services.slice(0, 10).map((service) => (
-                      <option key={service.id} value={service.id}>
-                        {t(service.titleKey)}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                {/* Budget */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    {t('simulator.budget')}
-                  </label>
-                  <select
-                    value={budget}
-                    onChange={(e) => setBudget(e.target.value)}
-                    title="Sélectionnez votre budget"
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
-                  >
-                    <option value="">{t('simulator.selectService')}</option>
-                    <option value="5000-10000">5 000 - 10 000 ₪</option>
-                    <option value="10000-25000">10 000 - 25 000 ₪</option>
-                    <option value="25000-50000">25 000 - 50 000 ₪</option>
-                    <option value="50000+">50 000+ ₪</option>
-                  </select>
-                </div>
-
-                {/* Timeline */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    {t('simulator.timeline')}
-                  </label>
-                  <select
-                    value={timeline}
-                    onChange={(e) => setTimeline(e.target.value)}
-                    title="Sélectionnez un délai"
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
-                  >
-                    <option value="">{t('simulator.timeline')}</option>
-                    <option value="urgent">{t('simulator.urgent')}</option>
-                    <option value="normal">{t('simulator.normal')}</option>
-                    <option value="flexible">{t('simulator.flexible')}</option>
-                  </select>
-                </div>
-
-                {/* Estimated Price */}
-                {estimatedPrice > 0 && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 p-4 rounded-lg border border-green-200 dark:border-green-700"
-                  >
-                    <div className="text-center">
-                      <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">{t('simulator.estimate')} :</div>
-                      <p className="text-2xl font-bold text-green-600 dark:text-green-400">
-                        ₪ {estimatedPrice.toLocaleString()}
-                      </p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                        *Prix indicatif, devis final après consultation
-                      </p>
+              <div className="p-6">
+                {/* Step 1: Budget */}
+                {step === 1 && (
+                  <div className="space-y-6">
+                    <div>
+                      <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
+                        {t('simulator.step1.title')}
+                      </h3>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {budgetRanges.map((range) => (
+                          <button
+                            key={range.value}
+                            onClick={() => setBudget(range.value)}
+                            className={`p-4 rounded-xl border-2 text-left transition-all ${
+                              budget === range.value
+                                ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20'
+                                : 'border-gray-200 dark:border-gray-700 hover:border-primary-300'
+                            }`}
+                          >
+                            <span className={`px-3 py-1 rounded-full text-sm font-medium ${range.color}`}>
+                              {range.label}
+                            </span>
+                          </button>
+                        ))}
+                      </div>
                     </div>
-                  </motion.div>
+                    <Button onClick={() => setStep(2)} size="lg" className="w-full">
+                      {t('common.next')}
+                    </Button>
+                  </div>
                 )}
 
-                {/* Action Buttons */}
-                <div className="flex space-x-3 pt-4">
-                  <button
-                    onClick={() => setIsOpen(false)}
-                    className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
-                  >
-                    {t('buttons.cancel')}
-                  </button>
-                  <button
-                    onClick={handleAddToCart}
-                    disabled={!selectedService || !budget || !timeline}
-                    className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
-                  >
-                    {t('simulator.addToCart')}
-                  </button>
-                </div>
+                {/* Step 2: Timeline */}
+                {step === 2 && (
+                  <div className="space-y-6">
+                    <div>
+                      <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
+                        {t('simulator.step2.title')}
+                      </h3>
+                      <div className="space-y-3">
+                        {timelineOptions.map((option) => (
+                          <label
+                            key={option.value}
+                            className="flex items-center p-4 rounded-xl border border-gray-200 dark:border-gray-700 cursor-pointer hover:border-primary-300 transition-colors"
+                          >
+                            <input
+                              type="radio"
+                              name="timeline"
+                              value={option.value}
+                              checked={timeline === option.value}
+                              onChange={(e) => setTimeline(e.target.value)}
+                              className="mr-4 text-primary-600"
+                            />
+                            <span className="text-gray-900 dark:text-white font-medium">
+                              {option.label}
+                            </span>
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="flex space-x-4">
+                      <Button onClick={() => setStep(1)} variant="outline" className="flex-1">
+                        {t('common.back')}
+                      </Button>
+                      <Button onClick={() => setStep(3)} className="flex-1">
+                        {t('common.next')}
+                      </Button>
+                    </div>
+                  </div>
+                )}
+
+                {/* Step 3: Services */}
+                {step === 3 && (
+                  <div className="space-y-6">
+                    <div>
+                      <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
+                        {t('simulator.step3.title')}
+                      </h3>
+                      <div className="space-y-3">
+                        {serviceOptions.map((service) => (
+                          <label
+                            key={service.id}
+                            className="flex items-center justify-between p-4 rounded-xl border border-gray-200 dark:border-gray-700 cursor-pointer hover:border-primary-300 transition-colors"
+                          >
+                            <div className="flex items-center">
+                              <input
+                                type="checkbox"
+                                checked={services.includes(service.id)}
+                                onChange={() => toggleService(service.id)}
+                                className="mr-4 text-primary-600"
+                              />
+                              <span className="text-gray-900 dark:text-white font-medium">
+                                {service.label}
+                              </span>
+                            </div>
+                            <span className="text-primary-600 font-bold">
+                              €{service.price.toLocaleString()}
+                            </span>
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Total */}
+                    {services.length > 0 && (
+                      <div className="bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 rounded-xl p-6">
+                        <div className="flex items-center justify-between">
+                          <span className="text-lg font-semibold text-gray-900 dark:text-white">
+                            {t('simulator.total')}:
+                          </span>
+                          <span className="text-2xl font-bold text-primary-600">
+                            €{calculateTotal().toLocaleString()}
+                          </span>
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="flex space-x-4">
+                      <Button onClick={() => setStep(2)} variant="outline" className="flex-1">
+                        {t('common.back')}
+                      </Button>
+                      <Button 
+                        onClick={handleGenerate} 
+                        className="flex-1"
+                        disabled={services.length === 0}
+                      >
+                        {t('simulator.generate')}
+                      </Button>
+                    </div>
+                  </div>
+                )}
               </div>
             </motion.div>
           </motion.div>

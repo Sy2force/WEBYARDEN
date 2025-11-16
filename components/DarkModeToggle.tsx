@@ -5,19 +5,26 @@ import { motion } from 'framer-motion'
 
 export default function DarkModeToggle() {
   const [isDark, setIsDark] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    // Check for saved theme preference or default to light mode
-    const savedTheme = localStorage.getItem('theme')
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+    setMounted(true)
     
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-      setIsDark(true)
-      document.documentElement.classList.add('dark')
+    // Check for saved theme preference or default to light mode
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme')
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+      
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        setIsDark(true)
+        document.documentElement.classList.add('dark')
+      }
     }
   }, [])
 
   const toggleDarkMode = () => {
+    if (typeof window === 'undefined') return
+    
     const newTheme = !isDark
     setIsDark(newTheme)
     
@@ -30,6 +37,15 @@ export default function DarkModeToggle() {
     }
   }
 
+  // Prevent hydration mismatch by not rendering until mounted
+  if (!mounted) {
+    return (
+      <div className="relative inline-flex h-6 w-11 items-center rounded-full bg-gray-200 dark:bg-gray-700">
+        <span className="inline-block h-4 w-4 transform rounded-full bg-white shadow-lg translate-x-1" />
+      </div>
+    )
+  }
+
   return (
     <motion.button
       onClick={toggleDarkMode}
@@ -37,6 +53,7 @@ export default function DarkModeToggle() {
       whileTap={{ scale: 0.95 }}
       aria-label={isDark ? 'Activer le mode clair' : 'Activer le mode sombre'}
       title={isDark ? 'Activer le mode clair' : 'Activer le mode sombre'}
+      data-testid="dark-mode-toggle"
     >
       <motion.span
         className={`inline-block h-4 w-4 transform rounded-full bg-white shadow-lg transition-transform ${

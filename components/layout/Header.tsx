@@ -31,28 +31,25 @@ export default function Header() {
   const currentLang = languages.find(lang => lang.code === locale) || languages[0]
 
   return (
-    <header className="bg-white dark:bg-gray-900 shadow-lg border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
+    <header className="bg-white dark:bg-gray-900 shadow-lg border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50" role="banner">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">WY</span>
+            <Link href="/" className="flex items-center space-x-3">
+              <div className="w-12 h-12 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-xl">WY</span>
               </div>
               <div className="hidden sm:block">
                 <h1 className="text-xl font-bold text-gray-900 dark:text-white">
                   {t('header.title')}
                 </h1>
-                <p className="text-xs text-gray-600 dark:text-gray-400">
-                  {t('header.subtitle')}
-                </p>
               </div>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex space-x-6" role="navigation" aria-label="Navigation principale">
             {navigation.map((item) => (
               <Link
                 key={item.name}
@@ -66,49 +63,31 @@ export default function Header() {
 
           {/* Right Side Actions */}
           <div className="flex items-center space-x-4">
-            {/* Cart Button */}
-            <motion.button
-              onClick={toggleCart}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="relative p-2 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
-              aria-label={t('cart.title')}
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 6M7 13l-1.5-6m0 0h15M17 21a2 2 0 100-4 2 2 0 000 4zM9 21a2 2 0 100-4 2 2 0 000 4z" />
-              </svg>
-              {items.length > 0 && (
-                <motion.span
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-semibold"
-                >
-                  {items.length}
-                </motion.span>
-              )}
-            </motion.button>
-
             {/* Language Selector */}
             <div className="relative">
               <button
                 onClick={() => setIsLangOpen(!isLangOpen)}
                 className="flex items-center space-x-1 p-2 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
                 aria-label={t('common.language')}
+                aria-expanded={isLangOpen ? true : false}
+                aria-haspopup="menu"
+                aria-controls="language-menu"
+                data-testid="language-selector"
               >
                 <span className="text-lg">{currentLang.flag}</span>
                 <span className="hidden sm:block text-sm font-medium">{currentLang.code.toUpperCase()}</span>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
               </button>
 
               <AnimatePresence>
                 {isLangOpen && (
                   <motion.div
+                    id="language-menu"
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-2"
+                    role="menu"
+                    aria-label="Sélection de langue"
                   >
                     {languages.map((lang) => (
                       <Link
@@ -116,6 +95,8 @@ export default function Header() {
                         href={`/${lang.code}`}
                         onClick={() => setIsLangOpen(false)}
                         className="flex items-center space-x-3 px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                        role="menuitem"
+                        data-testid={`language-${lang.code}`}
                       >
                         <span className="text-lg">{lang.flag}</span>
                         <span>{lang.name}</span>
@@ -126,22 +107,23 @@ export default function Header() {
               </AnimatePresence>
             </div>
 
-            {/* Dark Mode Toggle */}
-            <DarkModeToggle />
-
             {/* CTA Button */}
             <Link
-              href="/devis"
-              className="hidden sm:inline-flex items-center px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-sm font-medium rounded-lg hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 shadow-md hover:shadow-lg"
+              href="/packs"
+              className="hidden sm:inline-flex items-center px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-sm font-medium rounded-lg hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              data-testid="cta-header-button"
             >
-              {t('header.getQuote')}
+              🚀 {t('header.getQuote')}
             </Link>
 
             {/* Mobile menu button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
-              aria-label={t('header.mobileMenu')}
+              className="md:hidden p-2 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              aria-label="Menu mobile"
+              aria-expanded={isMenuOpen ? true : false}
+              aria-controls="mobile-menu"
+              data-testid="mobile-menu-button"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {isMenuOpen ? (
@@ -162,8 +144,9 @@ export default function Header() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               className="md:hidden border-t border-gray-200 dark:border-gray-700 py-4"
+              id="mobile-menu"
             >
-              <nav className="flex flex-col space-y-2">
+              <nav className="flex flex-col space-y-2" role="navigation" aria-label="Navigation mobile">
                 {navigation.map((item) => (
                   <Link
                     key={item.name}
@@ -175,11 +158,11 @@ export default function Header() {
                   </Link>
                 ))}
                 <Link
-                  href="/devis"
+                  href="/packs"
                   onClick={() => setIsMenuOpen(false)}
                   className="mt-4 inline-flex items-center justify-center px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-sm font-medium rounded-lg hover:from-indigo-700 hover:to-purple-700 transition-all duration-200"
                 >
-                  {t('header.getQuote')}
+                  🚀 {t('header.getQuote')}
                 </Link>
               </nav>
             </motion.div>

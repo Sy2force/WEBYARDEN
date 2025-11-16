@@ -8,8 +8,7 @@ import { motion } from 'framer-motion'
 import { useTranslations } from '@/components/LocalizedText'
 import { getServiceBySlug, getServicesByCategory, serviceCategories } from '@/data/services'
 import { useCartStore } from '@/store/cartStore'
-import SimulatorDrawer from '@/components/SimulatorDrawer'
-import ServiceCard from '@/components/services/ServiceCard'
+import ServiceCard from '@/components/sections/ServiceCard'
 
 interface ServicePageProps {
   params: {
@@ -311,6 +310,10 @@ export default function ServicePage({ params }: ServicePageProps) {
                   key={relatedService.id}
                   service={relatedService}
                   index={index}
+                  showImage={true}
+                  showCartActions={true}
+                  linkToDetail={true}
+                  data-testid={`related-service-${relatedService.id}`}
                 />
               ))}
             </div>
@@ -344,12 +347,12 @@ export default function ServicePage({ params }: ServicePageProps) {
         </div>
       </section>
 
-      {/* Simulator Drawer */}
-      <SimulatorDrawer
+      {/* Simulator Drawer - Temporarily disabled */}
+      {/* <SimulatorDrawer
         service={service}
         isOpen={isSimulatorOpen}
         onClose={() => setIsSimulatorOpen(false)}
-      />
+      /> */}
     </div>
   )
 }

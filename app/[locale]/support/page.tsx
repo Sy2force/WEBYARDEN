@@ -1,101 +1,69 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
-import Link from 'next/link'
 import { useTranslations } from '@/components/LocalizedText'
+import { supportCategories } from '@/lib/data/supportCategories'
+import { quickActions } from '@/lib/data/quickActions'
+import { getTranslation } from '@/lib/i18n'
 
-const getSupportCategories = (t: (key: string) => string, tArray: (key: string) => string[]) => [
-  {
-    id: 'technical',
-    title: t('support.categories.technical.title'),
-    description: t('support.categories.technical.description'),
-    icon: '🔧',
-    color: 'from-blue-500 to-cyan-500',
-    articles: tArray('support.articles.technical').map((title: string, index: number) => ({
-      title,
-      views: [1250, 890, 756, 634][index] || 500
-    }))
-  },
-  {
-    id: 'billing',
-    title: t('support.categories.billing.title'),
-    description: t('support.categories.billing.description'),
-    icon: '💳',
-    color: 'from-green-500 to-emerald-500',
-    articles: tArray('support.articles.billing').map((title: string, index: number) => ({
-      title,
-      views: [980, 743, 567, 432][index] || 400
-    }))
-  },
-  {
-    id: 'features',
-    title: t('support.categories.features.title'),
-    description: t('support.categories.features.description'),
-    icon: '⚡',
-    color: 'from-purple-500 to-pink-500',
-    articles: tArray('support.articles.features').map((title: string, index: number) => ({
-      title,
-      views: [1456, 823, 712, 598][index] || 600
-    }))
-  },
-  {
-    id: 'account',
-    title: t('support.categories.account.title'),
-    description: t('support.categories.account.description'),
-    icon: '👤',
-    color: 'from-orange-500 to-red-500',
-    articles: tArray('support.articles.account').map((title: string, index: number) => ({
-      title,
-      views: [1123, 687, 543, 321][index] || 450
-    }))
-  }
-]
+interface ProcessedCategory {
+  id: string
+  title: string
+  description: string
+  icon: string
+  color: string
+  articles: Array<{ title: string; views: number }>
+}
 
-const getQuickActions = (t: (key: string) => string) => [
-  {
-    title: t('support.quickActions.chat.title'),
-    description: t('support.quickActions.chat.description'),
-    icon: '💬',
-    action: 'chat',
-    available: true,
-    color: 'bg-gradient-to-r from-blue-600 to-purple-600'
-  },
-  {
-    title: t('support.quickActions.call.title'),
-    description: t('support.quickActions.call.description'),
-    icon: '📞',
-    action: 'call',
-    available: true,
-    color: 'bg-gradient-to-r from-green-600 to-teal-600'
-  },
-  {
-    title: t('support.quickActions.email.title'),
-    description: t('support.quickActions.email.description'),
-    icon: '📧',
-    action: 'email',
-    available: true,
-    color: 'bg-gradient-to-r from-indigo-600 to-blue-600'
-  },
-  {
-    title: t('support.quickActions.urgent.title'),
-    description: t('support.quickActions.urgent.description'),
-    icon: '🚨',
-    action: 'urgent',
-    available: true,
-    color: 'bg-gradient-to-r from-red-600 to-pink-600'
-  }
-]
+interface ProcessedAction {
+  id: string
+  title: string
+  description: string
+  icon: string
+  action: string
+  available: boolean
+  color: string
+}
 
 export default function SupportPage() {
-  const { t, tArray } = useTranslations()
+  const { t, tArray, locale } = useTranslations()
   const [selectedCategory, setSelectedCategory] = useState('technical')
   const [searchQuery, setSearchQuery] = useState('')
 
-  const supportCategories = getSupportCategories(t, tArray)
-  const quickActions = getQuickActions(t)
+  // Process categories with translations
+  const processedCategories: ProcessedCategory[] = useMemo(() => 
+    supportCategories.map(category => {
+      const articles = tArray(category.articlesKey).map((title: string, index: number) => ({
+        title,
+        views: category.views[index] || 500
+      }))
 
-  const filteredArticles = supportCategories
+      return {
+        id: category.id,
+        title: t(category.titleKey),
+        description: t(category.descriptionKey),
+        icon: category.icon,
+        color: category.color,
+        articles
+      }
+    }), [t, tArray]
+  )
+
+  // Process quick actions with translations
+  const processedActions: ProcessedAction[] = useMemo(() => 
+    quickActions.map(action => ({
+      id: action.id,
+      title: t(action.titleKey),
+      description: t(action.descriptionKey),
+      icon: action.icon,
+      action: action.action,
+      available: action.available,
+      color: action.color
+    })), [t]
+  )
+
+  const filteredArticles = processedCategories
     .find(cat => cat.id === selectedCategory)?.articles
     .filter((article: {title: string, views: number}) => 
       article.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -167,7 +135,7 @@ export default function SupportPage() {
             {t('support.quickActions.title')}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-            {quickActions.map((action, index) => (
+            {processedActions.map((action, index) => (
               <motion.div
                 key={action.action}
                 initial={{ opacity: 0, y: 20 }}
@@ -197,12 +165,12 @@ export default function SupportPage() {
           </h2>
           
           {/* Category Tabs */}
-          <div className="flex flex-wrap justify-center gap-2 lg:gap-4 mb-8">
-            {supportCategories.map((category) => (
+          <div className="flex flex-wrap gap-3 lg:gap-4 mb-8 justify-center">
+            {processedCategories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`px-4 lg:px-6 py-3 rounded-xl font-semibold transition-all duration-200 ${
+                className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
                   selectedCategory === category.id
                     ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg'
                     : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600'
@@ -218,7 +186,7 @@ export default function SupportPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Category Info */}
             <div className="lg:col-span-1">
-              {supportCategories.map((category) => (
+              {processedCategories.map((category) => (
                 selectedCategory === category.id && (
                   <motion.div
                     key={category.id}

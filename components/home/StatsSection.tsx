@@ -72,6 +72,7 @@ export default function StatsSection() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
+              data-testid={`stats-item-${index}`}
             >
               <div className="w-20 h-20 lg:w-24 lg:h-24 bg-white/20 rounded-2xl flex items-center justify-center text-3xl lg:text-4xl mb-6 mx-auto backdrop-blur-sm border border-white/20 group-hover:bg-white/30 transition-all duration-300 group-hover:rotate-3">
                 {stat.icon}
