@@ -1,20 +1,4 @@
-// Core application types
-export interface Service {
-  id: string
-  name: string
-  description: string
-  icon: string
-  category: string
-  price: {
-    min: number
-    max: number
-    currency: string
-  }
-  features: string[]
-  popular?: boolean
-  delivery: string
-  image?: string
-}
+// Core application types - Service interface moved to /data/services.ts for i18n consistency
 
 export interface Pack {
   id: string

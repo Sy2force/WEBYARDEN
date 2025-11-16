@@ -1,4 +1,5 @@
 import { Project } from '../types'
+import { getItemById, getItemsByCategory, getFeaturedItems, getItemsByProperty } from '../utils/data-helpers'
 
 export const projects: Project[] = [
   {
@@ -124,19 +125,17 @@ export const projectSectors = [
 ]
 
 export function getProjectById(id: string): Project | undefined {
-  return projects.find(project => project.id === id)
+  return getItemById(projects, id)
 }
 
 export function getProjectsByCategory(category: string): Project[] {
-  if (category === 'all') return projects
-  return projects.filter(project => project.category === category)
+  return getItemsByCategory(projects, category)
 }
 
 export function getProjectsBySector(sector: string): Project[] {
-  if (sector === 'all') return projects
-  return projects.filter(project => project.sector === sector)
+  return getItemsByProperty(projects, 'sector', sector)
 }
 
 export function getFeaturedProjects(): Project[] {
-  return projects.filter(project => project.featured)
+  return getFeaturedItems(projects)
 }

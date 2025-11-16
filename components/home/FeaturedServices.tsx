@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+
 import Link from 'next/link'
 import { useTranslations } from '@/components/LocalizedText'
 import { getFeaturedServices } from '@/data/services'

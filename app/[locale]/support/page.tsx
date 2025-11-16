@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { useTranslations } from '@/components/LocalizedText'
 import { supportCategories } from '@/lib/data/supportCategories'

@@ -345,5 +345,8 @@
         - paragraph [ref=e400]: © 2024 Web Yarden. rights.
   - button "chat.title" [ref=e401] [cursor=pointer]:
     - img [ref=e402]
-  - alert [ref=e404]
+  - button "Ouvrir le simulateur" [ref=e405] [cursor=pointer]:
+    - img [ref=e406]
+    - text: Simulateur de Devis
+  - alert [ref=e408]
 ```

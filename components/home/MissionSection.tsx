@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+
 import { motion } from 'framer-motion'
 import { useTranslations } from '@/components/LocalizedText'
 import Button from '@/components/ui/Button'

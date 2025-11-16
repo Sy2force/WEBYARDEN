@@ -1,27 +1,7 @@
-export interface Pack {
-  id: string
-  name: string
-  slogan: string
-  description: string
-  price: number
-  originalPrice?: number
-  currency: string
-  category: string
-  services: string[]
-  features: string[]
-  icon: string
-  badge?: string
-  badgeColor?: string
-  popular?: boolean
-  bestValue?: boolean
-  recommended?: boolean
-  color: string
-  delivery: string
-  support?: string
-  guarantee: string
-  includes?: string[]
-}
+import { Pack } from '../types'
+import { getItemById, getItemsByCategory, getFeaturedItems } from '../utils/data-helpers'
 
+// Pack data
 export const packs: Pack[] = [
   {
     id: 'starter',
@@ -240,16 +220,15 @@ export const packCategories = [
 ]
 
 export function getPackById(id: string): Pack | undefined {
-  return packs.find(pack => pack.id === id)
+  return getItemById(packs, id)
 }
 
 export function getPacksByCategory(category: string): Pack[] {
-  if (category === 'all') return packs
-  return packs.filter(pack => pack.category === category)
+  return getItemsByCategory(packs, category)
 }
 
 export function getPopularPacks(): Pack[] {
-  return packs.filter(pack => pack.popular || pack.bestValue || pack.recommended)
+  return getFeaturedItems(packs)
 }
 
 export function getPackComparison(): Pack[] {

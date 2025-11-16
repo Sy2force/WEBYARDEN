@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { pdf } from '@react-pdf/renderer'
 import { QuotePDF } from '@/lib/pdf'
 import { useCartStore } from '@/store/cartStore'

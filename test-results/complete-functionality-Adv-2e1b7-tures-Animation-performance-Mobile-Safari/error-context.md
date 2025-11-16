@@ -1,0 +1,349 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]:
+          - link "W" [ref=e7]:
+            - /url: /fr
+            - generic [ref=e8]: W
+          - generic [ref=e9]:
+            - button "🇫🇷" [ref=e11] [cursor=pointer]:
+              - generic [ref=e12]: 🇫🇷
+              - img [ref=e13]
+            - button "Toggle menu" [expanded] [ref=e15] [cursor=pointer]
+        - generic [ref=e21]:
+          - link "Accueil" [ref=e22]:
+            - /url: /fr
+          - link "Services" [ref=e23]:
+            - /url: /fr/services
+          - link "Nos Packs" [ref=e24]:
+            - /url: /fr/packs
+          - link "Projets" [ref=e25]:
+            - /url: /fr/projects
+          - link "À propos" [ref=e26]:
+            - /url: /fr/about
+          - link "Contact" [ref=e27]:
+            - /url: /fr/contact
+          - button "Devis Gratuit" [ref=e29] [cursor=pointer]:
+            - generic [ref=e30]: Devis Gratuit
+    - main [ref=e32]:
+      - main [ref=e33]:
+        - generic [ref=e39]:
+          - heading "Créons ensemble votre succès digital" [level=1] [ref=e40]
+          - paragraph [ref=e41]: Solutions web sur-mesure, applications mobiles et stratégies digitales pour propulser votre entreprise vers l'excellence.
+          - generic [ref=e42]:
+            - button "Découvrir nos Packs" [ref=e43] [cursor=pointer]:
+              - generic [ref=e44]: Découvrir nos Packs
+            - button "Consultation Gratuite" [ref=e45] [cursor=pointer]:
+              - generic [ref=e46]: Consultation Gratuite
+        - generic [ref=e51]:
+          - generic [ref=e52]:
+            - heading "home.services.title" [level=2] [ref=e53]
+            - paragraph [ref=e54]: home.services.subtitle
+          - generic [ref=e55]:
+            - generic [ref=e57] [cursor=pointer]:
+              - generic [ref=e59]:
+                - generic [ref=e60]: 🌐
+                - heading "Création Site Web" [level=3] [ref=e62]
+              - paragraph [ref=e63]: Sites web modernes, responsive et optimisés SEO
+              - generic [ref=e64]:
+                - heading "Fonctionnalités clés" [level=4] [ref=e65]
+                - list [ref=e66]:
+                  - listitem [ref=e67]:
+                    - img [ref=e68]
+                    - text: Design responsive mobile-first
+                  - listitem [ref=e70]:
+                    - img [ref=e71]
+                    - text: Optimisation SEO avancée
+                  - listitem [ref=e73]:
+                    - img [ref=e74]
+                    - text: Performance ultra-rapide
+              - generic [ref=e76]:
+                - generic [ref=e77]:
+                  - generic [ref=e78]:
+                    - generic [ref=e79]: À partir de
+                    - generic [ref=e80]: 1,500€ - 8,000€
+                  - generic [ref=e81]:
+                    - generic [ref=e82]: Livraison
+                    - generic [ref=e83]: 2-4 semaines
+                - button "Obtenir un devis" [ref=e85]
+            - generic [ref=e87] [cursor=pointer]:
+              - generic [ref=e89]:
+                - generic [ref=e90]: 🛒
+                - heading "E-commerce" [level=3] [ref=e92]
+              - paragraph [ref=e93]: Boutiques en ligne complètes avec paiement intégré
+              - generic [ref=e94]:
+                - heading "Fonctionnalités clés" [level=4] [ref=e95]
+                - list [ref=e96]:
+                  - listitem [ref=e97]:
+                    - img [ref=e98]
+                    - text: Catalogue produits illimité
+                  - listitem [ref=e100]:
+                    - img [ref=e101]
+                    - text: Paiement sécurisé Stripe/PayPal
+                  - listitem [ref=e103]:
+                    - img [ref=e104]
+                    - text: Gestion stocks automatique
+              - generic [ref=e106]:
+                - generic [ref=e107]:
+                  - generic [ref=e108]:
+                    - generic [ref=e109]: À partir de
+                    - generic [ref=e110]: 3,000€ - 15,000€
+                  - generic [ref=e111]:
+                    - generic [ref=e112]: Livraison
+                    - generic [ref=e113]: 4-8 semaines
+                - button "Obtenir un devis" [ref=e115]
+            - generic [ref=e117] [cursor=pointer]:
+              - generic [ref=e119]:
+                - generic [ref=e120]: 📱
+                - heading "Application Mobile" [level=3] [ref=e122]
+              - paragraph [ref=e123]: Applications iOS & Android natives et cross-platform
+              - generic [ref=e124]:
+                - heading "Fonctionnalités clés" [level=4] [ref=e125]
+                - list [ref=e126]:
+                  - listitem [ref=e127]:
+                    - img [ref=e128]
+                    - text: Développement iOS & Android
+                  - listitem [ref=e130]:
+                    - img [ref=e131]
+                    - text: UI/UX design professionnel
+                  - listitem [ref=e133]:
+                    - img [ref=e134]
+                    - text: Intégrations API
+              - generic [ref=e136]:
+                - generic [ref=e137]:
+                  - generic [ref=e138]:
+                    - generic [ref=e139]: À partir de
+                    - generic [ref=e140]: 5,000€ - 25,000€
+                  - generic [ref=e141]:
+                    - generic [ref=e142]: Livraison
+                    - generic [ref=e143]: 6-12 semaines
+                - button "Obtenir un devis" [ref=e145]
+            - generic [ref=e147] [cursor=pointer]:
+              - generic [ref=e149]:
+                - generic [ref=e150]: 📈
+                - heading "Marketing Digital" [level=3] [ref=e152]
+              - paragraph [ref=e153]: Stratégies SEO, SEM et réseaux sociaux pour booster votre visibilité
+              - generic [ref=e154]:
+                - heading "Fonctionnalités clés" [level=4] [ref=e155]
+                - list [ref=e156]:
+                  - listitem [ref=e157]:
+                    - img [ref=e158]
+                    - text: Audit SEO complet
+                  - listitem [ref=e160]:
+                    - img [ref=e161]
+                    - text: Campagnes Google Ads
+                  - listitem [ref=e163]:
+                    - img [ref=e164]
+                    - text: Gestion réseaux sociaux
+              - generic [ref=e166]:
+                - generic [ref=e167]:
+                  - generic [ref=e168]:
+                    - generic [ref=e169]: À partir de
+                    - generic [ref=e170]: 800€ - 3,000€
+                  - generic [ref=e171]:
+                    - generic [ref=e172]: Livraison
+                    - generic [ref=e173]: Mensuel
+                - button "Obtenir un devis" [ref=e175]
+            - generic [ref=e177] [cursor=pointer]:
+              - generic [ref=e179]:
+                - generic [ref=e180]: 🎨
+                - heading "Identité Visuelle" [level=3] [ref=e182]
+              - paragraph [ref=e183]: Création de logos et charte graphique complète
+              - generic [ref=e184]:
+                - heading "Fonctionnalités clés" [level=4] [ref=e185]
+                - list [ref=e186]:
+                  - listitem [ref=e187]:
+                    - img [ref=e188]
+                    - text: Logo professionnel unique
+                  - listitem [ref=e190]:
+                    - img [ref=e191]
+                    - text: Charte graphique complète
+                  - listitem [ref=e193]:
+                    - img [ref=e194]
+                    - text: Déclinaisons tous supports
+              - generic [ref=e196]:
+                - generic [ref=e197]:
+                  - generic [ref=e198]:
+                    - generic [ref=e199]: À partir de
+                    - generic [ref=e200]: 800€ - 3,000€
+                  - generic [ref=e201]:
+                    - generic [ref=e202]: Livraison
+                    - generic [ref=e203]: 1-3 semaines
+                - button "Obtenir un devis" [ref=e205]
+            - generic [ref=e207] [cursor=pointer]:
+              - generic [ref=e209]:
+                - generic [ref=e210]: 🎯
+                - heading "Conseil Digital" [level=3] [ref=e212]
+              - paragraph [ref=e213]: Audit et stratégie digitale pour optimiser votre présence en ligne
+              - generic [ref=e214]:
+                - heading "Fonctionnalités clés" [level=4] [ref=e215]
+                - list [ref=e216]:
+                  - listitem [ref=e217]:
+                    - img [ref=e218]
+                    - text: Audit digital complet
+                  - listitem [ref=e220]:
+                    - img [ref=e221]
+                    - text: Stratégie personnalisée
+                  - listitem [ref=e223]:
+                    - img [ref=e224]
+                    - text: Recommandations techniques
+              - generic [ref=e226]:
+                - generic [ref=e227]:
+                  - generic [ref=e228]:
+                    - generic [ref=e229]: À partir de
+                    - generic [ref=e230]: 500€ - 2,000€
+                  - generic [ref=e231]:
+                    - generic [ref=e232]: Livraison
+                    - generic [ref=e233]: 1-2 semaines
+                - button "Obtenir un devis" [ref=e235]
+          - link "home.services.viewAll" [ref=e237]:
+            - /url: /services
+            - text: home.services.viewAll
+            - img [ref=e238]
+        - generic [ref=e241]:
+          - generic [ref=e242]:
+            - heading "home.stats.title" [level=2] [ref=e243]
+            - paragraph [ref=e244]: home.stats.subtitle
+          - generic [ref=e245]:
+            - generic [ref=e247]:
+              - generic [ref=e248]: 🚀
+              - generic [ref=e249]: 150+
+              - generic [ref=e250]: Projets Réalisés
+              - generic [ref=e251]: Sites web et applications
+            - generic [ref=e254]:
+              - generic [ref=e255]: ⭐
+              - generic [ref=e256]: 98%
+              - generic [ref=e257]: Satisfaction Client
+              - generic [ref=e258]: Note moyenne des clients
+            - generic [ref=e261]:
+              - generic [ref=e262]: 🌍
+              - generic [ref=e263]: 25+
+              - generic [ref=e264]: Pays Couverts
+              - generic [ref=e265]: Clients internationaux
+            - generic [ref=e268]:
+              - generic [ref=e269]: ⚡
+              - generic [ref=e270]: 24/7
+              - generic [ref=e271]: Support Disponible
+              - generic [ref=e272]: Assistance technique
+          - generic [ref=e274]:
+            - paragraph [ref=e275]: cta.text
+            - generic [ref=e276]:
+              - link "cta.contact" [ref=e277]:
+                - /url: /contact
+              - link "cta.portfolio" [ref=e278]:
+                - /url: /projects
+        - generic [ref=e280]:
+          - generic [ref=e281]:
+            - heading "home.testimonials.title" [level=2] [ref=e282]
+            - paragraph [ref=e283]: home.testimonials.subtitle
+          - generic [ref=e284]:
+            - generic [ref=e287]:
+              - generic [ref=e288]:
+                - img [ref=e289]
+                - img [ref=e291]
+                - img [ref=e293]
+                - img [ref=e295]
+                - img [ref=e297]
+              - blockquote [ref=e299]: "\"Professionnalisme, créativité et expertise technique. Notre chiffre d'affaires a augmenté de 150% grâce à leur travail.\""
+              - generic [ref=e300]:
+                - img "Marc Dupont" [ref=e301]
+                - generic [ref=e302]:
+                  - generic [ref=e303]: Marc Dupont
+                  - generic [ref=e304]: Directeur Marketing • E-Commerce Plus
+            - button "Previous testimonial" [ref=e305] [cursor=pointer]:
+              - img [ref=e306]
+            - button "Next testimonial" [ref=e308] [cursor=pointer]:
+              - img [ref=e309]
+            - generic [ref=e311]:
+              - button "Go to testimonial 1" [ref=e312] [cursor=pointer]
+              - button "Go to testimonial 2" [ref=e313] [cursor=pointer]
+              - button "Go to testimonial 3" [ref=e314] [cursor=pointer]
+        - generic [ref=e320]:
+          - generic [ref=e321]: home.cta.subtitle
+          - heading "home.cta.title" [level=2] [ref=e322]
+          - paragraph [ref=e323]: home.cta.description
+          - generic [ref=e324]:
+            - button "home.cta.primary" [ref=e325] [cursor=pointer]:
+              - generic [ref=e326]: home.cta.primary
+            - button "home.cta.secondary" [ref=e327] [cursor=pointer]:
+              - generic [ref=e328]: home.cta.secondary
+          - generic [ref=e329]:
+            - generic [ref=e330]:
+              - img [ref=e331]
+              - generic [ref=e333]: trust.guarantee
+            - generic [ref=e334]:
+              - img [ref=e335]
+              - generic [ref=e337]: trust.support
+            - generic [ref=e338]:
+              - img [ref=e339]
+              - generic [ref=e341]: trust.rating
+    - contentinfo [ref=e342]:
+      - generic [ref=e347]:
+        - generic [ref=e348]:
+          - generic [ref=e349]:
+            - generic [ref=e350]:
+              - generic [ref=e352]: W
+              - generic [ref=e353]:
+                - heading "Web Yarden" [level=3] [ref=e354]
+                - paragraph [ref=e355]: Digital Agency Israel
+            - paragraph [ref=e356]: description
+            - generic [ref=e357]:
+              - link "Twitter" [ref=e358]:
+                - /url: "#"
+                - img [ref=e359]
+              - link "Facebook" [ref=e361]:
+                - /url: "#"
+                - img [ref=e362]
+              - link "LinkedIn" [ref=e364]:
+                - /url: "#"
+                - img [ref=e365]
+          - generic [ref=e367]:
+            - heading "quickLinks" [level=4] [ref=e368]
+            - list [ref=e369]:
+              - listitem [ref=e370]:
+                - link "Accueil" [ref=e371]:
+                  - /url: /
+                  - text: Accueil
+              - listitem [ref=e373]:
+                - link "Services" [ref=e374]:
+                  - /url: /services
+                  - text: Services
+              - listitem [ref=e376]:
+                - link "Packs" [ref=e377]:
+                  - /url: /packs
+                  - text: Packs
+              - listitem [ref=e379]:
+                - link "À propos" [ref=e380]:
+                  - /url: /about
+                  - text: À propos
+              - listitem [ref=e382]:
+                - link "Contact" [ref=e383]:
+                  - /url: /contact
+                  - text: Contact
+          - generic [ref=e385]:
+            - heading "Contact" [level=4] [ref=e386]
+            - list [ref=e387]:
+              - listitem [ref=e388]:
+                - generic [ref=e389]: 📧
+                - generic [ref=e390]: contact@web-yarden.com
+              - listitem [ref=e391]:
+                - generic [ref=e392]: 📱
+                - generic [ref=e393]: +972 54-321-0987
+              - listitem [ref=e394]:
+                - generic [ref=e395]: 📍
+                - generic [ref=e396]: Tel Aviv, Israël
+              - listitem [ref=e397]:
+                - generic [ref=e398]: 🕒
+                - generic [ref=e399]: Lun-Ven 9h-18h (GMT+2)
+        - paragraph [ref=e402]: © 2024 Web Yarden. rights.
+  - button "chat.title" [ref=e403] [cursor=pointer]:
+    - img [ref=e404]
+  - button "Ouvrir le simulateur" [ref=e407] [cursor=pointer]:
+    - img [ref=e408]
+    - text: Simulateur de Devis
+  - alert [ref=e410]
+```

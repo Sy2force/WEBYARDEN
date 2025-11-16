@@ -251,12 +251,12 @@
                 - img [ref=e291]
                 - img [ref=e293]
                 - img [ref=e295]
-              - blockquote [ref=e297]: "\"Une équipe exceptionnelle qui a transformé notre vision en réalité digitale. Résultats au-delà de nos attentes.\""
+              - blockquote [ref=e297]: "\"Professionnalisme, créativité et expertise technique. Notre chiffre d'affaires a augmenté de 150% grâce à leur travail.\""
               - generic [ref=e298]:
-                - img "Sarah Cohen" [ref=e299]
+                - img "Marc Dupont" [ref=e299]
                 - generic [ref=e300]:
-                  - generic [ref=e301]: Sarah Cohen
-                  - generic [ref=e302]: CEO • TechStart IL
+                  - generic [ref=e301]: Marc Dupont
+                  - generic [ref=e302]: Directeur Marketing • E-Commerce Plus
             - button "Previous testimonial" [ref=e303] [cursor=pointer]:
               - img [ref=e304]
             - button "Next testimonial" [ref=e306] [cursor=pointer]:
@@ -345,5 +345,8 @@
         - paragraph [ref=e400]: © 2024 Web Yarden. rights.
   - button "chat.title" [ref=e401] [cursor=pointer]:
     - img [ref=e402]
-  - alert [ref=e404]
+  - button "Ouvrir le simulateur" [ref=e405] [cursor=pointer]:
+    - img [ref=e406]
+    - text: Simulateur de Devis
+  - alert [ref=e408]
 ```

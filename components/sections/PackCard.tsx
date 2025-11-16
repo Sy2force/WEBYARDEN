@@ -80,7 +80,7 @@ const PackCard: React.FC<PackCardProps> = ({
         {/* Discount Badge */}
         {discountPercentage > 0 && (
           <div className="absolute top-2 right-2 z-10">
-            <Badge variant="success" size="sm" className="text-xs font-bold">
+            <Badge variant="success" size="sm" className="text-xs font-bold px-3 py-1 bg-red-500 text-white shadow-lg">
               -{discountPercentage}%
             </Badge>
           </div>
@@ -89,7 +89,7 @@ const PackCard: React.FC<PackCardProps> = ({
         <div className="p-4 h-full flex flex-col">
           {/* Header */}
           <div className="text-center mb-3">
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
+            <h3 className="text-base font-bold text-gray-900 dark:text-white mb-2 leading-tight line-clamp-2 min-h-[2.5rem]">
               {pack.name}
             </h3>
             <div className="text-2xl font-bold text-primary-600">
@@ -170,7 +170,7 @@ const PackCard: React.FC<PackCardProps> = ({
         {/* Discount Badge */}
         {discountPercentage > 0 && (
           <div className="absolute -top-3 right-4 z-10">
-            <Badge variant="success" className="px-4 py-2 font-bold text-sm">
+            <Badge variant="success" className="px-4 py-2 font-bold text-sm bg-red-500 text-white shadow-lg border-2 border-white">
               -{discountPercentage}%
             </Badge>
           </div>
@@ -179,7 +179,7 @@ const PackCard: React.FC<PackCardProps> = ({
         {/* Header */}
         <div className={`${layout === 'horizontal' ? 'lg:w-1/3' : ''} mb-6`}>
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white leading-tight line-clamp-2 flex-1 mr-2">
               {pack.name}
             </h3>
             {pack.badge && (

@@ -9,6 +9,10 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      lineClamp: {
+        2: '2',
+        3: '3',
+      },
       colors: {
         // Modern Booking.com-inspired palette
         primary: {

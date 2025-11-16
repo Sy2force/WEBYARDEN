@@ -22,23 +22,10 @@
     "less": "Less",
     "readMore": "Read more",
     "getQuote": "Get Quote",
-    "learnMore": "Learn more",
-    "viewProject": "View project",
-    "contactUs": "Contact us",
-    "startProject": "Start project"
-  },
-  "navigation": {
-    "home": "Home",
-    "services": "Services", 
-    "packs": "Our Packages",
-    "projects": "Projects",
-    "about": "About",
-    "contact": "Contact",
-    "getQuote": "Free Quote",
-    "tagline": "Israel's #1 Digital Agency",
-    "darkMode": "Dark mode",
-    "lightMode": "Light mode",
-    "menu": "Menu"
+    "learnMore": "Discover more",
+    "viewProject": "Explore project",
+    "contactUs": "Get in touch",
+    "startProject": "Kickstart project"
   },
   "nav": {
     "home": "Home",
@@ -54,7 +41,9 @@
   },
   "home": {
     "hero": {
-      "badge": "Israel's #1 Digital Agency",
+      "badge": "Leading digital agency",
+      "clients": "satisfied clients",
+      "satisfaction": "satisfaction",
       "title": "Let's create your digital success together",
       "subtitle": "Custom web solutions, mobile apps and digital strategies to propel your business to excellence.",
       "cta": {
@@ -62,6 +51,19 @@
         "secondary": "Free Consultation"
       },
       "trustBadge": "500+ companies trust us"
+    },
+    "stats": {
+      "title": "Results that speak for themselves",
+      "subtitle": "Our expertise is measured by our clients' success and the excellence of our achievements.",
+      "clients": "Satisfied clients",
+      "clientsDesc": "Companies that trust us",
+      "projects": "Completed projects",
+      "projectsDesc": "Digital solutions delivered",
+      "satisfaction": "Client satisfaction",
+      "satisfactionDesc": "Recommendation rate",
+      "countries": "Countries",
+      "countriesDesc": "International presence",
+      "trustedBy": "They trust us"
     },
     "simulator": {
       "title": "Project Simulator",
@@ -94,23 +96,79 @@
       }
     },
     "services": {
-      "title": "Our Core Services",
-      "subtitle": "Complete digital solutions for all your needs"
+      "badge": "Expert Solutions",
+      "title": "Our Flagship Services", 
+      "subtitle": "Complete digital solutions for all your needs and growth ambitions",
+      "viewAll": "Discover all our services",
+      "cta": {
+        "title": "Ready to turn your vision into reality?",
+        "subtitle": "Let's talk about your project and create something exceptional together",
+        "primary": "View all our services",
+        "secondary": "Free consultation"
+      },
+      "guarantee": {
+        "satisfaction": "Satisfaction guaranteed",
+        "delivery": "On-time delivery",
+        "support": "24/7 support"
+      }
     },
     "packs": {
       "title": "All-Inclusive Packages",
       "subtitle": "Complete offers to get started quickly"
     },
-    "testimonials": {
-      "title": "What our clients say",
-      "subtitle": "Discover testimonials from our satisfied clients"
+    "portfolio": {
+      "badge": "Completed Projects",
+      "title": "Our Digital Portfolio",
+      "subtitle": "Discover our most outstanding achievements and the results obtained for our clients across different sectors",
+      "metrics": {
+        "projects": "Projects delivered",
+        "satisfaction": "Satisfaction rate",
+        "countries": "Countries reached",
+        "rating": "Average rating"
+      },
+      "technologies": {
+        "title": "Mastered Technologies"
+      },
+      "cta": {
+        "title": "Your project will be our next success",
+        "subtitle": "Join our satisfied clients and let's bring your digital ambitions to life",
+        "primary": "View full portfolio",
+        "secondary": "Discuss my project"
+      }
     },
-    "stats": {
-      "title": "Our Impact in Numbers",
-      "projects": "Projects delivered",
-      "clients": "Happy clients",
-      "satisfaction": "Satisfaction rate",
-      "experience": "Years of experience"
+    "testimonials": {
+      "badge": "Client Testimonials",
+      "title": "What our clients say",
+      "subtitle": "Discover authentic feedback from our clients and the concrete results we achieved together",
+      "trustedBy": "They trust us",
+      "navigation": {
+        "previous": "Previous testimonial",
+        "next": "Next testimonial"
+      }
+    },
+    "contact": {
+      "badge": "Let's talk about your project",
+      "title": "Transform your ideas into digital success",
+      "subtitle": "Our team of experts is ready to support you in achieving your digital ambitions",
+      "features": {
+        "response": "2h response time guaranteed",
+        "personalized": "Free personalized advice",
+        "confidential": "100% confidential exchange"
+      },
+      "cta": {
+        "title": "Contact us now",
+        "subtitle": "Choose your preferred channel",
+        "whatsapp": "Chat on WhatsApp",
+        "call": "Call now",
+        "form": "Send a message"
+      },
+      "guarantee": "Free consultation • No commitment",
+      "stats": {
+        "response": "Response time",
+        "clients": "Satisfied clients",
+        "satisfaction": "Satisfaction rate",
+        "support": "Support available"
+      }
     },
     "cta": {
       "title": "Ready to transform your digital vision?",

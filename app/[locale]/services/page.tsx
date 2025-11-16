@@ -1,8 +1,8 @@
 'use client'
 
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { services } from '@/lib/data/services'
+import { services, serviceCategories } from '@/data/services'
 import { ServiceCard, CTASection, StatsSection } from '@/components/sections'
 import { Input, Button } from '@/components/ui'
 import { useTranslations } from '@/components/LocalizedText'
@@ -28,8 +28,8 @@ export default function ServicesPage() {
   const filteredServices = services.filter(service => {
     const matchesCategory = selectedCategory === 'all' || service.category === selectedCategory
     const matchesSearch = searchTerm === '' || 
-      service.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      service.description.toLowerCase().includes(searchTerm.toLowerCase())
+      service.titleKey.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      service.descriptionKey.toLowerCase().includes(searchTerm.toLowerCase())
     return matchesCategory && matchesSearch
   })
 

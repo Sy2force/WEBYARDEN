@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+
 import NavigationClient from '@/components/navbar/NavigationClient'
 import Footer from './Footer'
 import { useParams } from 'next/navigation'

@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import { Fragment } from 'react'
 import { useTranslations } from '@/components/LocalizedText'
 
 export default function MentionsLegales() {
@@ -50,10 +50,10 @@ export default function MentionsLegales() {
                 <p>{t('legal.hosting.description')}</p>
                 <p><strong>{t('legal.hosting.provider')}</strong><br />
                 {t('legal.hosting.providerAddress').split('\n').map((line: string, index: number) => (
-                  <React.Fragment key={index}>
+                  <Fragment key={index}>
                     {line}
                     {index < t('legal.hosting.providerAddress').split('\n').length - 1 && <br />}
-                  </React.Fragment>
+                  </Fragment>
                 ))}</p>
               </div>
             </div>

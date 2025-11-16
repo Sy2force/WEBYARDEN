@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { useTranslations } from '@/components/LocalizedText'
 import { projects, projectCategories, projectSectors, getProjectsByCategory, getProjectsBySector } from '@/lib/data/projects'
@@ -17,7 +17,7 @@ export default function ProjectsPageClient() {
   const [viewMode, setViewMode] = useState<'grid' | 'featured'>('grid')
 
   // Filter projects by category and sector
-  const filteredProjects = React.useMemo(() => {
+  const filteredProjects = useMemo(() => {
     let filtered = projects
 
     if (selectedCategory !== 'all') {

@@ -27,19 +27,6 @@
     "contactUs": "Nous contacter",
     "startProject": "Démarrer un projet"
   },
-  "navigation": {
-    "home": "Accueil",
-    "services": "Services", 
-    "packs": "Nos Packs",
-    "projects": "Projets",
-    "about": "À propos",
-    "contact": "Contact",
-    "getQuote": "Devis Gratuit",
-    "tagline": "Agence Digitale #1 en Israël",
-    "darkMode": "Mode sombre",
-    "lightMode": "Mode clair",
-    "menu": "Menu"
-  },
   "nav": {
     "home": "Accueil",
     "services": "Services", 
@@ -54,7 +41,9 @@
   },
   "home": {
     "hero": {
-      "badge": "Agence Digitale #1 en Israël",
+      "badge": "Agence digitale leader",
+      "clients": "clients satisfaits",
+      "satisfaction": "satisfaction",
       "title": "Créons ensemble votre succès digital",
       "subtitle": "Solutions web sur-mesure, applications mobiles et stratégies digitales pour propulser votre entreprise vers l'excellence.",
       "cta": {
@@ -62,6 +51,19 @@
         "secondary": "Consultation Gratuite"
       },
       "trustBadge": "Plus de 500 entreprises nous font confiance"
+    },
+    "stats": {
+      "title": "Des résultats qui parlent d'eux-mêmes",
+      "subtitle": "Notre expertise se mesure par la réussite de nos clients et l'excellence de nos réalisations.",
+      "clients": "Clients satisfaits",
+      "clientsDesc": "Entreprises qui nous font confiance",
+      "projects": "Projets réalisés",
+      "projectsDesc": "Solutions digitales livrées",
+      "satisfaction": "Satisfaction client",
+      "satisfactionDesc": "Taux de recommandation",
+      "countries": "Pays",
+      "countriesDesc": "Présence internationale",
+      "trustedBy": "Ils nous font confiance"
     },
     "simulator": {
       "title": "Simulateur de Projet",
@@ -94,17 +96,75 @@
       }
     },
     "services": {
+      "badge": "Solutions Expertes",
       "title": "Nos Services Phares",
-      "subtitle": "Des solutions digitales complètes pour tous vos besoins",
-      "viewAll": "Découvrir tous nos services"
+      "subtitle": "Des solutions digitales complètes pour tous vos besoins et toutes vos ambitions de croissance",
+      "viewAll": "Découvrir tous nos services",
+      "cta": {
+        "title": "Prêt à transformer votre vision en réalité ?",
+        "subtitle": "Parlons de votre projet et créons ensemble quelque chose d'exceptionnel",
+        "primary": "Voir tous nos services",
+        "secondary": "Consultation gratuite"
+      },
+      "guarantee": {
+        "satisfaction": "Satisfaction garantie",
+        "delivery": "Livraison dans les délais",
+        "support": "Support 24/7"
+      }
     },
-    "stats": {
-      "title": "Des Résultats Qui Parlent",
-      "subtitle": "Notre expertise au service de votre croissance digitale"
+    "portfolio": {
+      "badge": "Projets Réalisés",
+      "title": "Notre Portfolio Digital",
+      "subtitle": "Découvrez nos réalisations les plus marquantes et les résultats obtenus pour nos clients dans différents secteurs",
+      "metrics": {
+        "projects": "Projets livrés",
+        "satisfaction": "Taux de satisfaction",
+        "countries": "Pays touchés", 
+        "rating": "Note moyenne"
+      },
+      "technologies": {
+        "title": "Technologies Maîtrisées"
+      },
+      "cta": {
+        "title": "Votre projet sera notre prochaine réussite",
+        "subtitle": "Rejoignez nos clients satisfaits et donnons vie à vos ambitions digitales",
+        "primary": "Voir tout le portfolio",
+        "secondary": "Discuter de mon projet"
+      }
     },
     "testimonials": {
+      "badge": "Témoignages Clients",
       "title": "Ce Que Disent Nos Clients",
-      "subtitle": "La satisfaction client au cœur de notre mission"
+      "subtitle": "Découvrez les retours authentiques de nos clients et les résultats concrets que nous avons obtenus ensemble",
+      "trustedBy": "Ils nous font confiance",
+      "navigation": {
+        "previous": "Témoignage précédent",
+        "next": "Témoignage suivant"
+      }
+    },
+    "contact": {
+      "badge": "Parlons de votre projet",
+      "title": "Transformons vos idées en succès digital",
+      "subtitle": "Notre équipe d'experts est prête à vous accompagner dans la réalisation de vos ambitions digitales",
+      "features": {
+        "response": "Réponse sous 2h garantie",
+        "personalized": "Conseil personnalisé gratuit",
+        "confidential": "Échange 100% confidentiel"
+      },
+      "cta": {
+        "title": "Contactez-nous maintenant",
+        "subtitle": "Choisissez votre canal préféré",
+        "whatsapp": "Discuter sur WhatsApp",
+        "call": "Appeler maintenant",
+        "form": "Envoyer un message"
+      },
+      "guarantee": "Consultation gratuite • Sans engagement",
+      "stats": {
+        "response": "Temps de réponse",
+        "clients": "Clients satisfaits",
+        "satisfaction": "Taux de satisfaction",
+        "support": "Support disponible"
+      }
     },
     "cta": {
       "title": "Prêt à Transformer Votre Présence Digitale ?",

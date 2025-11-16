@@ -1,3 +1,5 @@
+import { getItemBySlug, getFeaturedItems, getItemsByCategory } from '../lib/utils/data-helpers';
+
 export interface Service {
   id: string;
   titleKey: string;
@@ -320,15 +322,15 @@ export const serviceCategories = [
 
 // Helper functions
 export function getServiceBySlug(slug: string): Service | undefined {
-  return services.find(service => service.slug === slug);
+  return getItemBySlug(services, slug);
 }
 
 export function getFeaturedServices(): Service[] {
-  return services.filter(service => service.popular === true);
+  return getFeaturedItems(services);
 }
 
 export function getServicesByCategory(category: string): Service[] {
-  return services.filter(service => service.category === category);
+  return getItemsByCategory(services, category);
 }
 
 export default services;

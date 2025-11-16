@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslations } from '@/components/LocalizedText'
 import { useCartStore, CartItem } from '@/store/cartStore'

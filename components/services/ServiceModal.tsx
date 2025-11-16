@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+
 import Image from 'next/image'
 import { Service } from '@/data/services'
 import { useCartStore } from '@/store/cartStore'
